@@ -1,0 +1,33 @@
+.wrapper {
+   // margin-right: 40px;
+
+   .link_list {
+      align-items: center;
+      justify-content: flex-end;
+      gap: 160px;
+
+      .link {
+         position: relative;
+         transition: var(--link-transition);
+
+         &:hover {
+            color: var(--link-hover-color);
+         }
+
+         &:active {
+            opacity: var(--click-effect-opacity);
+            transform: var(--click-effect-transform);
+         }
+
+         &.active {
+            color: var(--link-active-color);
+         }
+      }
+   }
+
+   @media (max-width: 1919px) {
+      .link_list {
+         gap: 104px;
+      }
+   }
+}

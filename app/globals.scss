@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+   --grey-bg: #dfdfdf;
+   --black-bg: #000;
+   --white: #fff;
+   --black: #000;
+   --red: #e34539;
+   --red-opacity: rgba(227, 69, 57, 0.4);
+
+   --link-transition: color 0.1s ease-in-out, transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+   --link-hover-color: var(--red);
+   --link-active-color: var(--red);
+   --click-effect-opacity: 0.65;
+   --click-effect-transform: scale(0.95);
+
+   --line-height: 1px;
+   --black-line: 1px solid var(--black-bg);
+
+   --header-height: 142px;
+
+
+   --large-laptop: 1919px;
+   --small-laptop: 1439px;
+   --large-tablet: 1279px;
+   --medium-tablet: 1023px;
+   --small-tablet: 719px;
+   --mobile: 479px;
+
+   font-family: "Montserrat", sans-serif;
+
+   // @media (max-width: 2499px) {
+   //    --header-height: 128px;
+   // }
+
+   // @media (max-width: 1919px) {
+   //    --header-height: 113px;
+   // }
+}
+
+
+*::selection {
+   background-color: var(--red-opacity);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+   margin: unset;
+}
+
+img {
+   width: 100%;
+   height: auto;
+}
+
+a {
+   display: block;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+   color: var(--black);
+   background-color: var(--grey-bg);
+}
+
+.caption {
+   &-32 {
+      font-size: 32px;
+      font-weight: bold;
+      line-height: 120%;
+      text-transform: uppercase;
+
+      // @media (max-width: 2499px) {
+      //    font-size: 24px;
+      // }
+
+      // @media (max-width: 1919px) {
+      //    font-size: 20px;
+      // }
+   }
+
+
+   &-24 {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 120%;
+      text-transform: uppercase;
+
+      @media (max-width: 1919px) {
+         font-size: 20px;
+      }
+   }
+
+   &-18 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 120%;
+
+      // @media (max-width: 1919px) {
+      //    font-size: 16px;
+      // }
+   }
+}
+
+.text {
+   &-red {
+      color: var(--red);
+   }
+
+   &-20 {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 140%;
+   }
+}
+
+.content-wrapper {
+   margin: 0 auto;
+   width: 100%;
+   max-width: 1674px;
+
+   @media (max-width: 1919px) {
+      max-width: 1374px;
+   }
+}
+
+@layer utilities {
+   .text-balance {
+      text-wrap: balance;
+   }
+}
