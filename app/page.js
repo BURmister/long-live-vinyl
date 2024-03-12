@@ -1,5 +1,8 @@
 import Link from 'next/link';
+
 import { Sale } from './components/sale/Sale';
+import { ProductSlider } from './components/product-slider/ProductSlider';
+
 import styles from './styles.module.scss';
 
 export default function Home() {
@@ -16,6 +19,7 @@ export default function Home() {
             </div>
          </section>
          <Sale />
+         <ProductSlider highlightCaption="Новинки" sliderCaption="в нашей коллекции" />
       </main>
    );
 }

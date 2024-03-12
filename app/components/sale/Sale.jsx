@@ -89,7 +89,7 @@ export const Sale = () => {
                   SALE_LIST.map((item) => (
                      <SwiperSlide key={item.id} className={styles.other_banner}>
                         <Link href="/">
-                           <Image src={item.img} width={512} height={512} alt="" />
+                           <Image src={item.img} width={512} height={512} alt={item.name} />
                         </Link>
                      </SwiperSlide>
                   ))}

@@ -10,9 +10,9 @@
          position: relative;
          transition: var(--link-transition);
 
-         &:hover {
-            color: var(--link-hover-color);
-         }
+         // &:hover {
+         //    color: var(--link-hover-color);
+         // }
 
          &:active {
             opacity: var(--click-effect-opacity);
