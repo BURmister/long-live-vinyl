@@ -76,13 +76,15 @@ export const Sale = () => {
          </div>
          <div className={styles.sale_list}>
             <div className={styles.main_banner}>
-               <Link href="/" className={styles.banner_content}>
+               <div className={styles.banner_content}>
                   <div className={styles.timer}>
                      <CountDown />
                   </div>
-                  <Image src={MainBanner} width={1024} height={1024} alt="" />
-                  <h3 className={`caption-18 text-center`}>Скидки на пластинки месяца</h3>
-               </Link>
+                  <Link href="/">
+                     <Image src={MainBanner} width={1024} height={1024} alt="" />
+                     <h3 className={`caption-18 text-center`}>Скидки на пластинки месяца</h3>
+                  </Link>
+               </div>
             </div>
             <Swiper slidesPerView="auto">
                {SALE_LIST &&

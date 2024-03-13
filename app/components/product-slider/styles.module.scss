@@ -1,0 +1,69 @@
+.content {
+   gap: var(--inside-section-gap);
+
+   .slider {
+      position: relative;
+
+      &::before {
+         position: absolute;
+         content: '';
+         top: 0;
+         left: 0;
+
+         width: 100%;
+         height: 1px;
+
+         background-color: var(--black);
+      }
+
+      &::after {
+         position: absolute;
+         content: '';
+         bottom: 0;
+         left: 0;
+
+         width: 100%;
+         height: 0.8px;
+
+         background-color: var(--black);
+      }
+   }
+
+   .slide {
+      padding-right: 32px;
+      width: fit-content;
+      max-width: var(--card-max-width);
+      height: 100%;
+      background-color: var(--grey-bg);
+   }
+}
+
+.card {
+   width: 100%;
+   max-width: var(--card-max-width);
+   height: 100%;
+
+   border: var(--black-line);
+
+   .img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+
+      border-bottom: var(--black-line);
+   }
+}
+
+.linkAll {
+   width: var(--card-max-width);
+   height: var(--card-max-height);
+
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   border: var(--black-line);
+   border-right: unset;
+}
