@@ -4,5 +4,20 @@
    flex-direction: column;
    gap: var(--layout-gap);
 
-   .home {}
+   .home {
+      display: flex;
+      flex-direction: column;
+      gap: var(--layout-gap);
+
+      h1 {
+         text-align: center;
+      }
+
+      .home_desc {
+         display: grid;
+         grid-template-columns: 196px 1fr;
+         align-items: end;
+         gap: var(--section-gap);
+      }
+   }
 }

@@ -8,7 +8,6 @@ module.exports = {
          'i.discogs.com',
          'media.pitchfork.com',
          'is1-ssl.mzstatic.com',
-         'i.discogs.com',
          'upload.wikimedia.org',
       ],
    },

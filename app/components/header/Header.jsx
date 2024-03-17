@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Links } from '../links/Links';
+import { Links } from './links/Links';
 import styles from './styles.module.scss';
 
 export const Header = () => {

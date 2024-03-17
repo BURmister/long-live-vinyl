@@ -8,9 +8,9 @@
          position: absolute;
          content: '';
          top: 0;
-         left: 0;
+         right: 0;
 
-         width: 100%;
+         width: 50%;
          height: 1px;
 
          background-color: var(--black);
@@ -20,9 +20,9 @@
          position: absolute;
          content: '';
          bottom: 0;
-         left: 0;
+         right: 0;
 
-         width: 100%;
+         width: 50%;
          height: 0.8px;
 
          background-color: var(--black);
@@ -51,7 +51,39 @@
       object-fit: cover;
       aspect-ratio: 1 / 1;
 
-      border-bottom: var(--black-line);
+      // border-bottom: var(--black-line);
+   }
+
+   .content {
+      padding: var(--inside-card-padding);
+
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .name {
+         display: flex;
+         flex-direction: column;
+
+         .name_author {}
+      }
+
+      .catalogAction {
+         display: flex;
+         align-items: flex-end;
+         justify-content: space-between;
+
+         .btn_buy {
+            position: relative;
+            transition: var(--link-transition);
+
+            &:active {
+               // opacity: var(--click-effect-opacity);
+               // transform: var(--click-effect-transform);
+               // color: var(--grey-bg);
+            }
+         }
+      }
    }
 }
 

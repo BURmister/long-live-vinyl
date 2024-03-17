@@ -15,6 +15,10 @@ const NAV_LIST = [
       path: '/month',
    },
    {
+      name: 'Исполнители',
+      path: '/authors',
+   },
+   {
       name: 'Новости',
       path: '/news',
    },

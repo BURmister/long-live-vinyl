@@ -4,7 +4,7 @@
    .link_list {
       align-items: center;
       justify-content: flex-end;
-      gap: 160px;
+      gap: 104px;
 
       .link {
          position: relative;
@@ -15,8 +15,9 @@
          // }
 
          &:active {
-            opacity: var(--click-effect-opacity);
-            transform: var(--click-effect-transform);
+            // opacity: var(--click-effect-opacity);
+            // transform: var(--click-effect-transform);
+            // color: var(--grey-bg);
          }
 
          &.active {
@@ -27,7 +28,7 @@
 
    @media (max-width: 1919px) {
       .link_list {
-         gap: 104px;
+         gap: 64px;
       }
    }
 }
