@@ -1,19 +1,44 @@
 .header {
    // height: var(--header-height);
-   
+
    background-color: var(--grey-bg);
    border-bottom: var(--black-line);
-   
+
    .header_container {
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
-      
+
       .logo {
          padding: 20px 60px 20px 0;
          height: 100%;
          border-right: var(--black-line);
          user-select: none;
+      }
+   }
+
+   @media (max-width: 1439px) {
+      .header_container {
+         .logo {
+            padding: 16px 42px 16px 0;
+         }
+      }
+   }
+
+   @media (max-width: 1023px) {
+      .header_container {
+         .logo {
+            padding: 8px 24px 8px 0;
+            font-size: 16px;
+         }
+      }
+   }
+
+   @media (max-width: 479px) {
+      .header_container {
+         .logo {
+            font-size: 14px;
+         }
       }
    }
 }

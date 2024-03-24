@@ -9,7 +9,7 @@ const LINK_LIST = [
       path: '/catalog',
    },
    {
-      name: 'Пластинки месяца',
+      name: 'Винил месяца',
       path: '/month',
    },
    {
