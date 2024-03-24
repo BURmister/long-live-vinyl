@@ -1,0 +1,62 @@
+.wrapper {
+   gap: var(--inside-section-gap);
+
+   .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+
+      --height: 280px;
+
+      .author {
+         position: relative;
+         height: var(--height);
+         width: 100%;
+
+         border: var(--black-line);
+         background-color: transparent;
+
+         .img {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            height: calc(var(--height) - 2px);
+            width: 64%;
+            object-fit: cover;
+         }
+
+         .overlay {
+            position: relative;
+            height: calc(var(--height) - 2px);
+            width: 68%;
+            background: linear-gradient(.74turn, var(--gery-light) 8%, rgba(0, 0, 0, 0) 50%);
+            z-index: 2;
+         }
+
+         .authorDesc {
+            position: absolute;
+            top: calc(var(--height) * .16);
+            right: 16px;
+            min-width: var(--height);
+            z-index: 4;
+         }
+
+         .authorPlace {
+            position: absolute;
+            bottom: 16px;
+            right: 32px;
+            z-index: 5;
+         }
+      }
+
+      .linkAll {
+         height: var(--height);
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border: var(--black-line);
+      }
+   }
+}

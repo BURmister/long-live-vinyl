@@ -1,11 +1,10 @@
 'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
+import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './styles.module.scss';
 
 export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
@@ -13,35 +12,21 @@ export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
 
    return (
       <section className={`flex flex-col ${styles.content}`}>
-         <h2 className={`caption-32`}>
-            {highlightCaption && <span className={`text-highlight`}>{highlightCaption + ' '}</span>}
-            {sliderCaption}
-         </h2>
+         <Link className="block w-fit" href="/">
+            <h2 className={`caption-32`}>
+               {highlightCaption && <span className={`text-highlight`}>{highlightCaption + ' '}</span>}
+               {sliderCaption}
+            </h2>
+         </Link>
          <div className={styles.slider}>
             <Swiper slidesPerView="auto">
                {data.map((item) => (
                   <SwiperSlide key={item.id} className={styles.slide}>
-                     <div className={styles.card}>
-                        <Link href="/">
-                           <Image src={item.img} className={styles.img} width={512} height={512} alt={item.name} />
-                        </Link>
-                        <div className={styles.content}>
-                           <Link className={`caption-18 text-black ${styles.name}`} href="/">
-                              {item.name}
-                              <span className={`text-16 text-grey ${styles.name_author}`}>{item.author}</span>
-                           </Link>
-                           <div className={styles.catalogAction}>
-                              <p className={styles.price}>23 000 $</p>
-                              <button className={`hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
-                                 Купить
-                              </button>
-                           </div>
-                        </div>
-                     </div>
+                     <ProductCard product={item} />
                   </SwiperSlide>
                ))}
                <SwiperSlide className={styles.slide}>
-                  <Link className={styles.linkAll} href="/">
+                  <Link className={`hover-translation ${styles.linkAll}`} href="/">
                      <svg
                         stroke="var(--red)"
                         fill="var(--red)"

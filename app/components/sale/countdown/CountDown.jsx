@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const COUNTDOWN_TARGET = new Date('2024-03-17T22:00:00');
+const COUNTDOWN_TARGET = new Date('2024-04-23T11:30:00');
 
 const getTimeLeft = () => {
    const totalTimeLeft = COUNTDOWN_TARGET - new Date();
@@ -26,7 +26,13 @@ export const CountDown = () => {
       };
    }, []);
 
-   if (!timeLeft) return;
+   if (!timeLeft)
+      return (
+         <p className={`caption-32 text-red w-fit block`}>
+            __ : __ : __ <span className={`caption-24 text-red`}>: __ </span>
+         </p>
+      );
+
    return (
       <p className={`caption-32 text-red w-fit block`}>
          {String(timeLeft.days).length !== 2 ? '0' + timeLeft.days : timeLeft.days}:

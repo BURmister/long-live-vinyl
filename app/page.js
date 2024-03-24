@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Sale } from './components/sale/Sale';
 import { ProductSlider } from './components/product-slider/ProductSlider';
+import { BestAuthors } from './components/BestAuthors/BestAuthors';
 
 import styles from './styles.module.scss';
 
@@ -57,20 +58,27 @@ export default function Home() {
    return (
       <main className={`content-wrapper ${styles.home_page}`}>
          <section className={styles.home}>
-            <h1 className={`caption-32`}>Long Live Vinyl</h1>
+            <h1 className={`caption-88`}>
+               Long Live
+               <br /> Vinyl
+            </h1>
             <div className={styles.home_desc}>
                <Link className={`button-red caption-24 text-white`} href="/">
                   Коллекции
                </Link>
                <p className={`text-20`}>
-                  VMP существует для того, чтобы углубить связь с музыкой для всех. Мы - рассказчики, кураторы и сообщество, которые понимают влияние,
+                  VMP существует для того, чтобы углубить связь с музыкой для всех. Мы - рассказчики, кураторы и сообщество, понимающие влияние,
                   которое может оказать великий альбом на человека. Мы твердо верим, что винил - лучший носитель для создания этих впечатлений.
                </p>
             </div>
          </section>
          <Sale />
-         <ProductSlider highlightCaption="Новинки" sliderCaption="в нашей коллекции" data={NEW_LIST} />
-         <ProductSlider highlightCaption="Альбомы" sliderCaption="недели" data={WEEK_LIST} />
+         <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_LIST} />
+         <ProductSlider highlightCaption="Винил" sliderCaption="недели" data={WEEK_LIST} />
+         <ProductSlider highlightCaption="Пластинки" sliderCaption="месяца" data={NEW_LIST} />
+         <BestAuthors />
+         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
+         {/* <p className="caption-32 text-center">Новости</p> */}
       </main>
    );
 }

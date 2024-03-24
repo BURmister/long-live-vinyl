@@ -102,8 +102,8 @@ export const Sale = () => {
                         fill="var(--red)"
                         strokeWidth="0"
                         viewBox="0 0 512 512"
-                        height="200px"
-                        width="200px"
+                        height="140px"
+                        width="140px"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
                            fill="none"

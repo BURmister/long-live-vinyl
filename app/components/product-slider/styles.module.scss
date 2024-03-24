@@ -38,55 +38,6 @@
    }
 }
 
-.card {
-   width: 100%;
-   max-width: var(--card-max-width);
-   height: 100%;
-
-   border: var(--black-line);
-
-   .img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      aspect-ratio: 1 / 1;
-
-      // border-bottom: var(--black-line);
-   }
-
-   .content {
-      padding: var(--inside-card-padding);
-
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      .name {
-         display: flex;
-         flex-direction: column;
-
-         .name_author {}
-      }
-
-      .catalogAction {
-         display: flex;
-         align-items: flex-end;
-         justify-content: space-between;
-
-         .btn_buy {
-            position: relative;
-            transition: var(--link-transition);
-
-            &:active {
-               // opacity: var(--click-effect-opacity);
-               // transform: var(--click-effect-transform);
-               // color: var(--grey-bg);
-            }
-         }
-      }
-   }
-}
-
 .linkAll {
    width: var(--card-max-width);
    height: var(--card-max-height);

@@ -18,6 +18,10 @@
          grid-template-columns: 196px 1fr;
          align-items: end;
          gap: var(--section-gap);
+
+         @media (max-width: 1919px) {
+            grid-template-columns: 164px 1fr;
+         }
       }
    }
 }
