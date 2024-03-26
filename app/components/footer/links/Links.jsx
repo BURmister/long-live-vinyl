@@ -9,16 +9,16 @@ const LINK_LIST = [
       path: '/catalog',
    },
    {
+      name: 'Журнал',
+      path: '/magazine',
+   },
+   {
       name: 'Винил месяца',
       path: '/month',
    },
    {
       name: 'Исполнители',
       path: '/authors',
-   },
-   {
-      name: 'Журнал',
-      path: '/magazine',
    },
    {
       name: 'О нас',

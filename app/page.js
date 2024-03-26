@@ -31,6 +31,18 @@ const NEW_LIST = [
       author: 'Oxxxymiron',
       img: 'https://upload.wikimedia.org/wikipedia/ru/a/a9/%D0%9E%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0_%D0%9A%D1%80%D0%B0%D1%81%D0%BE%D1%82%D0%B0_%D0%B8_%D1%83%D1%80%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE.jpg',
    },
+   {
+      id: '_14000712',
+      name: 'Death of a Bachelor - 2016',
+      author: 'Panic! At the Disco',
+      img: 'https://m.media-amazon.com/images/I/81VelaE+aFL._UF1000,1000_QL80_.jpg',
+   },
+   {
+      id: '_1323917',
+      name: 'Saviors - 2024',
+      author: 'Green Day',
+      img: 'https://media.pitchfork.com/photos/6537c158395c61f89c6689da/master/w_1280%2Cc_limit/Green-Day-Saviors.jpg',
+   },
 ];
 
 const WEEK_LIST = [
@@ -52,11 +64,23 @@ const WEEK_LIST = [
       author: 'Panic! At the Disco',
       img: 'https://m.media-amazon.com/images/I/81VelaE+aFL._UF1000,1000_QL80_.jpg',
    },
+   {
+      id: '_1323917',
+      name: 'Saviors - 2024',
+      author: 'Green Day',
+      img: 'https://media.pitchfork.com/photos/6537c158395c61f89c6689da/master/w_1280%2Cc_limit/Green-Day-Saviors.jpg',
+   },
+   {
+      id: '_111102',
+      name: 'Meds - 2016',
+      author: 'Placebo',
+      img: 'https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c1/29/e2/c129e283-a76f-412f-8b6d-7738c9eada8f/5060186926872_1.jpg/1200x1200bf-60.jpg',
+   },
 ];
 
 export default function Home() {
    return (
-      <main className={`content-wrapper ${styles.home_page}`}>
+      <div className={`content-wrapper ${styles.home_page}`}>
          <section className={styles.home}>
             <h1 className={`caption-88`}>
                Long Live
@@ -79,6 +103,6 @@ export default function Home() {
          <BestAuthors />
          <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
          {/* <p className="caption-32 text-center">Новости</p> */}
-      </main>
+      </div>
    );
 }

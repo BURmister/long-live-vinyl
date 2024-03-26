@@ -1,5 +1,7 @@
 .home_page {
-   padding: var(--layout-gap) 0;
+   padding-top: var(--layout-gap);
+   padding-bottom: var(--layout-gap);
+
    display: flex;
    flex-direction: column;
    gap: var(--layout-gap);

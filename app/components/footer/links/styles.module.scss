@@ -3,4 +3,23 @@
    align-items: center;
    justify-content: flex-end;
    gap: 42px;
+
+   @media (max-width: 1279px) {
+      gap: 32px;
+   }
+
+   @media (max-width: 1023px) {
+      gap: 16px;
+   }
+
+   @media (max-width: 719px) {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      justify-self: end;
+      width: fit-content;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 8px;
+   }
 }

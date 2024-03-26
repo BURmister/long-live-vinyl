@@ -7,7 +7,7 @@ export const Footer = () => {
       <footer className={`background-black ${styles.footer}`}>
          <div className={`content-wrapper ${styles.sitemap}`}>
             <Link href="/">
-               <h2 className={`caption-24 font-bold text-white ${styles.logo}`}>
+               <h2 className={`caption-24 font-bold text-white logo`}>
                   Long
                   <br />
                   Live
