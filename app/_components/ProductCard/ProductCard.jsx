@@ -12,7 +12,7 @@ export const ProductCard = ({ product }) => {
             <Image src={product.img} className={styles.img} width={512} height={512} alt={product.name} />
          </Link>
          <div className={styles.content}>
-            <div>
+            <div className={styles.nameWrap}>
                <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href="/">
                   {product.name}
                </Link>
@@ -21,8 +21,8 @@ export const ProductCard = ({ product }) => {
                </Link>
             </div>
             <div className={styles.catalogAction}>
-               <p className={styles.price}>23 000 $</p>
-               <button className={`hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
+               <p className={`text-20 ${styles.price}`}>23 000 $</p>
+               <button className={`text-20 hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
                   Купить
                </button>
             </div>

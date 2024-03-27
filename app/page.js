@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { Sale } from './components/sale/Sale';
-import { ProductSlider } from './components/product-slider/ProductSlider';
-import { BestAuthors } from './components/BestAuthors/BestAuthors';
+import { Sale } from './_components/sale/Sale';
+import { ProductSlider } from './_components/product-slider/ProductSlider';
+import { BestAuthors } from './_components/BestAuthors/BestAuthors';
 
 import styles from './styles.module.scss';
 
@@ -38,7 +38,7 @@ const NEW_LIST = [
       img: 'https://m.media-amazon.com/images/I/81VelaE+aFL._UF1000,1000_QL80_.jpg',
    },
    {
-      id: '_1323917',
+      id: '_13239967',
       name: 'Saviors - 2024',
       author: 'Green Day',
       img: 'https://media.pitchfork.com/photos/6537c158395c61f89c6689da/master/w_1280%2Cc_limit/Green-Day-Saviors.jpg',
@@ -59,19 +59,19 @@ const WEEK_LIST = [
       img: 'https://i.discogs.com/QAut2YiNNUTLJIDFZQRCYh4-KjN82hVL5SMxpglC0Lk/rs:fit/g:sm/q:90/h:561/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0Mzk5/MDMtMTM3MjA2NzQw/MS01MTkxLmpwZWc.jpeg',
    },
    {
-      id: '_14000712',
+      id: '_1400071245',
       name: 'Death of a Bachelor - 2016',
       author: 'Panic! At the Disco',
       img: 'https://m.media-amazon.com/images/I/81VelaE+aFL._UF1000,1000_QL80_.jpg',
    },
    {
-      id: '_1323917',
+      id: '_1323216917',
       name: 'Saviors - 2024',
       author: 'Green Day',
       img: 'https://media.pitchfork.com/photos/6537c158395c61f89c6689da/master/w_1280%2Cc_limit/Green-Day-Saviors.jpg',
    },
    {
-      id: '_111102',
+      id: '_131411102',
       name: 'Meds - 2016',
       author: 'Placebo',
       img: 'https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/c1/29/e2/c129e283-a76f-412f-8b6d-7738c9eada8f/5060186926872_1.jpg/1200x1200bf-60.jpg',
@@ -80,8 +80,8 @@ const WEEK_LIST = [
 
 export default function Home() {
    return (
-      <div className={`content-wrapper ${styles.home_page}`}>
-         <section className={styles.home}>
+      <div className={`${styles.home_page}`}>
+         <section className={`content-wrapper ${styles.home}`}>
             <h1 className={`caption-88`}>
                Long Live
                <br /> Vinyl
@@ -98,10 +98,9 @@ export default function Home() {
          </section>
          <Sale />
          <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_LIST} />
-         <ProductSlider highlightCaption="Винил" sliderCaption="недели" data={WEEK_LIST} />
-         <ProductSlider highlightCaption="Пластинки" sliderCaption="месяца" data={NEW_LIST} />
-         <BestAuthors />
-         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
+         {/* <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={WEEK_LIST} /> */}
+         {/* <BestAuthors /> */}
+         {/* <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} /> */}
          {/* <p className="caption-32 text-center">Новости</p> */}
       </div>
    );

@@ -36,7 +36,7 @@ const SALE_LIST = [
 
 export const Sale = () => {
    return (
-      <section>
+      <section className="content-wrapper">
          <div className={styles.sale_line_wrapper}>
             <div className={styles.sale_line}>
                <p className={`caption-32 ${styles.sale_line_p}`}>SALE</p>
@@ -82,11 +82,11 @@ export const Sale = () => {
                   </div>
                   <Link href="/">
                      <Image src={MainBanner} width={1024} height={1024} alt="" />
-                     <h3 className={`caption-18 text-center`}>Скидки на пластинки месяца</h3>
+                     <h3 className={`caption-18 caption-18timer text-center`}>Скидки на пластинки месяца</h3>
                   </Link>
                </div>
             </div>
-            <Swiper slidesPerView="auto">
+            <Swiper className={styles.slider} slidesPerView="auto">
                {SALE_LIST &&
                   SALE_LIST.map((item) => (
                      <SwiperSlide key={item.id} className={styles.other_banner}>
@@ -96,7 +96,7 @@ export const Sale = () => {
                      </SwiperSlide>
                   ))}
                <SwiperSlide className={styles.other_banner}>
-                  <Link href="/">
+                  <Link href="/" className={styles.allBtn}>
                      <svg
                         stroke="var(--red)"
                         fill="var(--red)"

@@ -12,7 +12,7 @@ export const Header = () => {
    return (
       <header className={styles.header}>
          <div className={`content-wrapper ${styles.header_container}`}>
-            <Link href="/" className={styles.logo}>
+            <Link href="/" className={`${styles.logo} ${whiteLogo && styles.whiteLogo}`}>
                <h2 className={`caption-24 font-bold logo ${whiteLogo && 'text-white'}`}>
                   Long
                   <br />

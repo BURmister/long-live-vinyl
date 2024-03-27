@@ -33,8 +33,21 @@
       padding-right: 32px;
       width: fit-content;
       max-width: var(--card-max-width);
-      height: 100%;
+      // height: 100%;
+      height: var(--card-max-height);
       background-color: var(--grey-bg);
+
+      @media (max-width: 1279px) {
+         padding-right: 24px;
+      }
+
+      @media (max-width: 1023px) {
+         padding-right: 16px;
+      }
+
+      @media (max-width: 719px) {
+         padding-right: 8px;
+      }
    }
 }
 
@@ -49,4 +62,35 @@
 
    border: var(--black-line);
    border-right: unset;
+
+   @media (max-width: 1439px) {
+      svg {
+         width: 186px;
+         height: 186px;
+      }
+   }
+
+   // --medium-tablet: 1023px;
+   @media (max-width: 1023px) {
+      svg {
+         width: 168px;
+         height: 168px;
+      }
+   }
+
+   // --small-tablet: 719px;
+   @media (max-width: 719px) {
+      svg {
+         width: 146px;
+         height: 146px;
+      }
+   }
+
+   // --mobile: 479px;
+   @media (max-width: 479px) {
+      svg {
+         width: 122px;
+         height: 122px;
+      }
+   }
 }

@@ -12,7 +12,11 @@
       .logo {
          position: relative;
          z-index: 27;
-         
+
+         &.whiteLogo {
+            pointer-events: none;
+         }
+
          h2 {
             transition: color var(--ui-duration);
          }

@@ -12,13 +12,15 @@ export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
 
    return (
       <section className={`flex flex-col ${styles.content}`}>
-         <Link className="block w-fit" href="/">
-            <h2 className={`caption-32`}>
-               {highlightCaption && <span className={`text-highlight`}>{highlightCaption + ' '}</span>}
-               {sliderCaption}
-            </h2>
-         </Link>
-         <div className={styles.slider}>
+         <div className="content-wrapper">
+            <Link className="block w-fit" href="/">
+               <h2 className={`caption-32 title`}>
+                  {highlightCaption && <span className={`text-highlight`}>{highlightCaption + ' '}</span>}
+                  {sliderCaption}
+               </h2>
+            </Link>
+         </div>
+         <div className={`content-wrapper slider-wrapper ${styles.slider}`}>
             <Swiper slidesPerView="auto">
                {data.map((item) => (
                   <SwiperSlide key={item.id} className={styles.slide}>

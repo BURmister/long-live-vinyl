@@ -28,17 +28,17 @@ export const CountDown = () => {
 
    if (!timeLeft)
       return (
-         <p className={`caption-32 text-red w-fit block`}>
-            __ : __ : __ <span className={`caption-24 text-red`}>: __ </span>
+         <p className={`caption-32 caption-32timer text-red w-fit block`}>
+            __ : __ : __ <span className={`caption-24 caption-24timer text-red`}>: __ </span>
          </p>
       );
 
    return (
-      <p className={`caption-32 text-red w-fit block`}>
+      <p className={`caption-32 caption-32timer text-red w-fit block`}>
          {String(timeLeft.days).length !== 2 ? '0' + timeLeft.days : timeLeft.days}:
          {String(timeLeft.hours).length !== 2 ? '0' + timeLeft.hours : timeLeft.hours}:
          {String(timeLeft.minutes).length !== 2 ? '0' + timeLeft.minutes : timeLeft.minutes}
-         <span className={`caption-24 text-red`}>:{String(timeLeft.seconds).length !== 2 ? '0' + timeLeft.seconds : timeLeft.seconds}</span>
+         <span className={`caption-24 caption-24timer text-red`}>:{String(timeLeft.seconds).length !== 2 ? '0' + timeLeft.seconds : timeLeft.seconds}</span>
       </p>
    );
 };

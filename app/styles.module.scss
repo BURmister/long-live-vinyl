@@ -24,6 +24,40 @@
          @media (max-width: 1919px) {
             grid-template-columns: 164px 1fr;
          }
+
+         @media (max-width: 1279px) {
+            grid-template-columns: 144px 1fr;
+         }
+
+         @media (max-width: 719px) {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            a {
+               height: 64px;
+               aspect-ratio: unset;
+            }
+         }
+
+         @media (max-width: 479px) {
+            a {
+               height: 48px;
+            }
+         }
+      }
+
+      @media (max-width: 719px) {
+         h1 {
+            margin: 24px 0;
+         }
+      }
+
+      @media (max-width: 479px) {
+         h1 {
+            margin: 40px 0;
+         }
       }
    }
 }

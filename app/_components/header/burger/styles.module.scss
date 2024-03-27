@@ -44,16 +44,6 @@
       position: relative;
       height: 100%;
 
-      .uiVinyl {
-         --size: 448px;
-         position: absolute;
-         top: calc(50% - var(--size) * 0.65);
-         left: calc(0px - var(--size) * 0.5);
-
-         width: var(--size);
-         height: var(--size);
-      }
-
       .link_list {
          height: 100%;
 
