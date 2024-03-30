@@ -23,8 +23,8 @@ const BEST_AUTHORS = [
 
 export const BestAuthors = () => {
    return (
-      <section className={`flex flex-col ${styles.wrapper}`}>
-         <h2 className={`caption-32`}>
+      <section className={`content-wrapper flex flex-col ${styles.wrapper}`}>
+         <h2 className={`caption-32 title`}>
             <span className={`text-highlight`}>Бестселлеры</span>
          </h2>
          <div className={`${styles.content}`}>

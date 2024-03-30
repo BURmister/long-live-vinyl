@@ -32,9 +32,9 @@
    .slide {
       padding-right: 32px;
       width: fit-content;
-      max-width: var(--card-max-width);
+      max-width: var(--card-slide-max-width);
       // height: 100%;
-      height: var(--card-max-height);
+      height: var(--card-slide-max-height);
       background-color: var(--grey-bg);
 
       @media (max-width: 1279px) {
@@ -52,8 +52,8 @@
 }
 
 .linkAll {
-   width: var(--card-max-width);
-   height: var(--card-max-height);
+   width: var(--card-slide-max-width);
+   height: var(--card-slide-max-height);
 
 
    display: flex;

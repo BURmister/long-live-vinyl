@@ -37,8 +37,8 @@
          .authorDesc {
             position: absolute;
             top: calc(var(--height) * .16);
-            right: 16px;
-            min-width: var(--height);
+            right: 64px;
+            max-width: var(--height);
             z-index: 4;
          }
 
@@ -57,6 +57,64 @@
          align-items: center;
          justify-content: center;
          border: var(--black-line);
+      }
+
+      @media (max-width: 1439px) {
+         --height: 232px;
+
+         .author {
+            .authorDesc {
+               right: 48px;
+            }
+         }
+      }
+
+      @media (max-width: 1279px) {
+         --height: 208px;
+
+         .author {
+            .authorDesc {
+               right: 32px;
+            }
+         }
+
+         .linkAll svg {
+            width: 112px;
+            height: 112px;
+         }
+      }
+
+      @media (max-width: 1023px) {
+         --height: 208px;
+
+         display: flex;
+         flex-direction: column;
+
+         .author {
+            .authorDesc {
+               right: 32px;
+            }
+         }
+      }
+
+      @media (max-width: 719px) {
+         --height: 168px;
+         gap: 8px;
+
+         .author {
+            .authorDesc {
+               right: 16px;
+            }
+         }
+
+         .linkAll {
+            height: 104px;
+
+            svg {
+               width: 88px;
+               height: 88px;
+            }
+         }
       }
    }
 }

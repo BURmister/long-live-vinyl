@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
-
+// root stuff
 :root {
    // colors
    --grey-bg: #dfdfdf;
@@ -41,12 +41,13 @@
    // ui gap & padding & margin
    --layout-gap: 64px;
    --section-gap: 32px;
-   --inside-section-gap: 18px;
+   --inside-section-gap: 24px;
    --inside-card-padding: 8px 8px 16px 8px;
 
    // ui elements size
-   --card-max-width: 340px; // maybe better 340
-   --card-max-height: 404.8px; // maybe better 408
+   --card-max-width: 340px;
+   --card-slide-max-width: 340px; // maybe better 340
+   --card-slide-max-height: 404.8px; // maybe better 408
 
 
    // --large-laptop: 1919px;
@@ -55,34 +56,36 @@
    // --small-laptop: 1439px;
    @media (max-width: 1439px) {
       --layout-gap: 48px;
-      --card-max-width: 304px;
-      --card-max-height: 368.8px;
+      --card-slide-max-width: 304px;
+      --card-slide-max-height: 368.8px;
    }
 
    // --large-tablet: 1279px;
    @media (max-width: 1279px) {
       --section-gap: 24px;
-      --card-max-height: 372px;
+      --card-slide-max-height: 372px;
+      --inside-section-gap: 16px;
    }
 
    // --medium-tablet: 1023px;
    @media (max-width: 1023px) {
       --layout-gap: 32px;
-      --card-max-width: 264px;
-      --card-max-height: 332px;
+      --card-slide-max-width: 264px;
+      --card-slide-max-height: 332px;
    }
 
    // --small-tablet: 719px;
    @media (max-width: 719px) {
       --section-gap: 16px;
-      --card-max-width: 264px;
-      --card-max-height: 340.8px;
+      --card-slide-max-width: 264px;
+      --card-slide-max-height: 340.8px;
    }
 
    // --mobile: 479px;
    @media (max-width: 479px) {
-      --card-max-width: 184px;
-      --card-max-height: 277.6px;
+      --inside-section-gap: 8px;
+      --card-slide-max-width: 184px;
+      --card-slide-max-height: 277.6px;
    }
 
    font-family: "Montserrat",
@@ -93,17 +96,19 @@
    background-color: var(--red-opacity);
 }
 
+img {
+   width: 100%;
+   height: auto;
+}
+
+
+// переопределяем стили | mne lenn googlit
 h1,
 h2,
 h3,
 h4,
 h5 {
    margin: unset;
-}
-
-img {
-   width: 100%;
-   height: auto;
 }
 
 a {
@@ -118,101 +123,10 @@ a {
   }
 } */
 
-.background {
-   &-black {
-      background-color: var(--black-bg);
-   }
 
-   &-white {
-      background-color: var(--white);
-   }
-}
 
-.hover {
-   &-underline {
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
 
-      &::before {
-         position: absolute;
-         content: '';
-         bottom: 0;
-         left: 0;
-
-         width: 100%;
-         height: 100%;
-         background-color: var(--red);
-         transform: translateX(-105%) translateY(calc(100% - 2px));
-         transition: var(--link-transition);
-         z-index: -1;
-      }
-
-      &:hover {
-         &::before {
-            transform: translateX(0%) translateY(calc(100% - 2px));
-         }
-      }
-
-      &:active {
-         &::before {
-            transform: translateX(0%) translateY(0%);
-         }
-      }
-
-      &.active {
-         &::before {
-            transform: translateX(0%) translateY(0%);
-         }
-      }
-   }
-
-   &-red {
-      transition: var(--link-transition);
-
-      &:hover {
-         color: var(--red);
-      }
-   }
-
-   // &-translation {
-   //    &:hover {
-   //       svg {
-   //          position: relative;
-   //          animation: 2s linear infinite MoveX;
-   //       }
-   //    }
-
-   //    @keyframes MoveX {
-   //       0% {
-   //          transform: translateX(0);
-   //       }
-
-   //       25% {
-   //          transform: translateX(25%);
-   //       }
-
-   //       50% {
-   //          transform: translateX(0%);
-   //       }
-
-   //       75% {
-   //          transform: translateX(-25%);
-   //       }
-
-   //       100% {
-   //          transform: translateX(0%);
-   //       }
-   //    }
-   // }
-}
-
-.active-icon {
-   svg {
-      fill: var(--red);
-   }
-}
-
+// layout
 html,
 body {
    height: 100%;
@@ -233,6 +147,9 @@ footer {
    flex: 0 0 auto;
 }
 
+
+
+// typography
 .caption {
    &-88 {
       font-size: 88px;
@@ -442,6 +359,14 @@ footer {
    }
 }
 
+@layer utilities {
+   .text-balance {
+      text-wrap: balance;
+   }
+}
+
+
+// other stuff
 .logo {
    padding: 20px 60px 20px 0;
    height: 100%;
@@ -462,6 +387,8 @@ footer {
    }
 }
 
+
+// wrappers
 .content-wrapper {
    margin: 0 auto;
    width: 100%;
@@ -516,9 +443,122 @@ footer {
    }
 }
 
-@layer utilities {
-   .text-balance {
-      text-wrap: balance;
+.page-wrapper {
+   padding-top: 48px;
+   padding-bottom: 64px;
+   gap: var(--section-gap);
+
+   @media (max-width: 1279px) {
+      padding-top: 32px;
+      padding-bottom: 48px;
+   }
+
+   @media (max-width: 999px) {
+      padding-top: 24px;
+      padding-bottom: 32px;
+   }
+
+   @media (max-width: 719px) {
+      padding-top: 16px;
+      padding-bottom: 24px;
+   }
+}
+
+
+
+// ui stuff
+.background {
+   &-black {
+      background-color: var(--black-bg);
+   }
+
+   &-white {
+      background-color: var(--white);
+   }
+}
+
+.hover {
+   &-underline {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+
+      &::before {
+         position: absolute;
+         content: '';
+         bottom: 0;
+         left: 0;
+
+         width: 100%;
+         height: 100%;
+         background-color: var(--red);
+         transform: translateX(-105%) translateY(calc(100% - 2px));
+         transition: var(--link-transition);
+         z-index: -1;
+      }
+
+      &:hover {
+         &::before {
+            transform: translateX(0%) translateY(calc(100% - 2px));
+         }
+      }
+
+      &:active {
+         &::before {
+            transform: translateX(0%) translateY(0%);
+         }
+      }
+
+      &.active {
+         &::before {
+            transform: translateX(0%) translateY(0%);
+         }
+      }
+   }
+
+   &-red {
+      transition: var(--link-transition);
+
+      &:hover {
+         color: var(--red);
+      }
+   }
+
+   // &-translation {
+   //    &:hover {
+   //       svg {
+   //          position: relative;
+   //          animation: 2s linear infinite MoveX;
+   //       }
+   //    }
+
+   //    @keyframes MoveX {
+   //       0% {
+   //          transform: translateX(0);
+   //       }
+
+   //       25% {
+   //          transform: translateX(25%);
+   //       }
+
+   //       50% {
+   //          transform: translateX(0%);
+   //       }
+
+   //       75% {
+   //          transform: translateX(-25%);
+   //       }
+
+   //       100% {
+   //          transform: translateX(0%);
+   //       }
+   //    }
+   // }
+}
+
+.active-icon {
+   svg {
+      fill: var(--red);
    }
 }
 

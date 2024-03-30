@@ -98,9 +98,9 @@ export default function Home() {
          </section>
          <Sale />
          <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_LIST} />
-         {/* <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={WEEK_LIST} /> */}
-         {/* <BestAuthors /> */}
-         {/* <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} /> */}
+         <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={WEEK_LIST} />
+         <BestAuthors />
+         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
          {/* <p className="caption-32 text-center">Новости</p> */}
       </div>
    );
