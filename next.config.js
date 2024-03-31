@@ -2,6 +2,9 @@
 module.exports = {
    images: {
       domains: [
+         'boymominjeansblog.com',
+         'www.piumamusic.com',
+         'i.pinimg.com',
          'ospioresdiscosdomundo.files.wordpress.com',
          'static.wikia.nocookie.net',
          'lostmediawiki.com',

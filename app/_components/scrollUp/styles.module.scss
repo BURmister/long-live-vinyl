@@ -1,0 +1,59 @@
+.wrapper {
+   position: sticky;
+   left: 0px;
+   bottom: 16px;
+
+   margin-bottom: 8px;
+   padding-right: 16px;
+
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+
+   z-index: 12;
+   pointer-events: none;
+
+   .button {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--grey-bg);
+      border: var(--black-line);
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--ui-duration);
+
+      svg {
+         width: 32px;
+         height: 32px;
+         transform: rotate(-90deg);
+      }
+
+      &.visible {
+         opacity: 1;
+         pointer-events: auto;
+      }
+   }
+
+   @media (max-width: 1439px) {
+      .button {
+         width: 32px;
+         height: 32px;
+
+         svg {
+            width: 24px;
+            height: 24px;
+         }
+      }
+   }
+
+   @media (max-width: 719px) {
+      padding-right: 8px;
+      bottom: 8px;
+   }
+}

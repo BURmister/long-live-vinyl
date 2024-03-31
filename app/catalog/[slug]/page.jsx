@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { ProductList } from '../_components/ProductList/ProductList';
+import { ProductList } from '@/app/_components/ProductList/ProductList';
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -8,15 +7,10 @@ export const metadata = {
       'Всегда более лучшие LP в наличии. Ежедневные поступления. Строгая оценка качества. Удобный поиск по исполнителям и стилю. Доставка по Санкт-Петербургу и всей России.',
 };
 
-export default function Catalog() {
+export default function CatalogSection({ params }) {
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
-         <h1 className="content-wrapper caption-32 title">Каталог</h1>
-         <div className="content-wrapper section-banner">
-            <p className="text-24 text-white text-center">Культовые альбомы, захватывающие открытия, неповторимые эмоции - Винил, Long Live Vinyl</p>
-            <Image src="https://i.pinimg.com/originals/33/f6/20/33f620322e0023beec536b448054c899.jpg" width="1500" height="1500" alt="" />
-            {/* <Image src="https://boymominjeansblog.com/wp-content/uploads/2019/10/record-store-side-profile.jpg" width="1500" height="1500" alt="" /> */}
-         </div>
+         <h1 className="content-wrapper caption-32 title">{params.slug}</h1>
          <div className="sticky-search-bar">
             <form className={`flex content-wrapper aitems-center`}>
                <input className="text-18 input-normal" type="text" placeholder="Друг, винил возьмешь?" />
@@ -38,6 +32,8 @@ export default function Catalog() {
                </button>
             </form>
          </div>
+         <section className={`content-wrapper ${styles.topBar}`}>фильтры</section>
+         <ProductList />
       </div>
    );
 }

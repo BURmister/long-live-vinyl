@@ -1,5 +1,6 @@
 import { Header } from './_components/header/Header';
 import { Footer } from './_components/footer/Footer';
+import { ScrollUp } from './_components/scrollUp/ScrollUp';
 
 import './globals.scss';
 
@@ -14,7 +15,10 @@ export default function RootLayout({ children }) {
       <html lang="en">
          <body>
             <Header />
-            <main>{children}</main>
+            <main>
+               {children}
+               {/* <ScrollUp /> */}
+            </main>
             <Footer />
          </body>
       </html>

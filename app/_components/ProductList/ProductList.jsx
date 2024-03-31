@@ -4,6 +4,7 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
 
 import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './styles.module.scss';
@@ -132,39 +133,31 @@ const PRODUCT_LIST = [
 ];
 
 export const ProductList = () => {
+   // Render data
    const [productList, setProductList] = useState(PRODUCT_LIST);
+   // Pagination state
    const pagination = useRef(1);
+   // For infinite scroll
    const { ref, inView } = useInView();
 
+   // Work with url string && paste new pagination param
+   const router = useRouter();
+   const pathname = usePathname();
+   const searchParams = useSearchParams();
+
+   // Watch scroll to bottom element
    useEffect(() => {
       if (inView) {
          setProductList((prev) => [...prev, ...PRODUCT_LIST]);
          pagination.current += 1;
       }
-      updateQueryParam();
+
+      // Function to change || remove url param
+      useUpdateQueryParam({ router, pathname, searchParams }, { name: 'page', value: pagination.current, condition: 1 });
    }, [inView]);
 
-   const router = useRouter();
-   const pathname = usePathname();
-   const searchParams = useSearchParams();
-
-   const updateQueryParam = () => {
-      // now you got a read/write object
-      const current = new URLSearchParams(Array.from(searchParams.entries())); // -> has to use this form
-
-      if (pagination.current === 1) current.delete('page');
-      else current.set('page', pagination.current);
-
-      // cast to string
-      const search = current.toString();
-      // or const query = `${'?'.repeat(search.length && 1)}${search}`;
-      const query = search ? `?${search}` : '';
-
-      router.push(`${pathname}${query}`, { scroll: false });
-   };
-
    return (
-      <section className={`flex flex-col ${styles.listWrapper}`}>
+      <section className={`content-wrapper flex flex-col ${styles.listWrapper}`}>
          <div className={styles.productList}>
             {productList.map((item, index) => (
                <Fragment key={index}>
