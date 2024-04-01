@@ -1,6 +1,10 @@
 import Image from 'next/image';
-import { ProductList } from '../_components/ProductList/ProductList';
+
+import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
+import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
+
 import styles from './styles.module.scss';
+import Link from 'next/link';
 
 export const metadata = {
    title: 'Каталог виниловых пластинок в наличии интернет-магазина Long Live Vinyl | Long Live Vinyl',
@@ -8,19 +12,53 @@ export const metadata = {
       'Всегда более лучшие LP в наличии. Ежедневные поступления. Строгая оценка качества. Удобный поиск по исполнителям и стилю. Доставка по Санкт-Петербургу и всей России.',
 };
 
+const SECTION_LIST = [
+   {
+      name: 'Рок',
+      path: '/catalog/rock/',
+   },
+   {
+      name: 'Рэп',
+      path: '/catalog/rap/',
+   },
+   {
+      name: 'Панк',
+      path: '/catalog/punk/',
+   },
+   {
+      name: 'Поп панк',
+      path: '/catalog/pop-punk/',
+   },
+   {
+      name: 'Альтернатива',
+      path: '/catalog/alternative/',
+   },
+   {
+      name: 'Metalcore',
+      path: '/catalog/metalcore/',
+   },
+   {
+      name: 'Джаз',
+      path: '/catalog/jazz/',
+   },
+   {
+      name: 'Металл',
+      path: '/catalog/metal/',
+   },
+];
+
 export default function Catalog() {
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
-         <h1 className="content-wrapper caption-32 title">Каталог</h1>
          <div className="content-wrapper section-banner">
+            <h1 className="content-wrapper caption-88 title section-title text-white text-center">Каталог</h1>
             <p className="text-24 text-white text-center">Культовые альбомы, захватывающие открытия, неповторимые эмоции - Винил, Long Live Vinyl</p>
             <Image src="https://i.pinimg.com/originals/33/f6/20/33f620322e0023beec536b448054c899.jpg" width="1500" height="1500" alt="" />
             {/* <Image src="https://boymominjeansblog.com/wp-content/uploads/2019/10/record-store-side-profile.jpg" width="1500" height="1500" alt="" /> */}
          </div>
-         <div className="sticky-search-bar">
-            <form className={`flex content-wrapper aitems-center`}>
-               <input className="text-18 input-normal" type="text" placeholder="Друг, винил возьмешь?" />
-               <button className="input-submit" type="submit">
+         <StickyLine>
+            <SearchBar
+               icon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" x="0" y="0" viewBox="0 0 60.02 60.02">
                      <g>
                         <path
@@ -35,9 +73,19 @@ export default function Catalog() {
                         <ellipse cx="29.932" cy="37.494" rx="2.327" ry="1.689" fill="#000000"></ellipse>
                      </g>
                   </svg>
-               </button>
-            </form>
-         </div>
+               }
+               placeholder={'Друг, винил возьмешь?'}
+            />
+         </StickyLine>
+         <section className="content-wrapper">
+            <ul className={`flex flex-col ${styles.sectionList}`}>
+               {SECTION_LIST.map((item, index) => (
+                  <li key={index}>
+                     <Link href={item.path}>{item.name}</Link>
+                  </li>
+               ))}
+            </ul>
+         </section>
       </div>
    );
 }

@@ -1,6 +1,6 @@
-import { Header } from './_components/header/Header';
-import { Footer } from './_components/footer/Footer';
-import { ScrollUp } from './_components/scrollUp/ScrollUp';
+import { Header } from './_components/layout/header/Header';
+import { Footer } from './_components/layout/footer/Footer';
+import { ScrollUp } from './_components/ui/ScrollUp/ScrollUp';
 
 import './globals.scss';
 

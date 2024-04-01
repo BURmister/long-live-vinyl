@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
 
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '../../ui/ProductCard/ProductCard';
 import styles from './styles.module.scss';
 
 const PRODUCT_LIST = [

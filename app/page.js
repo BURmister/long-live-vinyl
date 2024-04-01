@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { Sale } from './_components/sale/Sale';
-import { ProductSlider } from './_components/product-slider/ProductSlider';
-import { BestAuthors } from './_components/BestAuthors/BestAuthors';
+import { Sale } from './_components/layout/sale/Sale';
+import { ProductSlider } from './_components/layout/product-slider/ProductSlider';
+import { BestAuthors } from './_components/layout/BestAuthors/BestAuthors';
 
 import styles from './styles.module.scss';
 

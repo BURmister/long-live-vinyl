@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import { ProductCard } from '../ProductCard/ProductCard';
+import { ProductCard } from '../../ui/ProductCard/ProductCard';
 import styles from './styles.module.scss';
 
 export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
