@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
+import { SectionList } from '@/app/_components/layout/SectionList/SectionList';
 
 import styles from './styles.module.scss';
-import Link from 'next/link';
 
 export const metadata = {
    title: 'Каталог виниловых пластинок в наличии интернет-магазина Long Live Vinyl | Long Live Vinyl',
@@ -16,34 +16,42 @@ const SECTION_LIST = [
    {
       name: 'Рок',
       path: '/catalog/rock/',
+      image: 'https://i.pinimg.com/564x/2e/9e/1e/2e9e1ee280736fe8215cf43efe66fd84.jpg',
    },
    {
       name: 'Рэп',
       path: '/catalog/rap/',
+      image: 'https://i.pinimg.com/736x/1d/43/64/1d43647dddf80c557b085a7fd5aa2be0.jpg',
+   },
+   {
+      name: 'Хип-хоп',
+      path: '/catalog/hiphop/',
+      image: 'https://i.pinimg.com/564x/85/14/b6/8514b6de46d80691e71deb3232c2a626.jpg',
    },
    {
       name: 'Панк',
       path: '/catalog/punk/',
+      image: 'https://i.pinimg.com/564x/e9/7c/26/e97c26c6265b0e9610215ce33b35e459.jpg',
    },
    {
       name: 'Поп панк',
       path: '/catalog/pop-punk/',
+      image: 'https://i.pinimg.com/564x/af/71/22/af71222525f6461cfadb8b37955df6b8.jpg',
    },
    {
       name: 'Альтернатива',
       path: '/catalog/alternative/',
+      image: 'https://i.pinimg.com/564x/b6/e7/f1/b6e7f12385f556107a5d70ee254e398d.jpg',
    },
    {
       name: 'Metalcore',
       path: '/catalog/metalcore/',
+      image: 'https://i.pinimg.com/564x/b9/f5/eb/b9f5ebc20e8371241ac10c74b1e270a2.jpg',
    },
    {
       name: 'Джаз',
       path: '/catalog/jazz/',
-   },
-   {
-      name: 'Металл',
-      path: '/catalog/metal/',
+      image: 'https://i.pinimg.com/736x/13/00/27/130027e068d3461fa0075708370a3b14.jpg',
    },
 ];
 
@@ -56,6 +64,9 @@ export default function Catalog() {
             <Image src="https://i.pinimg.com/originals/33/f6/20/33f620322e0023beec536b448054c899.jpg" width="1500" height="1500" alt="" />
             {/* <Image src="https://boymominjeansblog.com/wp-content/uploads/2019/10/record-store-side-profile.jpg" width="1500" height="1500" alt="" /> */}
          </div>
+         <section className="content-wrapper">
+            <SectionList data={SECTION_LIST} />
+         </section>
          <StickyLine>
             <SearchBar
                icon={
@@ -76,16 +87,31 @@ export default function Catalog() {
                }
                placeholder={'Друг, винил возьмешь?'}
             />
+            <button type="button">
+               <svg width="48" height="48" viewBox="0 0 550 550">
+                  <g>
+                     <path
+                        d="M523 459H27a8 8 0 0 1-8-8V131a8 8 0 0 1 8-8h496a8 8 0 0 1 8 8v320a8 8 0 0 1-8 8zM35 443h480V139H35z"
+                        fill="#000000"></path>
+                     <path
+                        d="M491 235H59a8 8 0 0 1 0-16h432a8 8 0 0 1 0 16zM99 203H67a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16H75zM163 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM227 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM291 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM355 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM419 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM483 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM155 435c-52.935 0-96-43.065-96-96s43.065-96 96-96 96 43.065 96 96-43.065 96-96 96zm0-176c-44.112 0-80 35.888-80 80s35.888 80 80 80 80-35.888 80-80-35.888-80-80-80z"
+                        fill="#000000"></path>
+                     <path
+                        d="M155 387c-26.467 0-48-21.532-48-48s21.533-48 48-48 48 21.532 48 48-21.533 48-48 48zm0-80c-17.645 0-32 14.355-32 32s14.355 32 32 32 32-14.355 32-32-14.355-32-32-32zM339 315h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
+                        fill="#000000"></path>
+                     <path
+                        d="M323 435a8 8 0 0 1-8-8V307a8 8 0 0 1 16 0v120a8 8 0 0 1-8 8zM323 283a8 8 0 0 1-8-8v-24a8 8 0 0 1 16 0v24a8 8 0 0 1-8 8zM403 331h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
+                        fill="#000000"></path>
+                     <path
+                        d="M387 435a8 8 0 0 1-8-8V323a8 8 0 0 1 16 0v104a8 8 0 0 1-8 8zM387 299a8 8 0 0 1-8-8v-40a8 8 0 0 1 16 0v40a8 8 0 0 1-8 8zM467 347h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
+                        fill="#000000"></path>
+                     <path
+                        d="M451 435a8 8 0 0 1-8-8v-88a8 8 0 0 1 16 0v88a8 8 0 0 1-8 8zM451 315a8 8 0 0 1-8-8v-56a8 8 0 0 1 16 0v56a8 8 0 0 1-8 8z"
+                        fill="#000000"></path>
+                  </g>
+               </svg>
+            </button>
          </StickyLine>
-         <section className="content-wrapper">
-            <ul className={`flex flex-col ${styles.sectionList}`}>
-               {SECTION_LIST.map((item, index) => (
-                  <li key={index}>
-                     <Link href={item.path}>{item.name}</Link>
-                  </li>
-               ))}
-            </ul>
-         </section>
       </div>
    );
 }

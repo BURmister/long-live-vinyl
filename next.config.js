@@ -2,6 +2,8 @@
 module.exports = {
    images: {
       domains: [
+         'www.rollingstone.com',
+         'www.wecb.fm',
          'boymominjeansblog.com',
          'www.piumamusic.com',
          'i.pinimg.com',
