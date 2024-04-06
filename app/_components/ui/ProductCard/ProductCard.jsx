@@ -10,12 +10,12 @@ export const ProductCard = ({ product }) => {
 
    return (
       <div className={styles.card}>
-         <Link href="/">
+         <Link href={`/product/${product.id}`}>
             <Image src={product.img} className={styles.img} width={512} height={512} alt={product.name} />
          </Link>
          <div className={styles.content}>
             <div className={styles.nameWrap}>
-               <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href="/">
+               <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href={`/product/${product.id}`}>
                   {product.name}
                </Link>
                <Link className={`text-16 w-fit text-grey hover-red ${styles.name_author}`} href="/">

@@ -2,6 +2,8 @@
 module.exports = {
    images: {
       domains: [
+         'i1.sndcdn.com',
+         'i.ytimg.com',
          'www.rollingstone.com',
          'www.wecb.fm',
          'boymominjeansblog.com',

@@ -1,0 +1,24 @@
+.button {
+   padding: 0 8px;
+   height: var(--square-button-size);
+   border: var(--black-line);
+
+   gap: 4px;
+   
+   svg {
+      transform: rotate(-180deg);
+   }
+
+   @media (max-width: 719px) {
+      padding: unset;
+      width: var(--square-button-size);
+
+      svg {
+         transform: rotate(-180deg);
+      }
+
+      p {
+         display: none;
+      }
+   }
+}

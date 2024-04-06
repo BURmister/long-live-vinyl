@@ -1,0 +1,97 @@
+.wrapper {
+   gap: var(--inside-section-gap);
+
+   .layout {
+      --list-gap: 6px;
+      --template-columns: 1.6fr 2fr;
+
+      display: grid;
+      grid-template-columns: var(--template-columns);
+      gap: var(--inside-section-gap);
+
+      .galleryWrapper {
+         .imgContent {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+
+            img {
+               width: 100%;
+               height: 100%;
+               object-fit: contain;
+            }
+         }
+      }
+
+      .contentWrapper {
+         gap: var(--inside-section-gap);
+
+         .propList {
+            gap: var(--list-gap);
+
+            li {
+               gap: 8px;
+            }
+         }
+
+         .priceWrapper {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+         }
+      }
+
+      .infoWrapper {
+         grid-column: span 2;
+         gap: var(--inside-section-gap);
+
+         &.infoGrid {
+            display: grid;
+            grid-template-columns: var(--template-columns);
+         }
+
+         .tracklistWrapper {
+            gap: calc(var(--inside-section-gap) / 2);
+
+            .tracklist {
+               flex-wrap: wrap;
+               column-gap: 16px;
+               row-gap: 8px;
+            }
+         }
+      }
+
+      @media (max-width: 1279px) {
+         --list-gap: 4px;
+      }
+
+      @media (max-width: 1023px) {
+         --list-gap: 2px;
+         --template-columns: 264px 1fr;
+
+         .infoWrapper {
+            &.infoGrid {
+               display: flex;
+               flex-direction: column;
+            }
+
+            .tracklistWrapper {
+               .tracklist {
+                  flex-direction: column;
+                  flex-wrap: unset;
+                  row-gap: var(--list-gap)
+               }
+            }
+         }
+      }
+
+      @media (max-width: 719px) {
+         display: flex;
+         flex-direction: column;
+
+         .galleryWrapper {
+            margin-bottom: var(--inside-section-gap);
+         }
+      }
+   }
+}

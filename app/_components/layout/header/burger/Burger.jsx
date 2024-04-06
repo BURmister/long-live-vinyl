@@ -10,7 +10,9 @@ export const Burger = ({ setWhiteLogo, NAV_LIST, icon }) => {
    const navList = [{ name: 'Главная', path: '/' }, ...NAV_LIST];
 
    const toggleMenu = () => {
+      window.scrollTo(0, 0);
       document.documentElement.style.overflow = !menu ? 'hidden' : 'auto';
+
       setWhiteLogo();
       setMenu((prev) => !prev);
    };

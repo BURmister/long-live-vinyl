@@ -13,7 +13,7 @@ export const SearchBar = ({ icon, placeholder }) => {
    };
 
    return (
-      <form className={`flex aitems-center`}>
+      <form className={`search-bar flex items-center`}>
          <input className="text-18 input-normal" type="text" value={search} onChange={(event) => onInput(event)} placeholder={placeholder} name="q" />
          <button className="input-submit" type="submit">
             {icon}
