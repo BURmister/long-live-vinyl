@@ -31,7 +31,7 @@ export const ProductList = ({ data }) => {
       }
 
       // Function to change || remove url param
-      // useUpdateQueryParam({ router, pathname, searchParams }, { name: 'page', value: pagination.current, condition: 1 });
+      useUpdateQueryParam({ router, pathname, searchParams }, { name: 'page', value: pagination.current, condition: 1 });
    }, [inView]);
 
    return (

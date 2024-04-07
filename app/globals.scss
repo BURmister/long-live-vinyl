@@ -34,9 +34,10 @@
    --click-effect-opacity: 0.65;
    --click-effect-transform: scale(0.95);
 
-   // decorative ui line
+   // decorative ui
    --line-height: 1px;
    --black-line: 1px solid var(--black-bg);
+   --red-shadow: 0 0 8px 2px var(--red-light);
 
    // ui gap & padding & margin
    --layout-gap: 64px;
@@ -604,7 +605,7 @@ footer {
       justify-content: center;
 
       background-color: var(--red);
-      box-shadow: 0 0 8px 2px var(--red-light);
+      box-shadow: var(--red-shadow);
 
       transition: var(--red-button-transition);
 

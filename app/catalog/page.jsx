@@ -4,7 +4,6 @@ import { SectionList } from '@/app/_components/layout/SectionList/SectionList';
 import { ProductList } from '@/app/_components/layout/ProductList/ProductList';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
-import { SquareIconButton } from '@/app/_components/ui/Button/Button';
 
 import styles from './styles.module.scss';
 
@@ -201,7 +200,6 @@ export default function Catalog() {
             <Image src="https://i.pinimg.com/originals/33/f6/20/33f620322e0023beec536b448054c899.jpg" width="1500" height="1500" alt="" />
             {/* <Image src="https://boymominjeansblog.com/wp-content/uploads/2019/10/record-store-side-profile.jpg" width="1500" height="1500" alt="" /> */}
          </div>
-         <SectionList data={SECTION_LIST} />
          <StickyLine>
             <SearchBar
                icon={
@@ -222,42 +220,8 @@ export default function Catalog() {
                }
                placeholder={'Друг, винил возьмешь?'}
             />
-            <SquareIconButton
-               icon={
-                  <svg width="48" height="48" viewBox="0 0 550 550">
-                     <g>
-                        <path
-                           d="M523 459H27a8 8 0 0 1-8-8V131a8 8 0 0 1 8-8h496a8 8 0 0 1 8 8v320a8 8 0 0 1-8 8zM35 443h480V139H35z"
-                           fill="var(--black)"></path>
-                        <path
-                           d="M491 235H59a8 8 0 0 1 0-16h432a8 8 0 0 1 0 16zM99 203H67a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16H75zM163 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM227 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM291 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM355 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM419 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM483 203h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16zM155 435c-52.935 0-96-43.065-96-96s43.065-96 96-96 96 43.065 96 96-43.065 96-96 96zm0-176c-44.112 0-80 35.888-80 80s35.888 80 80 80 80-35.888 80-80-35.888-80-80-80z"
-                           fill="var(--black)"></path>
-                        <path
-                           d="M155 387c-26.467 0-48-21.532-48-48s21.533-48 48-48 48 21.532 48 48-21.533 48-48 48zm0-80c-17.645 0-32 14.355-32 32s14.355 32 32 32 32-14.355 32-32-14.355-32-32-32zM339 315h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
-                           fill="var(--black)"></path>
-                        <path
-                           d="M323 435a8 8 0 0 1-8-8V307a8 8 0 0 1 16 0v120a8 8 0 0 1-8 8zM323 283a8 8 0 0 1-8-8v-24a8 8 0 0 1 16 0v24a8 8 0 0 1-8 8zM403 331h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
-                           fill="var(--black)"></path>
-                        <path
-                           d="M387 435a8 8 0 0 1-8-8V323a8 8 0 0 1 16 0v104a8 8 0 0 1-8 8zM387 299a8 8 0 0 1-8-8v-40a8 8 0 0 1 16 0v40a8 8 0 0 1-8 8zM467 347h-32a8 8 0 0 1-8-8v-32a8 8 0 0 1 8-8h32a8 8 0 0 1 8 8v32a8 8 0 0 1-8 8zm-24-16h16v-16h-16z"
-                           fill="var(--black)"></path>
-                        <path
-                           d="M451 435a8 8 0 0 1-8-8v-88a8 8 0 0 1 16 0v88a8 8 0 0 1-8 8zM451 315a8 8 0 0 1-8-8v-56a8 8 0 0 1 16 0v56a8 8 0 0 1-8 8z"
-                           fill="var(--black)"></path>
-                     </g>
-                  </svg>
-               }
-               title="Фильтр"
-            />
-            <SquareIconButton
-               icon={
-                  <svg stroke="var(--black)" fill="var(--black)" strokeWidth="0" viewBox="0 0 256 256" height="48px" width="48px">
-                     <path d="M209.15,60.17l-80-24A4,4,0,0,0,124,40V158.75A44,44,0,1,0,132,184V93.38l74.85,22.45A4,4,0,0,0,212,112V64A4,4,0,0,0,209.15,60.17ZM88,220a36,36,0,1,1,36-36A36,36,0,0,1,88,220ZM204,106.62,132,85V45.38L204,67Z"></path>
-                  </svg>
-               }
-               title={'Сортировка'}
-            />
          </StickyLine>
+         <SectionList data={SECTION_LIST} />
          <ProductList data={PRODUCT_LIST} />
       </div>
    );
