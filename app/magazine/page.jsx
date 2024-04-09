@@ -5,6 +5,11 @@ import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 
 import styles from './styles.module.scss';
 
+export const metadata = {
+   title: 'Журнал Long Live Vinyl',
+   description: 'Лучший журнал про винил и мир музыки | Long Live Vinyl',
+};
+
 export default function Magazine() {
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>

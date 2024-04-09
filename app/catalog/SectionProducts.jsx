@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { ProductList } from '@/app/_components/layout/ProductList/ProductList';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
-import { SquareIconButton } from '@/app/_components/ui/Button/Button';
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
 import { Window } from '@/app/_components/ui/Window/Window';
 

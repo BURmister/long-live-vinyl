@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
          <body>
             <Header />
-            <main>
+            <main className="flex flex-col">
                {children}
                {/* <ScrollUp /> */}
             </main>

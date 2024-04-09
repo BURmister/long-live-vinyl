@@ -1,4 +1,4 @@
-import { SectionProducts } from './SectionProducts';
+import { SectionProducts } from '../SectionProducts';
 import styles from './styles.module.scss';
 
 export const metadata = {

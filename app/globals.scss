@@ -479,6 +479,7 @@ footer {
 .page-wrapper {
    padding-top: 48px;
    padding-bottom: 64px;
+   flex: 1;
    gap: var(--section-gap);
 
    @media (max-width: 1279px) {
