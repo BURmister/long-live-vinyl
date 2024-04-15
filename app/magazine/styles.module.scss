@@ -1,7 +1,28 @@
 .magazine {
    gap: var(--inside-section-gap);
 
-   .content {
-      height: 100dvh;
+   .galleryWrapper {
+      gap: var(--inside-section-gap);
+
+      .galleryLayout {
+         display: grid;
+         grid-template-columns: repeat(4, minmax(0, 1fr));
+         gap: calc(var(--inside-section-gap) * .5);
+
+         .gallerySection {
+            display: grid;
+            gap: calc(var(--inside-section-gap) * .5);
+
+            .galleryImage {
+               height: 100%;
+               object-fit: cover;
+               transition: var(--ui-duration);
+            }
+         }
+
+         @media (max-width: 1023px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+      }
    }
 }

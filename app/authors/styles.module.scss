@@ -1,3 +1,57 @@
-.bannerImage {
-   object-position: 50% 40%;
+.wrapper {
+   gap: var(--inside-section-gap);
+
+   .bannerImage {
+      object-position: 50% 40%;
+   }
+
+   .trendsWrapper,
+   .bestsellersWrapper {
+      gap: var(--inside-section-gap);
+
+      .trends,
+      .bestsellers {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 16px;
+
+         @media (max-width: 1023px) {
+            display: flex;
+            flex-direction: column;
+         }
+
+         @media (max-width: 719px) {
+            gap: 8px;
+         }
+
+         .bestsellerFirst {
+            grid-column: span 2;
+         }
+      }
+   }
+
+   .galleryWrapper {
+      gap: var(--inside-section-gap);
+
+      .galleryLayout {
+         display: grid;
+         grid-template-columns: repeat(4, minmax(0, 1fr));
+         gap: calc(var(--inside-section-gap) * .5);
+
+         .gallerySection {
+            display: grid;
+            gap: calc(var(--inside-section-gap) * .5);
+
+            .galleryImage {
+               height: 100%;
+               object-fit: cover;
+               transition: var(--ui-duration);
+            }
+         }
+
+         @media (max-width: 1023px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+         }
+      }
+   }
 }

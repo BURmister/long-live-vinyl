@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { SectionList } from '@/app/_components/layout/SectionList/SectionList';
+import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 
@@ -7,8 +9,31 @@ import styles from './styles.module.scss';
 
 export const metadata = {
    title: 'Журнал Long Live Vinyl',
-   description: 'Лучший журнал про винил и мир музыки | Long Live Vinyl',
+   description: 'Погрузись в прекрасный мир музыки с лучшим журналом про винил | Long Live Vinyl',
 };
+
+const SECTION_LIST = [
+   {
+      name: 'Обзоры',
+      path: '/magazine/rewies/',
+      image: 'https://i.pinimg.com/564x/40/4f/8d/404f8d1b296516db5afe537440c68121.jpg',
+   },
+   {
+      name: 'Лонгриды',
+      path: '/magazine/longreads/',
+      image: 'https://i.pinimg.com/564x/cb/a6/dd/cba6dd0f6d391e07bfb39c0a7935cf17.jpg',
+   },
+   {
+      name: 'Интервью',
+      path: '/magazine/interviews/',
+      image: 'https://i.pinimg.com/564x/70/10/f3/7010f318ebd4da3584184289fa250c59.jpg',
+   },
+   {
+      name: 'HiFi',
+      path: '/magazine/hifi/',
+      image: 'https://i.pinimg.com/564x/25/77/66/257766c2588d2daf2ed994f6412918bb.jpg',
+   },
+];
 
 export default function Magazine() {
    return (
@@ -16,7 +41,7 @@ export default function Magazine() {
          <div className="content-wrapper section-banner">
             <h1 className="content-wrapper caption-88 title section-title text-white text-center">Журнал</h1>
             <p className="text-24 text-white text-center">
-               Ежедневные публикации интересных статей, честных рецензий, интервью с кумирами и многое другое!
+               Ежедневные публикации интересных статей, честных рецензий, интервью с кумирами и многое другое
             </p>
             <Image src="https://www.piumamusic.com/img/articles/piuma-the-vinyl-aesthetic.jpg" width="1500" height="1500" alt="" />
             {/* <Image src="https://i.pinimg.com/564x/ce/56/b5/ce56b5caf8e1e5e98bf9962bd675d922.jpg" width="1500" height="1500" alt="" /> */}
@@ -32,9 +57,206 @@ export default function Magazine() {
                   </svg>
                }
                placeholder={'Найди ту самую...'}
+               action={'/magazine/search'}
             />
          </StickyLine>
-         <section className={`content-wrapper ${styles.content}`}>content list</section>
+         <SectionList data={SECTION_LIST} />
+
+         <section className={`content-wrapper flex flex-col ${styles.galleryWrapper}`}>
+            <h2 className={`caption-32 title`}>
+               Наши <span className="text-red">друзья</span>, <span className="text-red">места</span> и <span className="text-red">эмоции</span>
+            </h2>
+            <div className={`${styles.galleryLayout}`}>
+               <div className={`${styles.gallerySection}`}>
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/48/db/f6/48dbf6cae8e2944721602197eef47cd4.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/06/55/cb/0655cb1dd7dc717e32f19463805a4043.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/6c/94/3e/6c943e4bedb84a2e480c3d696d18c0c8.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/59/e5/90/59e59063550b2af93e7c9dde5270fc00.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/736x/2a/79/f8/2a79f8b1369d66e5630324c2d9b19cae.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/89/63/e9/8963e9643d1e8a5a1624f27b22305380.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+               </div>
+               <div className={`${styles.gallerySection}`}>
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/83/3b/6d/833b6d5821d553493b9fc21f10a6e07f.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/dc/69/ad/dc69ad2a17a7462403d2cb54d054dbaf.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/31/03/1d/31031d8d421effaed98f967f406c6dd3.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/47/4a/17/474a17ca4d864e58d018970d6bddb15e.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/c0/2f/61/c02f61489a36e5335d4c114f6bb7d0e8.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/39/5c/48/395c4816ba86240314147f2c52a83a55.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+               </div>
+               <div className={`${styles.gallerySection}`}>
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/10/82/d3/1082d39d263f1f7d6834b77ac475873e.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/a2/d7/80/a2d780acddd97fe43172467fba3d64ad.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/0e/82/cc/0e82cc03c17cb692180d3246af8620e4.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/b7/af/69/b7af6950aa774a5887227c4acc28ad69.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/66/bf/a1/66bfa19084a6e9569b7a600319add3c6.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/c4/40/8b/c4408be390e83bff6a0bb4b0e8856d13.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+               </div>
+               <div className={`${styles.gallerySection}`}>
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/ca/4f/33/ca4f33d953ffd2d67fdc8273e1d8809c.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/96/e4/16/96e41663cf1f7999256fe7cabd7dcd10.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/b0/34/1a/b0341a9dccab4c26dbc4674fee278fe2.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/95/bc/36/95bc36acb11e431cf17a5a5184133da7.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/f2/5a/36/f25a369e11dc713ebea3493ac48dcc16.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+                  <Image
+                     className={styles.galleryImage}
+                     src="https://i.pinimg.com/564x/ae/f7/5c/aef75cd9e4d3eb504e7449954976a902.jpg"
+                     width="512"
+                     height="512"
+                     alt=""
+                  />
+               </div>
+            </div>
+         </section>
+         <SeoBlock
+            text={[
+               `Добро пожаловать в мир, где каждая пластинка - это история, а каждый трек - магия винила. Long Live Vinyl - это не просто журнал, это
+               путеводитель в мире звука, который звучит по-настоящему. Представьте себе мгновения, когда мир замирает, окутывая вас только музыкой.`,
+               `Наши страницы - это галерея воспоминаний, вдохновляющих историй и неограниченных возможностей. Мы открываем двери в удивительный мир
+               винила, где каждая пластинка становится ключом к особенным моментам и эмоциям. У нас вы найдете эксклюзивные обзоры новых релизов,
+               встречи с музыкальными героями прошлого и настоящего, а также вдохновляющие истории коллекционеров со всего мира.`,
+               `Погрузитесь в атмосферу винила с Long Live Vinyl - потому что все, что вам нужно для полного погружения в мир звука и стиля, это одна
+               виниловая пластинка. Добро пожаловать в музыкальное путешествие вашей жизни. Да здравствует винил!`,
+            ]}
+            caption={'мир музыкальной магии'}
+         />
       </div>
    );
 }

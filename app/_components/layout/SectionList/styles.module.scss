@@ -29,11 +29,14 @@
    }
 
    @media (max-width: 1279px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
 
       .sectionLarge {
-         grid-column: span 3;
-         grid-row: span 2;
+         grid-column: span 1;
+
+         .section {
+            height: calc(var(--height) * 1.48);
+         }
       }
    }
 
@@ -43,7 +46,6 @@
 
       .sectionLarge {
          grid-column: span 2;
-         grid-row: span 1;
       }
    }
 

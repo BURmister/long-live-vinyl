@@ -5,23 +5,23 @@ import styles from './styles.module.scss';
 
 const LINK_LIST = [
    {
-      name: 'Каталог',
+      name: 'Винил',
       path: '/catalog',
    },
    {
       name: 'Журнал',
       path: '/magazine',
    },
-   {
-      name: 'Винил месяца',
-      path: '/month',
-   },
+   // {
+   //    name: 'Винил месяца',
+   //    path: '/month',
+   // },
    {
       name: 'Исполнители',
       path: '/authors',
    },
    {
-      name: 'О нас',
+      name: 'О Проекте',
       path: '/about',
    },
 ];

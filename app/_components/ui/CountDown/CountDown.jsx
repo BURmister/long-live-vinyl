@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import styles from './styles.module.scss';
 
 const COUNTDOWN_TARGET = new Date('2024-04-23T11:30:00');
 
@@ -34,11 +35,13 @@ export const CountDown = () => {
       );
 
    return (
-      <p className={`caption-32 caption-32timer text-red w-fit block`}>
+      <p className={`caption-32 caption-32timer text-red w-fit block ${styles.content}`}>
          {String(timeLeft.days).length !== 2 ? '0' + timeLeft.days : timeLeft.days}:
          {String(timeLeft.hours).length !== 2 ? '0' + timeLeft.hours : timeLeft.hours}:
          {String(timeLeft.minutes).length !== 2 ? '0' + timeLeft.minutes : timeLeft.minutes}
-         <span className={`caption-24 caption-24timer text-red`}>:{String(timeLeft.seconds).length !== 2 ? '0' + timeLeft.seconds : timeLeft.seconds}</span>
+         <span className={`caption-24 caption-24timer text-red`}>
+            :{String(timeLeft.seconds).length !== 2 ? '0' + timeLeft.seconds : timeLeft.seconds}
+         </span>
       </p>
    );
 };

@@ -1,4 +1,5 @@
 import { SectionProducts } from '../SectionProducts';
+import { CountDown } from '@/app/_components/ui/CountDown/CountDown';
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -133,8 +134,15 @@ const PRODUCT_LIST = [
 export default function CatalogSection({ params }) {
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
-         <h1 className="content-wrapper caption-32 title">{params.slug}</h1>
-         <SectionProducts data={PRODUCT_LIST}/>
+         {params.slug === 'sale' ? (
+            <div className={`content-wrapper flex ${styles.captionWrapper}`}>
+               <h1 className="caption-32 title">{params.slug}</h1>
+               <CountDown />
+            </div>
+         ) : (
+            <h1 className="content-wrapper caption-32 title">{params.slug}</h1>
+         )}
+         <SectionProducts data={PRODUCT_LIST} />
       </div>
    );
 }

@@ -196,7 +196,9 @@ export default function Catalog() {
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
          <div className="content-wrapper section-banner">
             <h1 className="content-wrapper caption-88 title section-title text-white text-center">Каталог</h1>
-            <p className="text-24 text-white text-center">Культовые альбомы, захватывающие открытия, неповторимые эмоции - Винил, Long Live Vinyl</p>
+            <p className="text-24 text-white text-center">
+               Культовые альбомы, захватывающие открытия, неповторимые эмоции - это Винил, Long Live Vinyl
+            </p>
             <Image src="https://i.pinimg.com/originals/33/f6/20/33f620322e0023beec536b448054c899.jpg" width="1500" height="1500" alt="" />
             {/* <Image src="https://boymominjeansblog.com/wp-content/uploads/2019/10/record-store-side-profile.jpg" width="1500" height="1500" alt="" /> */}
          </div>

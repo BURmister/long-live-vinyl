@@ -2,6 +2,8 @@
 module.exports = {
    images: {
       domains: [
+         'pngimg.com',
+         'flowbite.s3.amazonaws.com',
          'i1.sndcdn.com',
          'i.ytimg.com',
          'www.rollingstone.com',

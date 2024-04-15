@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import { CountDown } from './countdown/CountDown';
+import { CountDown } from '../../ui/CountDown/CountDown';
 
 import MainBanner from '@/public/main-banner.png';
 import styles from './styles.module.scss';

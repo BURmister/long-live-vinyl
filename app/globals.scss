@@ -176,11 +176,15 @@ footer {
       }
 
       @media (max-width: 719px) {
-         font-size: 56px;
+         font-size: 48px;
       }
 
       @media (max-width: 479px) {
-         font-size: 40px;
+         font-size: 32px;
+      }
+
+      @media (max-width: 374px) {
+         font-size: 28px;
       }
    }
 
@@ -797,7 +801,7 @@ footer {
    width: 100%;
 
    background-color: var(--grey-bg);
-   z-index: 2;
+   z-index: 8;
 
    .sticky-line-wrapper {
       width: 100%;

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Sale } from './_components/layout/Sale/Sale';
 import { ProductSlider } from './_components/layout/ProductSlider/ProductSlider';
 import { BestAuthors } from './_components/layout/BestAuthors/BestAuthors';
+import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 
 import styles from './styles.module.scss';
 
@@ -102,6 +103,18 @@ export default function Home() {
          <BestAuthors />
          <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
          {/* <p className="caption-32 text-center">Новости</p> */}
+         <SeoBlock
+            text={[
+               `Добро пожаловать в мир, где каждая пластинка - это история, а каждый трек - магия винила. Long Live Vinyl - это не просто журнал, это
+               путеводитель в мире звука, который звучит по-настоящему. Представьте себе мгновения, когда мир замирает, окутывая вас только музыкой.`,
+               `Наши страницы - это галерея воспоминаний, вдохновляющих историй и неограниченных возможностей. Мы открываем двери в удивительный мир
+               винила, где каждая пластинка становится ключом к особенным моментам и эмоциям. У нас вы найдете эксклюзивные обзоры новых релизов,
+               встречи с музыкальными героями прошлого и настоящего, а также вдохновляющие истории коллекционеров со всего мира.`,
+               `Погрузитесь в атмосферу винила с Long Live Vinyl - потому что все, что вам нужно для полного погружения в мир звука и стиля, это одна
+               виниловая пластинка. Добро пожаловать в музыкальное путешествие вашей жизни. Да здравствует винил!`,
+            ]}
+            caption={'мир музыкальной магии'}
+         />
       </div>
    );
 }
