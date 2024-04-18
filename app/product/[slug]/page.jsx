@@ -14,16 +14,16 @@ const PRODUCT = {
    id: '_1405892',
    name: 'PARAMORE — PARAMORE (2LP, COLOURED VINYL)',
    author: {
-      name: 'Pramore',
+      name: 'Paramore',
       url: '/authors/paramore',
    },
    img: 'https://i1.sndcdn.com/artworks-v9bhjNMkCDNi-0-t500x500.jpg',
    props: [
-      {
-         label: 'Исполнитель',
-         value: 'Paramore',
-         url: '/authors/paramore',
-      },
+      // {
+      //    label: 'Исполнитель',
+      //    value: 'Paramore',
+      //    url: '/authors/paramore',
+      // },
       {
          label: 'Альбом',
          value: 'Paramore',
@@ -62,6 +62,8 @@ const PRODUCT = {
       },
    ],
    markers: 'TANGERINE VINYL, LIMITED EDITION',
+   description:
+      'Paramore — американская рок-группа, образовавшаяся во Франклине, штат Теннесси, в 2004 году. В её состав входят Хейли Уильямс, Тейлор Йорк и Зак Фарро. Группа выпустила свой дебютный альбом All We Know Is Falling в 2005 году. Второй альбом Riot! вышел в 2007 году и впоследствии стал платиновым в США и Великобритании, а в Ирландии — золотым. Третий альбом Brand New Eyes вышел 29 сентября 2009 года, возглавил хит-парады многих стран мира, включая Австралию и Великобританию.',
    tracklist: [
       {
          side: 'A1',
@@ -217,6 +219,11 @@ export default function ProductDetail({ params }) {
                </section>
                <section className={`flex flex-col ${styles.contentWrapper}`}>
                   <h1 className="caption-32 title">{productData.name}</h1>
+                  {productData.author && (
+                     <Link className={`text-28 text-bold hover-underline ${styles.authorName}`} href={productData.author.url}>
+                        {productData.author.name}
+                     </Link>
+                  )}
                   <ul className={`flex flex-col ${styles.propList}`}>
                      {productData?.props.map((item, index) => (
                         <li className={`flex`} key={index}>
@@ -236,27 +243,29 @@ export default function ProductDetail({ params }) {
                      <p className={`text-32`}>23 000 $</p>
                   </div>
                </section>
-               <section className={`content-wrapepr ${styles.infoWrapper} ${productData.description && productData.tracklist && styles.infoGrid}`}>
-                  {productData.description && <p className="text-20">{productData.description}</p>}
-                  {productData.tracklist && (
-                     <div className={`flex flex-col ${styles.tracklistWrapper}`}>
-                        <h2 className="caption-32 text-red">Треклист</h2>
-                        <ul className={`flex ${styles.tracklist}`}>
-                           {productData.tracklist.map((item, index) => (
-                              <li key={index}>
-                                 {item.url ? (
-                                    <Link className="text-24 text-bold hover-underline" href={item.url}>
-                                       {`${item.side && item.side + '. '}${item.name} (${item.duration})`}
-                                    </Link>
-                                 ) : (
-                                    <p className="text-24 text-bold">{`${item.side && item.side + '. '}${item.name} (${item.duration})`}</p>
-                                 )}
-                              </li>
-                           ))}
-                        </ul>
-                     </div>
-                  )}
-               </section>
+               {(productData.description || productData.tracklist) && (
+                  <section className={`content-wrapepr ${styles.infoWrapper} ${productData.description && productData.tracklist && styles.infoGrid}`}>
+                     {productData.description && <p className="text-20">{productData.description}</p>}
+                     {productData.tracklist && (
+                        <div className={`flex flex-col ${styles.tracklistWrapper}`}>
+                           <h2 className="caption-32 text-red">Треклист</h2>
+                           <ul className={`flex ${styles.tracklist}`}>
+                              {productData.tracklist.map((item, index) => (
+                                 <li key={index}>
+                                    {item.url ? (
+                                       <Link className="text-24 text-bold hover-underline" href={item.url}>
+                                          {`${item.side && item.side + '. '}${item.name} (${item.duration})`}
+                                       </Link>
+                                    ) : (
+                                       <p className="text-24 text-bold">{`${item.side && item.side + '. '}${item.name} (${item.duration})`}</p>
+                                    )}
+                                 </li>
+                              ))}
+                           </ul>
+                        </div>
+                     )}
+                  </section>
+               )}
             </div>
          </div>
       </>

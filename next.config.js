@@ -2,6 +2,7 @@
 module.exports = {
    images: {
       domains: [
+         'lh3.googleusercontent.com',
          'pngimg.com',
          'flowbite.s3.amazonaws.com',
          'i1.sndcdn.com',
