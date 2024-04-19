@@ -218,12 +218,14 @@ export default function ProductDetail({ params }) {
                   </div>
                </section>
                <section className={`flex flex-col ${styles.contentWrapper}`}>
-                  <h1 className="caption-32 title">{productData.name}</h1>
-                  {productData.author && (
-                     <Link className={`text-28 text-bold hover-underline ${styles.authorName}`} href={productData.author.url}>
-                        {productData.author.name}
-                     </Link>
-                  )}
+                  <div className={`flex flex-col ${styles.nameWrapper}`}>
+                     <h1 className="caption-32 title">{productData.name}</h1>
+                     {productData.author && (
+                        <Link className={`text-28 w-fit text-bold hover-underline ${styles.authorName}`} href={productData.author.url}>
+                           {productData.author.name}
+                        </Link>
+                     )}
+                  </div>
                   <ul className={`flex flex-col ${styles.propList}`}>
                      {productData?.props.map((item, index) => (
                         <li className={`flex`} key={index}>
@@ -237,15 +239,15 @@ export default function ProductDetail({ params }) {
                            )}
                         </li>
                      ))}
+                     <li>{productData.markers && <h3 className="caption-32 text-red">{productData.markers}</h3>}</li>
                   </ul>
-                  {productData.markers && <h3 className="caption-32 text-red">{productData.markers}</h3>}
-                  <div className={styles.priceWrapper}>
+                  <div className={`flex flex-col ${styles.priceWrapper}`}>
                      <p className={`text-32`}>23 000 $</p>
                   </div>
                </section>
                {(productData.description || productData.tracklist) && (
-                  <section className={`content-wrapepr ${styles.infoWrapper} ${productData.description && productData.tracklist && styles.infoGrid}`}>
-                     {productData.description && <p className="text-20">{productData.description}</p>}
+                  <section className={`flex flex-col ${styles.infoWrapper}`}>
+                     {productData.description && <p className={`text-20 ${styles.vinylDescription}`}>{productData.description}</p>}
                      {productData.tracklist && (
                         <div className={`flex flex-col ${styles.tracklistWrapper}`}>
                            <h2 className="caption-32 text-red">Треклист</h2>

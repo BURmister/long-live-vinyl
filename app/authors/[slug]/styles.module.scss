@@ -6,6 +6,14 @@
 
       .authorImage {
          filter: grayscale(24%) brightness(0.64);
+
+         @media (max-width: 719px) {
+            height: 304px;
+         }
+
+         @media (max-width: 479px) {
+            height: 224px;
+         }
       }
 
       .authorName {

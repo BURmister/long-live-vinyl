@@ -27,8 +27,12 @@
       .contentWrapper {
          gap: var(--inside-section-gap);
 
-         .authorName {
-            text-transform: unset;
+         .nameWrapper {
+            gap: 8px;
+
+            .authorName {
+               text-transform: unset;
+            }
          }
 
          .propList {
@@ -42,7 +46,7 @@
          .priceWrapper {
             flex: 1;
             display: flex;
-            align-items: flex-end;
+            justify-content: flex-end;
          }
       }
 
@@ -50,9 +54,8 @@
          grid-column: span 2;
          gap: var(--inside-section-gap);
 
-         &.infoGrid {
-            display: grid;
-            grid-template-columns: var(--template-columns);
+         .vinylDescription {
+            text-wrap: pretty;
          }
 
          .tracklistWrapper {
@@ -84,11 +87,6 @@
          --image-size: 328px;
 
          .infoWrapper {
-            &.infoGrid {
-               display: flex;
-               flex-direction: column;
-            }
-
             .tracklistWrapper {
                .tracklist {
                   flex-direction: column;
