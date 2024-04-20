@@ -15,9 +15,7 @@ export default function About() {
                <br />
                Vinyl
             </h1>
-            <p className="text-24 text-white text-center">
-               Не просто журнал.
-            </p>
+            <p className="text-24 text-white text-center">Не просто журнал</p>
             <Image
                src="https://i.pinimg.com/564x/ce/56/b5/ce56b5caf8e1e5e98bf9962bd675d922.jpg"
                width="1500"
