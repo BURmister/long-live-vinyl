@@ -35,7 +35,7 @@ export const SectionProducts = ({ data }) => {
             />
             <Window
                rightStyle={true}
-               title="Фильтр"
+               title="Фильтр & Сортировка"
                buttonIcon={
                   <svg width="48" height="48" viewBox="0 0 550 550">
                      <g>
@@ -60,6 +60,11 @@ export const SectionProducts = ({ data }) => {
                      </g>
                   </svg>
                }>
+               <div>сортировка | контент</div>
+               <div>сортировка | контент</div>
+               <div>сортировка | контент</div>
+               <div>сортировка | контент</div>
+               <div>сортировка | контент</div>
                <div>фильтр | контент</div>
                <div>фильтр | контент</div>
                <div>фильтр | контент</div>
@@ -111,7 +116,7 @@ export const SectionProducts = ({ data }) => {
                <div>фильтр | контент</div>
                <div>фильтр | контент</div>
             </Window>
-            <Window
+            {/* <Window
                title="Сортировка"
                buttonIcon={
                   <svg stroke="var(--black)" fill="var(--black)" strokeWidth="0" viewBox="0 0 256 256" height="48px" width="48px">
@@ -168,7 +173,7 @@ export const SectionProducts = ({ data }) => {
                <div>сортировка | контент</div>
                <div>сортировка | контент</div>
                <div>сортировка | контент</div>
-            </Window>
+            </Window> */}
          </StickyLine>
          <ProductList data={data} />
       </>

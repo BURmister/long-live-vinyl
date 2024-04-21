@@ -64,7 +64,7 @@ export default function Magazine() {
 
          <section className={`content-wrapper flex flex-col ${styles.galleryWrapper}`}>
             <h2 className={`caption-32 title`}>
-               Наши <span className="text-red">друзья</span>, <span className="text-red">места</span> и <span className="text-red">эмоции</span>
+               Неповторимые <span className="text-red">эмоции</span>
             </h2>
             <div className={`${styles.galleryLayout}`}>
                <div className={`${styles.gallerySection}`}>

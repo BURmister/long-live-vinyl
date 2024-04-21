@@ -338,6 +338,14 @@ footer {
       line-height: inherit;
    }
 
+   &-capitalize {
+      text-transform: capitalize;
+   }
+
+   &-normal {
+      text-transform: none;
+   }
+
    &-bold {
       font-weight: 600 !important;
    }
@@ -567,7 +575,7 @@ footer {
       padding-bottom: 48px;
    }
 
-   @media (max-width: 999px) {
+   @media (max-width: 1023px) {
       padding-top: 24px;
       padding-bottom: 32px;
    }
@@ -855,7 +863,7 @@ footer {
       }
    }
 
-   @media (max-width: 999px) {
+   @media (max-width: 1023px) {
       p {
          bottom: 32px;
       }

@@ -24,9 +24,9 @@ export const ProductCard = ({ product }) => {
             </div>
             <div className={styles.catalogAction}>
                <p className={`text-20 ${styles.price}`}>23 000 $</p>
-               <button className={`text-20 hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
+               {/* <button className={`text-20 hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
                   Купить
-               </button>
+               </button> */}
             </div>
          </div>
       </div>

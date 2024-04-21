@@ -1,0 +1,120 @@
+.wrapper {
+   gap: var(--inside-section-gap);
+
+   .layout {
+      --list-gap: 6px;
+      --image-size: 640px;
+      --template-columns: minmax(0, var(--image-size)) minmax(0, 1fr);
+
+      display: grid;
+      grid-template-columns: var(--template-columns);
+      gap: var(--inside-section-gap);
+
+      .galleryWrapper {
+         .imgContent {
+            width: var(--image-size);
+            height: var(--image-size);
+            aspect-ratio: 1 / 1;
+
+            img {
+               width: var(--image-size);
+               height: var(--image-size);
+               object-fit: contain;
+            }
+         }
+      }
+
+      .contentWrapper {
+         gap: var(--inside-section-gap);
+
+         .nameWrapper {
+            gap: 8px;
+
+            .authorName {
+               text-transform: unset;
+            }
+         }
+
+         .propList {
+            gap: var(--list-gap);
+
+            li {
+               gap: 8px;
+            }
+         }
+
+         .priceWrapper {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+         }
+      }
+
+      .infoWrapper {
+         grid-column: span 2;
+         gap: var(--inside-section-gap);
+
+         .vinylDescription {
+            text-wrap: pretty;
+         }
+
+         .tracklistWrapper {
+            gap: calc(var(--inside-section-gap) / 2);
+
+            .tracklist {
+               flex-wrap: wrap;
+               column-gap: 16px;
+               row-gap: 8px;
+            }
+         }
+      }
+
+      @media (max-width: 1919px) {
+         --image-size: 588px;
+      }
+
+      @media (max-width: 1439px) {
+         --image-size: 528px;
+      }
+
+      @media (max-width: 1279px) {
+         --list-gap: 4px;
+         --image-size: 480px;
+      }
+
+      @media (max-width: 1023px) {
+         --list-gap: 2px;
+         --image-size: 328px;
+
+         .infoWrapper {
+            .tracklistWrapper {
+               .tracklist {
+                  flex-direction: column;
+                  flex-wrap: unset;
+                  row-gap: var(--list-gap)
+               }
+            }
+         }
+      }
+
+      @media (max-width: 719px) {
+         display: flex;
+         flex-direction: column;
+
+         .galleryWrapper {
+            margin-bottom: var(--inside-section-gap);
+
+            .imgContent {
+               width: 100%;
+               height: auto;
+
+               img {
+                  width: 100%;
+                  height: auto;
+                  aspect-ratio: 1 / 1;
+               }
+            }
+         }
+      }
+   }
+}

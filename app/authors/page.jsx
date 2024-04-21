@@ -131,7 +131,7 @@ export default function Authors() {
 
          <section className={`content-wrapper flex flex-col ${styles.galleryWrapper}`}>
             <h2 className={`caption-32 title`}>
-               Наши <span className="text-red">гости</span> и <span className="text-red">друзья</span>
+               Наши <span className="text-red">друзья</span>
             </h2>
             <div className={`${styles.galleryLayout}`}>
                <div className={`${styles.gallerySection}`}>
