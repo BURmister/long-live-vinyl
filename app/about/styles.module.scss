@@ -1,77 +1,36 @@
 .bannerImage {
    object-position: 50% 14%;
-
-   // @media (max-width: 1919px) {
-   //    object-position: 50% 8%;
-   // }
 }
 
-.content {
-   gap: var(--section-gap);
 
-   .block {
-      gap: calc(var(--inside-section-gap) * .5);
 
-      .blockCaption {
-         margin-bottom: calc(var(--inside-section-gap) * .5);
-      }
+.captionContent {
+   gap: calc(var(--inside-section-gap) * 2);
 
-      .captionContent {
-         gap: calc(var(--inside-section-gap) * 2);
+   .marker {
+      gap: 4px;
+      user-select: none;
 
-         .marker {
-            gap: 4px;
-            user-select: none;
+      svg {
+         transform: scale(-1, 1);
 
-            svg {
-               transform: scale(-1, 1);
-
-               @media (max-width: 1023px) {
-                  width: 20px;
-                  height: 20px;
-               }
-
-               @media (max-width: 719px) {
-                  width: 16px;
-                  height: 16px;
-               }
-            }
-
-            @media (max-width: 719px) {
-               gap: 2px;
-            }
-
-            @media (max-width: 479px) {
-               gap: 0;
-            }
+         @media (max-width: 1023px) {
+            width: 20px;
+            height: 20px;
          }
-      }
 
-      .blockText {
-         text-wrap: pretty;
-      }
-
-      .blockImage {
-         height: 424px;
-         object-fit: cover;
-      }
-
-      @media (max-width: 1279px) {
-         .blockImage {
-            height: 364px;
-         }
-      }
-
-      @media (max-width: 1023px) {
-         .blockImage {
-            height: 320px;
+         @media (max-width: 719px) {
+            width: 16px;
+            height: 16px;
          }
       }
 
       @media (max-width: 719px) {
-         .blockImage {
-            height: 280px;
-         }
+         gap: 2px;
+      }
+
+      @media (max-width: 479px) {
+         gap: 0;
       }
    }
 }

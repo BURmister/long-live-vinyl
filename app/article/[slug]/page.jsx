@@ -1,178 +1,107 @@
-'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+import parse from 'html-react-parser';
 
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
-import styles from './styles.module.scss';
-
-import { useState } from 'react';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { ShareButton } from '@/app/_components/ui/ShareButton/ShareButton';
 
-const PRODUCT = {
+import styles from './styles.module.scss';
+
+const ARTICLE = {
    id: '_1405892',
-   name: 'PARAMORE — PARAMORE (2LP, COLOURED VINYL)',
-   author: {
-      name: 'Paramore',
-      url: '/authors/paramore',
-   },
-   img: 'https://i1.sndcdn.com/artworks-v9bhjNMkCDNi-0-t500x500.jpg',
-   props: [
-      // {
-      //    label: 'Исполнитель',
-      //    value: 'Paramore',
-      //    url: '/authors/paramore',
-      // },
+   title: 'Самый ценный винил в мире – часть 3',
+   image: 'https://i0.wp.com/longlivevinyl.net/wp-content/uploads/2017/04/maxresdefault.jpg?w=1920&ssl=1',
+   previewText:
+      'История, окружающая «самый дорогой соул 45 в мире», интригует, и, поскольку известно, что существуют только две оригинальные копии, это золотая пыль для поклонников Motown.',
+   article: [
       {
-         label: 'Альбом',
-         value: 'Paramore',
+         type: 'article-preview',
+         content: [
+            {
+               type: 'text',
+               value: 'We’re back for <span>part 3</span> of The Most Valuable Vinyl In The World and this time around we look at the likes of Bob Dylan and Aphex Twin. If you’re joining us now make sure to go back and read <a>Part 1</a> and <a>Part 2</a>.',
+            },
+         ],
       },
       {
-         label: 'Страна',
-         value: 'Holland',
+         type: 'article-block',
+         caption: `9. Frank Wilson – Do I Love You (Indeed I Do)/Sweeter As The Days Go By`,
+         postCaption: 'Soul 35019, ‘Quality Control’ copy, 1965<br/>SOLD <b>£25,742</b>',
+         content: [
+            {
+               type: 'text',
+               value: `The story that surrounds ‘the most expensive soul 45 in the world’ is an intriguing one and with only two original copies known to exist, it’s gold dust for Motown aficionados.`,
+            },
+            {
+               type: 'text',
+               value: `Wilson penned many top tunes for the label, including platters by Mary Love, Jeanie King and The Ikettes, while for his own releases, he chose to hide behind various monikers – ‘Sonny Daye’, ‘Eddie Wilson’ and ‘Chester St. Anthony’. This lost gem was cut – alongside its flip – at Armin Steiner’s Sound Recorders studio, in LA and was intended to bolster Wilson’s solo career, but instead, he struck a deal with Motown boss Berry Gordy to remain as a producer and the record was archived. It resurfaced in the 70s around the Northern Soul scene in slightly furtive circumstances. When scenester Simon Soussan ‘borrowed’ the original, he pressed a run of acetates with the track sneakily attributed to another soul singer, Eddie Foster. It took off straight away, but rumours spread that something fishy was afoot and when Simon sold his collection, the truth was finally out. This Motown ‘Quality Control’ copy was then passed from one collector to another with the value rising each time. When Fife collector Kenny Burrell bought it for £15,000 in 1997, he had Frank autograph it and auctioned it off two years later for £25,742. The anonymous buyer was rumoured to be Wilson himself.`,
+            },
+         ],
       },
       {
-         label: 'Лейбл',
-         value: 'Fueled By Ramen',
+         type: 'article-block',
+         caption: `8. Bob Dylan – The Freewheelin’ Bob Dylan`,
+         postCaption: 'US album, stereo 1963, featuring four tracks deleted from subsequent releases<br/>SOLD <b>$35,000 (approx. £27,000)</b>',
+         content: [
+            {
+               type: 'text',
+               value: `Certainly one of the rarest records on the planet, this withdrawn version of Dylan’s US album was quickly deleted upon release. Released in May 1963 to critical acclaim, The Freewheelin’ Bob Dylan became an immediate fixture on the Beatles’ stereo, all of whom waxed lyrical about it. He’d moved on from his debut and unlike that record, 11 of the 13 tracks on Freewheelin’… were self-penned. But here’s the rub.`,
+            },
+            {
+               type: 'text',
+               value: `Just before the album was released, four songs were removed, replaced by four entirely new tracks. While forums will forever debate the reason for the swap, it is thought that CBS/Columbia censors played their part, having prevented Dylan from singing one of the removed tracks (Talkin’ John Birch Blues) on The Ed Sullivan Show – the incident saw a disgruntled Dylan refuse to substitute the song and leave the studios. A more straightforward reason may be that the new cuts were simply deemed to be better songs.<br/> New masters were quickly manufactured with a new sleeve design, but a few copies were pressed in error with the old tracklisting – only two stereo copies are known, and fewer than 20 mono copies (stereo copies list the withdrawn tracks on the labels, while mono copies list the new tracks). A stereo copy sold at auction for $35,000, while a mint mono copy should easily score around $15,000.`,
+            },
+         ],
       },
       {
-         label: 'Год выпуска/год издания',
-         value: '2013/2024',
+         type: 'article-block',
+         caption: `7. Aphex Twin – Caustic Window`,
+         postCaption: `Test pressing, 1994</br>SOLD <b>$46,300 (approx. £35,700)</b>`,
+         content: [
+            {
+               type: 'text',
+               value: `It’s a given that this list would contain the likes of The Beatles, Elvis and The Stones, but what about elusive purveyor of groundbreaking wonky electronica, Aphex Twin?`,
+            },
+            {
+               type: 'text',
+               value: `Bet you didn’t expect to see him here… But then, Richard James, aka Aphex Twin, has always been a law unto himself and when, 20 years ago, he planned to unleash his new album, Caustic Window, he surprisingly abandoned it at the last minute. So when one of only four test pressings showed up on Discogs in 2014, the decision was made by a few superfans to raise funds via a Kickstarter campaign to buy the record and release it via a deal with Aphex Twin’s label, Rephlex Records.</br>
+                  The campaign raised over $67,000 and the mysterious LP was bought, reproduced in digital form for the pledgers and then put up for auction. This ultra-rare test pressing was bought on eBay that year for $46,300 by Markus ‘Notch’ Persson, the creator of the Minecraft video game – “So I kinda paid a lot for a double LP from the 90s,” he tweeted at the time. A third of the proceeds went to Rephlex, a third went to the 4,124 Kickstarter backers and the rest went to charity.</br>
+                  The record itself was reappraised favourably by critics on its re-release, some noting its avant-garde capturing of future dance-music trends – and we suspect that this is far from the last we’ll hear from Aphex Twin (and his various aliases) in the record-collecting world…`,
+            },
+         ],
       },
       {
-         label: 'Стиль',
-         value: 'Indie / Alternative',
+         type: 'article-block',
+         caption: `The Beatles – Love Me Do`,
+         postCaption: `EMI/Parlophone, one-sided acetate, 1962</br>Estimate <b>$50,000 to $100,000</b>`,
+         content: [
+            {
+               type: 'text',
+               value: `There’s a huge number of Beatles acetates in circulation and many of them are worth some serious cash, but this one-sided rarity is another of the biggest earners. That is if it ever resurfaces from wherever it now resides.`,
+            },
+            {
+               type: 'image',
+               value: `https://i.pinimg.com/736x/c8/fb/ed/c8fbedf708dcb9c3855d45cd9509155b.jpg`,
+            },
+            {
+               type: 'text',
+               value: `Its eyewatering price tag is down to the fact it’s said to be the only unedited version of The Beatles’ first single that’s come to light and with the inclusion of a ‘1-2-3-4’ count-in, possibly from Pete Best who was still the band’s drummer at the time (George Martin reportedly told Brian Epstein post-recording that Best wasn’t up to scratch, which led to Best being sacked).`,
+            },
+            {
+               type: 'text',
+               value: 'The song is supposedly written about Lennon’s first girlfriend Iris Caldwell and was recorded using a harmonica that he apparently shoplifted in Hamburg. The estimate is likely close, when one considers an eBay auction in 2011 of a (slightly) less-rare advance DJ copy of the single (with P.S. I Love You on the flipside) and with another misspelling (the writing credits read ‘Lennon/ McArtney’) sold for nearly $20,000. There were a mere 250 of these sent out as promo for the band.',
+            },
+         ],
       },
       {
-         label: 'Тип',
-         value: 'Переиздание',
-      },
-      {
-         label: 'Состояние пластинки/конверта',
-         value: 'SS/SS',
-      },
-      {
-         label: 'Размер диска',
-         value: '12"',
-      },
-      {
-         label: 'Штрихкод',
-         value: '0075678612251',
-      },
-   ],
-   markers: 'TANGERINE VINYL, LIMITED EDITION',
-   description:
-      'Paramore — американская рок-группа, образовавшаяся во Франклине, штат Теннесси, в 2004 году. В её состав входят Хейли Уильямс, Тейлор Йорк и Зак Фарро. Группа выпустила свой дебютный альбом All We Know Is Falling в 2005 году. Второй альбом Riot! вышел в 2007 году и впоследствии стал платиновым в США и Великобритании, а в Ирландии — золотым. Третий альбом Brand New Eyes вышел 29 сентября 2009 года, возглавил хит-парады многих стран мира, включая Австралию и Великобританию.',
-   tracklist: [
-      {
-         side: 'A1',
-         name: 'Fast In My Car',
-         duration: '3:42',
-         url: '',
-      },
-      {
-         side: 'A2',
-         name: 'Now',
-         duration: '4:07',
-         url: '',
-      },
-      {
-         side: 'A3',
-         name: 'Grow Up',
-         duration: '3:50',
-         url: '',
-      },
-      {
-         side: 'A4',
-         name: 'Daydreaming',
-         duration: '4:31',
-         url: '',
-      },
-      {
-         side: 'B1',
-         name: 'Interlude: Moving On',
-         duration: '1:30',
-         url: '',
-      },
-      {
-         side: 'B2',
-         name: "Ain't It Fun",
-         duration: '4:56',
-         url: '',
-      },
-      {
-         side: 'B3',
-         name: 'Part II',
-         duration: '4:41',
-         url: '',
-      },
-      {
-         side: 'B4',
-         name: 'Last Hope',
-         duration: '5:09',
-         url: '',
-      },
-      {
-         side: 'C1',
-         name: 'Still Into You',
-         duration: '3:36',
-         url: '',
-      },
-      {
-         side: 'C2',
-         name: 'Anklebiters',
-         duration: '2:17',
-         url: '',
-      },
-      {
-         side: 'C3',
-         name: 'Interlude: Holiday',
-         duration: '1:09',
-         url: '',
-      },
-      {
-         side: 'C4',
-         name: 'Proof',
-         duration: '3:15',
-         url: '',
-      },
-      {
-         side: 'C5',
-         name: 'Hate To See Your Heart Break',
-         duration: '5:09',
-         url: '',
-      },
-      {
-         side: 'D1',
-         name: '(One Of Those) Crazy Girls',
-         duration: '3:32',
-         url: '',
-      },
-      {
-         side: 'D2',
-         name: "Interlude: I'm Not Angry Anymore",
-         duration: '0:52',
-         url: '',
-      },
-      {
-         side: 'D3',
-         name: 'Be Alone',
-         duration: '3:40',
-         url: '',
-      },
-      {
-         side: 'D4',
-         name: 'Future',
-         duration: '7:52',
-         url: '',
+         type: 'article-end',
+         caption: 'Stay tuned for the penultimate instalment!',
       },
    ],
 };
 
-export default function ProductDetail({ params }) {
-   const [productData, setProductData] = useState(PRODUCT);
-
+export default function ArticleDetail({ params }) {
    return (
       <>
          <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
@@ -180,22 +109,15 @@ export default function ProductDetail({ params }) {
                <BackButton />
                <SearchBar
                   icon={
-                     <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" x="0" y="0" viewBox="0 0 60.02 60.02">
-                        <g>
-                           <path
-                              d="m59.766 15.896-.363-.386h-1.837l.409-3.34a1.51 1.51 0 0 0-1.502-1.66h-2.437V7c0-.821-.669-1.49-1.491-1.49h-2.509V2c0-.821-.669-1.49-1.491-1.49H11.526c-.821 0-1.49.669-1.49 1.49v3.51h-2.51c-.821 0-1.49.669-1.49 1.49v3.51H3.599c-.426 0-.834.182-1.12.497a1.519 1.519 0 0 0-.379 1.185l.406 3.318h-1.37c-.321 0-.623.141-.83.386l-.306.41 5.959 41.856a1.629 1.629 0 0 0 1.605 1.348h44.942c.791 0 1.467-.565 1.611-1.38l5.886-41.352a1.075 1.075 0 0 0-.237-.882zM12.036 2.51h36v3h-36v-3zm-4 5h44v3h-44v-3zm-3.883 5h51.765l-.367 3H4.521l-.368-3zm48.034 45H7.886l-5.695-40H57.88l-5.693 40z"
-                              fill="var(--black)"></path>
-                           <path
-                              d="M29.536 20.51c-11.304 0-20.5 7.626-20.5 17s9.196 17 20.5 17 20.5-7.626 20.5-17-9.196-17-20.5-17zm0 32c-10.201 0-18.5-6.729-18.5-15s8.299-15 18.5-15 18.5 6.729 18.5 15-8.299 15-18.5 15z"
-                              fill="var(--black)"></path>
-                           <path
-                              d="M30.536 25.449a1 1 0 0 0-1-1c-3.993 0-7.778 1.21-10.946 3.499a1 1 0 0 0 1.172 1.621c2.824-2.041 6.204-3.12 9.774-3.12a1 1 0 0 0 1-1zM30.536 29.2a1 1 0 0 0-1-1c-3.105 0-6.049.941-8.512 2.723a1 1 0 0 0 1.172 1.621c2.12-1.533 4.658-2.344 7.34-2.344a1 1 0 0 0 1-1zM30.536 32.95a1 1 0 0 0-1-1c-2.229 0-4.339.68-6.104 1.967a.998.998 0 1 0 1.178 1.615c1.42-1.035 3.124-1.582 4.926-1.582a1 1 0 0 0 1-1zM39.4 45.638c-2.824 2.042-6.204 3.121-9.774 3.121a1 1 0 1 0 0 2c3.994 0 7.779-1.21 10.946-3.5a1 1 0 0 0-1.172-1.621zM28.626 46.008a1 1 0 0 0 1 1c3.106 0 6.05-.942 8.512-2.724a1 1 0 0 0-1.171-1.621c-2.119 1.534-4.657 2.345-7.34 2.345a1 1 0 0 0-1.001 1zM28.626 42.257a1 1 0 0 0 1 1c2.23 0 4.341-.68 6.104-1.967a1 1 0 0 0-1.179-1.615c-1.418 1.035-3.121 1.582-4.925 1.582a1 1 0 0 0-1 1z"
-                              fill="var(--black)"></path>
-                           <ellipse cx="29.932" cy="37.494" rx="2.327" ry="1.689" fill="var(--black)"></ellipse>
-                        </g>
+                     <svg className="nn-svg" width="64px" height="64px" fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750">
+                        <path d="M593.99,360.97c-2.48-10.26-2.87-26.72-6.74-40.05,6.16-7.83-1.12-16.44-5.28-23.41-9.95-17.48-20.79-34.65-33.99-49.86-12.63-14.88-29.97-24.42-45.51-35.87-13.07-10.7-25.18-22.57-38.65-32.8-20.51-19.67-53.74,.22-46.64,27.47,6.26,30.59,33.43,23.73,23.35-4.47,12.29-3.72,37.1,24.82,48.44,31.88,32.25,21.9,54.48,37.62,74.42,66.58-12.82-.3-25.79,.41-38.61-.62-29.82-.91-61.43-4.55-90.07,5.41-17.18,5.97-13.25,21.92-14.25,36.05-13.19,.21-26.97,.86-39.82-2.5-2.68-20.94-11.5-23.71-30.66-19.93-13.43,.95-26.88,1.61-40.34,1.79-25.08,.42-50.15-1.09-75.22-1.13,12.2-13.72,25.05-26.89,37.87-40,16.22-15.06,35.5-26.42,51.1-42.14,8.02-7.98,14.21-17.52,21.64-26.01,5.73-1.04,10.43,5.76,12.5,10.47,1.93,4.76,3.49,9.68,4.98,14.59,5.43,13.31,18.82,1.69,14.42-8.81-4.48-17.08-15.29-41.79-36.7-38.41-6.92,2-10.93,8.55-15.67,13.49-6.95,8.3-15.19,15.29-23.89,21.67-15.99,11.23-81.54,63.24-101.88,98.69-12.98,4.08-21.75,12.25-11.16,27.61,11.11,27.68,15.21,90.95,45.87,101.67,30.97,1.55,61.66-5.76,92.57-6.92,43.01-1.6,60.12,4.2,50.51-47.51,18.66-.38,37.37-1.63,55.97,.48,3.41,12.78,6.15,28.84,17.91,36.62,8.82,3.4,18.69-.61,27.84-.85,18.04-1.91,36.28-1.87,54.4-1.64,77.33,7.06,73.19,.62,61.3-71.51Zm-91.79,51.52c-7.05,.53-46.19,9.51-47.59,3.9-9.44-30.97,0-45.76-40.99-48.06-43.29-4-69.17-10.5-61.83,45.2-32.1,3.91-62.47,15.3-94.21,20.65-8.92-.29-22.74,5.7-27.5-4.71-10.22-24.97-7.55-53.32-15.4-79.07,49.17-3,98.96,1.67,147.78-5.76,4.14,23.24,31.99,16.12,49.15,17.71,19.72,3.76,27.33-11.68,27.54-28.97,42.38,1.04,84.75,.33,127.01-3.8,2.28,23.51,1.46,47.24,4.56,70.7-22.91,3.75-45.83,7.19-68.52,12.2Z" />
+                        <path d="M177.03,459.36c-5.95,.63-11.9,1.25-17.86,1.88-11.4,2.82-12.75,20.57-4.55,27.59,7.48,5.18,17.37,.2,25.8,.39,12-.52,29.26-2.86,26.84-18.9-1.23-15.92-19.1-12.29-30.23-10.95Z" />
+                        <path d="M249.03,541.66c-2.38-10.03-1.13-30.25-15.64-29.61-14.5,4.92-7.91,24.19-6.89,35.49,2.39,9.52,.46,21.52,7.88,28.91,9.62,8.1,19.75-5.37,17.62-14.92-.99-6.62-1.98-13.25-2.98-19.87Z" />
+                        <path d="M342.91,492.05c-13.13-4.86-26.25-9.73-39.38-14.58-9.6-3.63-22.43-7.52-25.19,6.18-6.73,23.3,42.25,28.85,57.9,37.49,15.9,4.62,20.35-23.97,6.67-29.09Z" />
                      </svg>
                   }
-                  placeholder={'Друг, винил возьмешь?'}
+                  placeholder={'Найди ту самую...'}
+                  action={'/magazine/search'}
                />
                <ShareButton
                   icon={
@@ -207,68 +129,39 @@ export default function ProductDetail({ params }) {
                         </g>
                      </svg>
                   }
-                  title={productData.name}
+                  title={ARTICLE.title}
                   text={'Проект, основанный на музыке, эмоциях и приятных моментах | Long Live Vinyl'}
                />
             </StickyLine>
-            <div className={`content-wrapper ${styles.layout}`}>
-               <section className={`flex flex-col ${styles.galleryWrapper}`}>
-                  <div className={styles.imgContent}>
-                     <Image src={productData.img} alt="" width="1024" height="1024" />
-                  </div>
-               </section>
-               <section className={`flex flex-col ${styles.contentWrapper}`}>
-                  <div className={`flex flex-col ${styles.nameWrapper}`}>
-                     <h1 className="caption-32 title">{productData.name}</h1>
-                     {productData.author && (
-                        <Link className={`text-28 w-fit text-bold hover-underline ${styles.authorName}`} href={productData.author.url}>
-                           {productData.author.name}
-                        </Link>
-                     )}
-                  </div>
-                  <ul className={`flex flex-col ${styles.propList}`}>
-                     {productData?.props.map((item, index) => (
-                        <li className={`flex`} key={index}>
-                           <p className="text-20">{item.label}:</p>
-                           {item.url ? (
-                              <Link className="text-24 text-bold hover-underline" href={item.url}>
-                                 {item.value}
-                              </Link>
-                           ) : (
-                              <p className="text-24 text-bold">{item.value}</p>
-                           )}
-                        </li>
-                     ))}
-                     <li>{productData.markers && <h3 className="caption-32 text-red">{productData.markers}</h3>}</li>
-                  </ul>
-                  <div className={`flex flex-col ${styles.priceWrapper}`}>
-                     <p className={`text-32`}>23 000 $</p>
-                  </div>
-               </section>
-               {(productData.description || productData.tracklist) && (
-                  <section className={`flex flex-col ${styles.infoWrapper}`}>
-                     {productData.description && <p className={`text-20 ${styles.vinylDescription}`}>{productData.description}</p>}
-                     {productData.tracklist && (
-                        <div className={`flex flex-col ${styles.tracklistWrapper}`}>
-                           <h2 className="caption-32 text-red">Треклист</h2>
-                           <ul className={`flex ${styles.tracklist}`}>
-                              {productData.tracklist.map((item, index) => (
-                                 <li key={index}>
-                                    {item.url ? (
-                                       <Link className="text-24 text-bold hover-underline" href={item.url}>
-                                          {`${item.side && item.side + '. '}${item.name} (${item.duration})`}
-                                       </Link>
-                                    ) : (
-                                       <p className="text-24 text-bold">{`${item.side && item.side + '. '}${item.name} (${item.duration})`}</p>
-                                    )}
-                                 </li>
-                              ))}
-                           </ul>
-                        </div>
-                     )}
-                  </section>
-               )}
-            </div>
+            <section className={`content-wrapper section-banner ${styles.preview}`}>
+               <Image src={ARTICLE.image} width="1500" height="1500" alt="" className={styles.authorImage} />
+            </section>
+            <section className={`article-wrapper flex flex-col article-section`}>
+               <h1 className={`caption-48 article-caption`}>{ARTICLE.title}</h1>
+               {ARTICLE.article?.map((block, index) => {
+                  let captionStyle = 'caption-32 article-caption';
+
+                  if (block.type === 'article-end') captionStyle = 'caption-24 text-center';
+
+                  return (
+                     <div key={index} className={`flex flex-col article-block`}>
+                        {block.caption && <h2 className={captionStyle}>{parse(block.caption)}</h2>}
+                        {block.postCaption && <h2 className={`text-24 article-text`}>{parse(block.postCaption)}</h2>}
+                        {block.content?.map((content, index) => {
+                           if (content.type === 'text')
+                              return (
+                                 <p key={index} className={`text-24 article-text`}>
+                                    {parse(content.value)}
+                                 </p>
+                              );
+
+                           if (content.type === 'image')
+                              return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
+                        })}
+                     </div>
+                  );
+               })}
+            </section>
          </div>
       </>
    );

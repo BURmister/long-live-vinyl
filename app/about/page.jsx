@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import parse from 'html-react-parser';
+
 import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 
 import styles from './styles.module.scss';
@@ -199,30 +201,30 @@ export default function About() {
                className={styles.bannerImage}
             />
          </div>
-         <section className={`content-wrapper flex flex-col ${styles.content}`}>
+         <section className={`article-wrapper flex flex-col article-section`}>
             {ABOUT?.map((item, index) => (
-               <div key={index} className={`flex flex-col ${styles.block}`}>
-                  <span className={`flex ${styles.blockCaption} ${styles.captionContent}`}>
+               <div key={index} className={`flex flex-col article-block`}>
+                  <span className={`flex article-caption ${styles.captionContent}`}>
                      <h2 className={`caption-32 text-red`}>{item.name}</h2>
                   </span>
                   {item.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
-                           <p key={index} className={`text-24 ${styles.blockText}`}>
-                              {content.value}
+                           <p key={index} className={`text-24 article-text`}>
+                              {parse(content.value)}
                            </p>
                         );
 
                      if (content.type === 'image')
-                        return <Image key={index} className={`${styles.blockImage}`} src={content.value} width="1500" height="1500" alt="" />;
+                        return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
                   })}
                </div>
             ))}
          </section>
-         <section className={`content-wrapper flex flex-col ${styles.content}`}>
+         <section className={`article-wrapper flex flex-col article-section`}>
             <h2 className={`caption-32 text-red`}>История</h2>
             {HISTORY?.map((item, index) => (
-               <div key={index} className={`flex flex-col ${styles.block}`}>
+               <div key={index} className={`flex flex-col article-block`}>
                   <span className={`flex items-center ${styles.captionContent}`}>
                      <h3 className={`caption-24`}>{item.name}</h3>
                      {item.marker && (
@@ -249,13 +251,13 @@ export default function About() {
                   {item.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
-                           <p key={index} className={`text-24 ${styles.blockText}`}>
+                           <p key={index} className={`text-24 article-text`}>
                               {content.value}
                            </p>
                         );
 
                      if (content.type === 'image')
-                        return <Image key={index} className={`${styles.blockImage}`} src={content.value} width="1500" height="1500" alt="" />;
+                        return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
                   })}
                </div>
             ))}
