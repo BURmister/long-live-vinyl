@@ -88,7 +88,7 @@ export default function Home() {
                <br /> Vinyl
             </h1>
             <div className={styles.home_desc}>
-               <Link className={`button-red caption-24 text-white`} href="/">
+               <Link className={`button-red caption-24 text-white`} href="/catalog">
                   Коллекции
                </Link>
                <p className={`text-20`}>

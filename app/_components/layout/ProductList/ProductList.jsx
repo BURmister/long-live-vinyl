@@ -5,12 +5,13 @@ import { useInView } from 'react-intersection-observer';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import { ProductCard } from '../../ui/ProductCard/ProductCard';
 
 import styles from './styles.module.scss';
 
-export const ProductList = ({ data }) => {
+export const ProductList = ({ data, sectionSlug }) => {
    // Render data
    const [productList, setProductList] = useState(data);
    // Pagination state
@@ -22,6 +23,12 @@ export const ProductList = ({ data }) => {
    const router = useRouter();
    const pathname = usePathname();
    const searchParams = useSearchParams();
+
+   // useEffect(() => {
+   //    if (sectionSlug) {
+   //       const data = useGetQuery('http://localhost:1337/category/slug')
+   //    }
+   // }, [])
 
    // Watch scroll to bottom element
    useEffect(() => {

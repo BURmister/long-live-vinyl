@@ -2,6 +2,7 @@ import Image from 'next/image';
 import parse from 'html-react-parser';
 
 import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
+import { useGetQuery } from '../_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -183,7 +184,10 @@ const HISTORY = [
    },
 ];
 
-export default function About() {
+export default async function About() {
+   const data = await useGetQuery('http://localhost:1337/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264');
+   const HISTORY_DATA = data.data;
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>
          <div className="content-wrapper section-banner">
@@ -223,11 +227,11 @@ export default function About() {
          </section>
          <section className={`article-wrapper flex flex-col article-section`}>
             <h2 className={`caption-32 text-red`}>История</h2>
-            {HISTORY?.map((item, index) => (
+            {HISTORY_DATA?.map((item, index) => (
                <div key={index} className={`flex flex-col article-block`}>
                   <span className={`flex items-center ${styles.captionContent}`}>
-                     <h3 className={`caption-24`}>{item.name}</h3>
-                     {item.marker && (
+                     <h3 className={`caption-24`}>{item.attributes.title}</h3>
+                     {item.attributes.specialStep && (
                         <p className={`flex items-center text-24 text-red ${styles.marker}`}>
                            <svg
                               stroke="var(--red)"
@@ -244,11 +248,16 @@ export default function About() {
                                  strokeWidth="24"
                                  d="m268 112 144 144-144 144m124-144H100"></path>
                            </svg>
-                           {item.marker}
+                           {item.attributes.specialStep}
                         </p>
                      )}
                   </span>
-                  {item.content?.map((content, index) => {
+                  {item.attributes.description && (
+                     <p key={index} className={`text-24 article-text`}>
+                        {item.attributes.description}
+                     </p>
+                  )}
+                  {item.attributes.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
                            <p key={index} className={`text-24 article-text`}>

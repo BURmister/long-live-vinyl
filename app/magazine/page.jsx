@@ -5,6 +5,8 @@ import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 
+import { useGetQuery } from '@/app/_hooks/useAxios';
+
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -35,7 +37,9 @@ const SECTION_LIST = [
    },
 ];
 
-export default function Magazine() {
+export default async function Magazine() {
+   const SECTION_LIST = await useGetQuery('http://localhost:1337/api/magazine-sections/');
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>
          <div className="content-wrapper section-banner">
@@ -60,7 +64,7 @@ export default function Magazine() {
                action={'/magazine/search'}
             />
          </StickyLine>
-         <SectionList data={SECTION_LIST} />
+         <SectionList data={SECTION_LIST} slugPrefix={'/magazine/'} />
 
          <section className={`content-wrapper flex flex-col ${styles.galleryWrapper}`}>
             <h2 className={`caption-32 title`}>

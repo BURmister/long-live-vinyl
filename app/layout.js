@@ -1,6 +1,6 @@
 import { Header } from './_components/layout/header/Header';
 import { Footer } from './_components/layout/footer/Footer';
-import { ScrollUp } from './_components/ui/ScrollUp/ScrollUp';
+import { Providers } from './_providers/reduxProvider';
 
 import './globals.scss';
 
@@ -12,15 +12,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="en">
-         <body>
-            <Header />
-            <main className="flex flex-col">
-               {children}
-               {/* <ScrollUp /> */}
-            </main>
-            <Footer />
-         </body>
-      </html>
+      <Providers>
+         <html lang="en">
+            <body>
+               <Header />
+               <main className="flex flex-col">{children}</main>
+               <Footer />
+            </body>
+         </html>
+      </Providers>
    );
 }

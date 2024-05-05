@@ -26,6 +26,11 @@ module.exports = {
       // ],
       remotePatterns: [
          {
+            protocol: 'http',
+            hostname: 'localhost*',
+            pathname: '**',
+         },
+         {
             protocol: 'https',
             hostname: 'i0.wp.com',
             pathname: '**',

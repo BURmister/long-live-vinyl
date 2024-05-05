@@ -6,6 +6,7 @@ import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 
 import styles from './styles.module.scss';
+import { useGetQuery } from '../_hooks/useAxios';
 
 export const metadata = {
    title: 'Каталог виниловых пластинок в наличии интернет-магазина Long Live Vinyl | Long Live Vinyl',
@@ -191,7 +192,9 @@ const PRODUCT_LIST = [
    },
 ];
 
-export default function Catalog() {
+export default async function Catalog() {
+   const SECTION_LIST = await useGetQuery('http://localhost:1337/api/categories/');
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
          <div className="content-wrapper section-banner">

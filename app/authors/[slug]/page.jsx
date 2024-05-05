@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { ShareButton } from '@/app/_components/ui/ShareButton/ShareButton';
+
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -21,9 +24,13 @@ const AUTHOR = {
    authorPlace: '1',
 };
 
-export default function AuthorDetail({ params }) {
+export default async function AuthorDetail({ params }) {
+   const AUTHOR_FETCHED = await useGetQuery(`http://localhost:1337/api/author/${params.slug}`)
+   if (!AUTHOR_FETCHED) return notFound();
+   
+   const AUTHOR = AUTHOR_FETCHED.data;
+
    return (
-      <>
          <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
             <StickyLine>
                <BackButton />
@@ -56,22 +63,22 @@ export default function AuthorDetail({ params }) {
                         </g>
                      </svg>
                   }
-                  title={AUTHOR.name}
+                  title={AUTHOR.attributes.name}
                   text={'Проект, основанный на музыке, эмоциях и приятных моментах | Long Live Vinyl'}
                />
             </StickyLine>
             <section className={`content-wrapper section-banner ${styles.preview}`}>
-               <Image src={AUTHOR.img} width="1500" height="1500" alt="" className={styles.authorImage} />
-               <h1 className={`content-wrapper caption-64 title section-title text-white text-center ${styles.authorName}`}>Paramore</h1>
+               <Image src={'http://localhost:1337' + AUTHOR.attributes.image.data.attributes.url} width="1500" height="1500" alt="" className={styles.authorImage} />
+               <h1 className={`content-wrapper caption-64 title section-title text-white text-center ${styles.authorName}`}>{AUTHOR.attributes.name}</h1>
             </section>
             <section className={`content-wrapper flex flex-wrap items-baseline ${styles.statistic}`}>
                <span className={`flex items-baseline ${styles.authorPlace}`}>
-                  <p className={`text-48 italic ${AUTHOR.authorPlace === '1' && 'text-red'}`}>#{AUTHOR.authorPlace + '\u00A0'}</p>
+                  <p className={`text-48 italic ${AUTHOR.attributes.place === '1' && 'text-red'}`}>#{AUTHOR.attributes.place + '\u00A0'}</p>
                   <p className={`text-32`}>в нашем каталоге</p>
                </span>
                <span className={`flex items-center text-32 ${styles.authorSales}`}>
                   <p className={`text-32`}>
-                     {AUTHOR.vinylSales + '\u00A0'}
+                     {Number(AUTHOR.attributes.vinylSales).toLocaleString('ru-RU') + '\u00A0'}
                   </p>
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path
@@ -88,7 +95,7 @@ export default function AuthorDetail({ params }) {
                </span>
                <span className={`flex items-center text-32 ${styles.authorListenings}`}>
                   <p className={`text-32`}>
-                     {AUTHOR.authorListenings + '\u00A0'}
+                     {Number(AUTHOR.attributes.listenings).toLocaleString('ru-RU') + '\u00A0'}
                   </p>
                   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path
@@ -102,7 +109,12 @@ export default function AuthorDetail({ params }) {
             </section>
             <section className={`content-wrapper ${styles.info}`}>
                <div className={`flex flex-col ${styles.description}`}>
-                  {AUTHOR.description.map((item, index) => (
+                  {AUTHOR.attributes.detailText && (
+                     <p className={`text-24`}>
+                        {AUTHOR.attributes.detailText}
+                     </p>
+                  )}
+                  {AUTHOR.attributes?.description?.map((item, index) => (
                      <p key={index} className={`text-24`}>
                         {item}
                      </p>
@@ -110,6 +122,5 @@ export default function AuthorDetail({ params }) {
                </div>
             </section>
          </div>
-      </>
    );
 }
