@@ -10,20 +10,26 @@ export const ProductCard = ({ product }) => {
 
    return (
       <div className={styles.card}>
-         <Link href={`/product/${product.id}`}>
-            <Image src={product.img} className={styles.img} width={512} height={512} alt={product.name} />
+         <Link href={`/product/${product.slug}`}>
+            <Image
+               src={product.previewImage.url ? 'http://localhost:1337' + product.previewImage.url : product.img}
+               className={styles.img}
+               width={512}
+               height={512}
+               alt={product.name}
+            />
          </Link>
          <div className={styles.content}>
             <div className={styles.nameWrap}>
-               <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href={`/product/${product.id}`}>
+               <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href={`/product/${product.slug}`}>
                   {product.name}
                </Link>
                <Link className={`text-16 w-fit text-grey hover-red ${styles.name_author}`} href="/">
-                  {product.author}
+                  {product?.author?.name}
                </Link>
             </div>
             <div className={styles.catalogAction}>
-               <p className={`text-20 ${styles.price}`}>23 000 $</p>
+               <p className={`text-20 ${styles.price}`}>{Number(product.price).toLocaleString('ru-RU')} ₽</p>
                {/* <button className={`text-20 hover-underline ${styles.btn_buy}`} type="button" onClick={() => console.log('add to cart')}>
                   Купить
                </button> */}

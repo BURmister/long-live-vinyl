@@ -194,6 +194,7 @@ const PRODUCT_LIST = [
 
 export default async function Catalog() {
    const SECTION_LIST = await useGetQuery('http://localhost:1337/api/categories/');
+   const PRODUCT_RESULT = await useGetQuery('http://localhost:1337/api/products/?pagination[pageSize]=2');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
@@ -227,7 +228,7 @@ export default async function Catalog() {
             />
          </StickyLine>
          <SectionList data={SECTION_LIST} />
-         <ProductList data={PRODUCT_LIST} />
+         <ProductList data={PRODUCT_RESULT?.results} pagination={PRODUCT_RESULT?.pagination} fetchUrl={'products/'} />
       </div>
    );
 }
