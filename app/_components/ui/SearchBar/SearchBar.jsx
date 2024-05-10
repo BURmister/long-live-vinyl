@@ -13,11 +13,15 @@ export const SearchBar = ({ icon, placeholder, action = '/catalog/search' }) => 
 
    const onInput = (event) => {
       setSearch(event.target.value);
-      console.log(search);
+      // console.log(search);
+   };
+
+   const onSubmit = (event) => {
+      if (String(search).trim() === '') return event.preventDefault(); 
    };
 
    return (
-      <form className={`search-bar flex items-center`} action={action}>
+      <form className={`search-bar flex items-center`} action={action} onSubmit={(event) => onSubmit(event)}>
          <input className="text-24 input-normal" type="text" value={search} onChange={(event) => onInput(event)} placeholder={placeholder} name="q" />
          <button className="input-submit" type="submit">
             {icon}

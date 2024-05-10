@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { AuthorCardSpecial } from '../../ui/AuthorCard/AuthorCard';
+import { useGetQuery } from '@/app/_hooks/useAxios';
 import styles from './styles.module.scss';
 
 const BEST_AUTHORS = [
@@ -20,16 +21,19 @@ const BEST_AUTHORS = [
    },
 ];
 
-export const BestAuthors = () => {
+export const BestAuthors = async () => {
+   const BEST_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
+
    return (
       <section className={`content-wrapper flex flex-col ${styles.wrapper}`}>
          <h2 className={`caption-32 title`}>
             <span className={`text-highlight`}>Бестселлеры</span>
          </h2>
          <div className={`${styles.content}`}>
-            {BEST_AUTHORS.map((item, index) => (
+            {BEST_AUTHORS.results?.map((item, index) => (
                <Fragment key={index}>
-                  <AuthorCardSpecial authorName={item.name} authorImage={item.img} authorSales={item.sales} place={index + 1} />
+                  <AuthorCardSpecial author={item} />
                </Fragment>
             ))}
             <AuthorCardSpecial cardLinkAll={true} />

@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
 import { SectionList } from '@/app/_components/layout/SectionList/SectionList';
-import { ProductList } from '@/app/_components/layout/ProductList/ProductList';
+import { AllProductList } from '@/app/_components/layout/AllProductList/AllProductList';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
-import { useGetQuery } from '../_hooks/useAxios';
 
 export const metadata = {
    title: 'Каталог виниловых пластинок в наличии интернет-магазина Long Live Vinyl | Long Live Vinyl',
@@ -194,7 +194,7 @@ const PRODUCT_LIST = [
 
 export default async function Catalog() {
    const SECTION_LIST = await useGetQuery('http://localhost:1337/api/categories/');
-   const PRODUCT_RESULT = await useGetQuery('http://localhost:1337/api/products/?pagination[pageSize]=2');
+   const PRODUCT_RESULT = await useGetQuery('http://localhost:1337/api/products/?pagination[pageSize]=5');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
@@ -228,7 +228,7 @@ export default async function Catalog() {
             />
          </StickyLine>
          <SectionList data={SECTION_LIST} />
-         <ProductList data={PRODUCT_RESULT?.results} pagination={PRODUCT_RESULT?.pagination} fetchUrl={'products/'} />
+         <AllProductList data={PRODUCT_RESULT?.results} pagination={PRODUCT_RESULT?.pagination} fetchUrl={'products/'} />
       </div>
    );
 }

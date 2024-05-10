@@ -1,4 +1,7 @@
+import { notFound } from 'next/navigation';
 import { SectionArticles } from '../SectionArticles';
+import { useGetQuery } from '@/app/_hooks/useAxios';
+
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -129,11 +132,14 @@ const ARTICLE_LIST = [
    },
 ];
 
-export default function MagazineSection({ params }) {
+export default async function MagazineSection({ params }) {
+   const SECTION_DATA = await useGetQuery('http://localhost:1337/api/magazine-section/' + params.slug);
+   if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
-         <h1 className="content-wrapper caption-32 title">{params.slug}</h1>
-         <SectionArticles data={ARTICLE_LIST} />
+         <h1 className="content-wrapper caption-32 title">{SECTION_DATA.data?.attributes?.name}</h1>
+         <SectionArticles sectionSlug={params.slug} />
       </div>
    );
 }

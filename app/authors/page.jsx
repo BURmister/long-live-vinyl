@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { AuthorCardSpecial } from '@/app/_components/ui/AuthorCard/AuthorCard';
-import { SeoBlock } from '../_components/layout/SeoBlock/SeoBlock';
+import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -11,27 +12,6 @@ export const metadata = {
    title: 'Исполнители Long Live Vinyl',
    description: 'Музыкальные исполнители, группы, авторы, кумиры и легенды | Long Live Vinyl',
 };
-
-const BEST_AUTHORS = [
-   {
-      name: 'The Beatles',
-      sales: '98 956',
-      link: '/authors/paramore',
-      img: 'https://ospioresdiscosdomundo.files.wordpress.com/2019/02/maxresdefault-1.jpg?w=840',
-   },
-   {
-      name: 'Nirvana',
-      sales: '82 769',
-      link: '/authors/paramore',
-      img: 'https://static.wikia.nocookie.net/nirvana/images/6/6e/Nirvana.jpg/revision/latest?cb=20191009094152',
-   },
-   {
-      name: 'Linkin Park',
-      sales: '64 023',
-      link: '/authors/paramore',
-      img: 'https://lostmediawiki.com/w/images/f/f4/LinkinPark.jpg',
-   },
-];
 
 const TREND_AUTHORS = [
    {
@@ -54,7 +34,13 @@ const TREND_AUTHORS = [
    },
 ];
 
-export default function Authors() {
+export default async function Authors() {
+   const BEST_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
+
+   const TREND_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=listenings:desc&pagination[pageSize]=3');
+   if (!TREND_AUTHORS || !TREND_AUTHORS.results) return;
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
          <div className="content-wrapper section-banner">
@@ -94,16 +80,9 @@ export default function Authors() {
                Наши <span className="text-red">Бестселлеры</span>
             </h2>
             <div className={`${styles.bestsellers}`}>
-               {BEST_AUTHORS.map((item, index) => (
+               {BEST_AUTHORS.results.map((item, index) => (
                   <div className={`${index + 1 === 1 && styles.bestsellerFirst}`} key={index}>
-                     <AuthorCardSpecial
-                        link={item.link}
-                        authorName={item.name}
-                        authorImage={item.img}
-                        authorSales={item.sales}
-                        place={index + 1}
-                        largeCard={index + 1 === 1 && true}
-                     />
+                     <AuthorCardSpecial author={item} largeCard={index + 1 === 1 && true} />
                   </div>
                ))}
             </div>
@@ -114,18 +93,14 @@ export default function Authors() {
                Сейчас в <span className="text-red">Тренде</span>
             </h2>
             <div className={`${styles.trends}`}>
-               {TREND_AUTHORS.map((item, index) => (
-                  <div className={`${index + 1 === 1 && styles.bestsellerFirst}`} key={index}>
-                     <AuthorCardSpecial
-                        link={item.link}
-                        authorName={item.name}
-                        authorImage={item.img}
-                        auhtorListening={item.sales}
-                        place={index + 1}
-                        largeCard={index + 1 === 1 && true}
-                     />
-                  </div>
-               ))}
+               {TREND_AUTHORS.results.map((item, index) => {
+                  item.place = index + 1;
+                  return (
+                     <div className={`${index + 1 === 1 && styles.bestsellerFirst}`} key={index}>
+                        <AuthorCardSpecial author={item} showListenings={true} largeCard={index + 1 === 1 && true} />
+                     </div>
+                  );
+               })}
             </div>
          </section>
 

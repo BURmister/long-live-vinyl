@@ -39,7 +39,8 @@
          gap: calc(var(--inside-section-gap) * .5);
 
          .gallerySection {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: calc(var(--inside-section-gap) * .5);
 
             .galleryImage {

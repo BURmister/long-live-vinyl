@@ -1,9 +1,11 @@
 import Link from 'next/link';
 
-import { Sale } from './_components/layout/Sale/Sale';
-import { ProductSlider } from './_components/layout/ProductSlider/ProductSlider';
-import { BestAuthors } from './_components/layout/BestAuthors/BestAuthors';
+import { Sale } from '@/app/_components/layout/Sale/Sale';
+import { ProductSlider } from '@/app/_components/layout/ProductSlider/ProductSlider';
+import { BestAuthors } from '@/app/_components/layout/BestAuthors/BestAuthors';
 import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
+
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -79,7 +81,11 @@ const WEEK_LIST = [
    },
 ];
 
-export default function Home() {
+export default async function Home() {
+   const NEW_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[new]=true&pagination[pageCount]=8');
+   const MONTH_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
+   const RARE_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[rare]=true&pagination[pageCount]=8');
+
    return (
       <div className={`${styles.home_page}`}>
          <section className={`content-wrapper ${styles.home}`}>
@@ -98,10 +104,10 @@ export default function Home() {
             </div>
          </section>
          <Sale />
-         <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_LIST} />
-         <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={WEEK_LIST} />
+         <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_VINYL.results} />
+         <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={MONTH_VINYL.results} />
          <BestAuthors />
-         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={WEEK_LIST} />
+         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={RARE_VINYL.results} />
          {/* <p className="caption-32 text-center">Новости</p> */}
          <SeoBlock
             text={[

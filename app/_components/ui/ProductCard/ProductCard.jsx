@@ -8,11 +8,12 @@ import styles from './styles.module.scss';
 export const ProductCard = ({ product }) => {
    if (!product) return;
 
+   console.log(product?.author);
    return (
       <div className={styles.card}>
          <Link href={`/product/${product.slug}`}>
             <Image
-               src={product.previewImage.url ? 'http://localhost:1337' + product.previewImage.url : product.img}
+               src={(product.previewImage && product.previewImage.url) ? 'http://localhost:1337' + product.previewImage.url : product.img}
                className={styles.img}
                width={512}
                height={512}
@@ -24,7 +25,7 @@ export const ProductCard = ({ product }) => {
                <Link className={`caption-18 w-fit hover-red text-black ${styles.name}`} href={`/product/${product.slug}`}>
                   {product.name}
                </Link>
-               <Link className={`text-16 w-fit text-grey hover-red ${styles.name_author}`} href="/">
+               <Link className={`text-16 w-fit text-grey hover-red ${styles.name_author}`} href={`/authors/${product?.author?.slug}`}>
                   {product?.author?.name}
                </Link>
             </div>

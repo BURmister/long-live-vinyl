@@ -10,18 +10,24 @@ export const ArticleCard = ({ article }) => {
 
    return (
       <div className={styles.card}>
-         <Link href={`/article/${article.id}`}>
-            <Image src={article.img} className={styles.img} width={512} height={512} alt={article.title} />
+         <Link href={`/article/${article.slug}`}>
+            <Image
+               src={article.previewImage && article.previewImage.url ? 'http://localhost:1337' + article.previewImage.url : article.img}
+               className={styles.img}
+               width={512}
+               height={512}
+               alt={article.name}
+            />
          </Link>
          <div className={styles.content}>
             <div className={`flex flex-col ${styles.preview}`}>
                <Link className={`caption-24 text-normal w-fit hover-red text-black ${styles.title}`} href={`/article/${article.id}`}>
-                  {article.title}
+                  {article.name}
                </Link>
-               <p className={`text-16 w-fit text-grey ${styles.text}`}>{article.text}</p>
+               <p className={`text-16 w-fit text-grey ${styles.text}`}>{article.previewText}</p>
             </div>
             <div className={styles.action}>
-               <Link className={`text-20 w-fit hover-underline text-black`} href={`/article/${article.id}`}>
+               <Link className={`text-20 w-fit hover-underline text-black`} href={`/article/${article.slug}`}>
                   Читать
                </Link>
             </div>

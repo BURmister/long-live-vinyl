@@ -53,7 +53,7 @@
    // ui elements size
    --card-max-width: 340px;
    --card-slide-max-width: 340px; // maybe better 340
-   --card-slide-max-height: 404.8px; // maybe better 408
+   --card-slide-max-height: 426.4px; // maybe better 408
    --square-button-size: 64px;
    --square-button-icon-size: 48px;
 
@@ -65,13 +65,13 @@
    @media (max-width: 1439px) {
       --layout-gap: 48px;
       --card-slide-max-width: 304px;
-      --card-slide-max-height: 368.8px;
+      --card-slide-max-height: 390.4px;
    }
 
    // --large-tablet: 1279px;
    @media (max-width: 1279px) {
       --section-gap: 24px;
-      --card-slide-max-height: 372px;
+      --card-slide-max-height: 391.2px;
       --inside-section-gap: 16px;
    }
 
@@ -79,7 +79,7 @@
    @media (max-width: 1023px) {
       --layout-gap: 32px;
       --card-slide-max-width: 264px;
-      --card-slide-max-height: 332px;
+      --card-slide-max-height: 349.6px;
    }
 
    // --small-tablet: 719px;
@@ -87,7 +87,7 @@
       --section-gap: 16px;
       --inside-block-padding: 8px;
       --card-slide-max-width: 264px;
-      --card-slide-max-height: 340.8px;
+      --card-slide-max-height: 357.6px;
       --square-button-size: 48px;
       --square-button-icon-size: 32px;
    }
@@ -98,7 +98,7 @@
       --inside-article-gap: 8px;
       --article-caption-margin: 8px;
       --card-slide-max-width: 184px;
-      --card-slide-max-height: 277.6px;
+      --card-slide-max-height: 294.4px;
    }
 
    font-family: "Montserrat",

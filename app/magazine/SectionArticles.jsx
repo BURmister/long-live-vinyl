@@ -1,11 +1,80 @@
 'use client';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
+import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
 import { ArticleList } from '../_components/layout/ArticleList/ArticleList';
+import { EmptySearch, EmptySection } from '../_components/layout/EmptySection/EmptySection';
+import { WordLoading } from '../_components/ui/Loaders/WordLoading';
 
-export const SectionArticles = ({ data }) => {
+const ITEMS_ON_PAGE = 5;
+const ARTICLES_API_PATH = 'magazine-articles/';
+
+export const SectionArticles = ({ sectionSlug, _q }) => {
+   if (sectionSlug) _q = null;
+   if (!sectionSlug && !_q) return console.warn('u need implement one of those props: "sectionSlug" || "_q"');
+
+   // Render data
+   const [articleList, setArticleList] = useState([]);
+   // Sort state
+   const [sort, setSort] = useState();
+   // Filter state
+   const [filter, setFilter] = useState();
+   // Pagination state
+   const [pagination, setPagination] = useState(null);
+   const currentPage = useRef(0);
+   // Infinite scroll
+   const { ref, inView } = useInView();
+
+   // Work with url string && paste new pagination param
+   // TODO: Фича клевая, но нужно проработать момент, когда пользак заходит на страницу уже с параметром не равным 1
+   // const router = useRouter();
+   // const pathname = usePathname();
+   // const searchParams = useSearchParams();
+
+   // fetch data
+   const loading = useRef(false);
+   const fetchData = async () => {
+      if (loading.current) return;
+
+      loading.current = true;
+      const data = await useGetQuery(
+         'http://localhost:1337/api/' +
+            ARTICLES_API_PATH +
+            `?${sectionSlug ? 'filters[magazineSections][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${
+               currentPage.current + 1
+            }&pagination[pageSize]=${ITEMS_ON_PAGE}`,
+      );
+
+      if (!data || !data.results || !data.pagination || data.results?.length === 0) return setArticleList(null);
+      setArticleList((prev) => [...prev, ...data.results]);
+      setPagination(data.pagination);
+      currentPage.current += 1;
+
+      loading.current = false;
+   };
+
+   // First component render
+   const firstComponentRender = useRef(true);
+   // Watch scroll to bottom element
+   useEffect(() => {
+      if (firstComponentRender.current) {
+         fetchData();
+         firstComponentRender.current = false;
+      }
+      if (inView) fetchData();
+
+      // Function to change || remove url param
+      // TODO: Фича клевая, но нужно проработать момент, когда пользак заходит на страницу уже с параметром не равным 1
+      // useUpdateQueryParam({ router, pathname, searchParams }, { name: 'page', value: currentPage.current, condition: 1 });
+   }, [inView]);
+
    return (
       <>
          <StickyLine>
@@ -23,7 +92,17 @@ export const SectionArticles = ({ data }) => {
                action={'/magazine/search'}
             />
          </StickyLine>
-         <ArticleList data={data} />
+         {!articleList ? (
+            !_q ? (
+               <EmptySection title="Уже работаем над новыми статьями =)" />
+            ) : (
+               <EmptySearch title="Попробуйте: лучшая в мире статья про винил" />
+            )
+         ) : articleList.length > 0 && pagination ? (
+            <ArticleList articleList={articleList} pagination={pagination} currentPage={currentPage.current} loaderRef={ref} />
+         ) : (
+            <WordLoading />
+         )}
       </>
    );
 };

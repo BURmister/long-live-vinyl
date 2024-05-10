@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 import styles from './styles.module.scss';
 
-export const AuthorCardSpecial = ({ authorName, authorImage, authorSales, auhtorListening, place, link = '/', largeCard = false, cardLinkAll = false }) => {
+export const AuthorCardSpecial = ({ author, showListenings = false, largeCard = false, cardLinkAll = false }) => {
    if (cardLinkAll)
       return (
-         <Link className={`${styles.linkAll} ${styles.card}`} href="/">
+         <Link className={`${styles.linkAll} ${styles.card}`} href="/authors/">
             <svg
                stroke="var(--red)"
                fill="var(--red)"
@@ -20,15 +20,19 @@ export const AuthorCardSpecial = ({ authorName, authorImage, authorSales, auhtor
          </Link>
       );
 
+   if (!author) return console.warn('Missed required prop "author"');
+
    return (
-      <Link className={`flex background-black ${styles.author} ${styles.card} ${largeCard && styles.largeCard}`} href={link}>
-         <Image src={authorImage} className={styles.img} width={512} height={512} alt={authorName} />
+      <Link className={`flex background-black ${styles.author} ${styles.card} ${largeCard && styles.largeCard}`} href={'/authors/' + author.slug}>
+         <Image src={'http://localhost:1337' + author.image.url} className={styles.img} width={512} height={512} alt={author.name} />
          <span className={styles.overlay}></span>
          <span className={`flex flex-col ${styles.authorDesc}`}>
-            <p className={`caption-32`}>{authorName}</p>
+            <p className={`caption-32`}>{author.name}</p>
             <p className={`caption-24 flex items-center`}>
-               {authorSales ? authorSales + '\u00A0' : auhtorListening + '\u00A0'}
-               {authorSales ? (
+               {!showListenings
+                  ? Number(author.vinylSales).toLocaleString('ru-RU') + '\u00A0'
+                  : Number(author.listenings).toLocaleString('ru-RU') + '\u00A0'}
+               {!showListenings ? (
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                      <path
                         d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
@@ -53,7 +57,7 @@ export const AuthorCardSpecial = ({ authorName, authorImage, authorSales, auhtor
                )}
             </p>
          </span>
-         <p className={`text-88 italic ${String(place) === '1' && 'text-red'} ${styles.authorPlace}`}>{place}</p>
+         <p className={`text-88 italic ${String(author.place) === '1' && 'text-red'} ${styles.authorPlace}`}>{author.place}</p>
       </Link>
    );
 };

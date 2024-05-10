@@ -11,166 +11,6 @@ import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
-const PRODUCT = {
-   id: '_1405892',
-   name: 'PARAMORE — PARAMORE (2LP, COLOURED VINYL)',
-   author: {
-      name: 'Paramore',
-      url: '/authors/paramore',
-   },
-   img: 'https://i1.sndcdn.com/artworks-v9bhjNMkCDNi-0-t500x500.jpg',
-   props: [
-      // {
-      //    label: 'Исполнитель',
-      //    value: 'Paramore',
-      //    url: '/authors/paramore',
-      // },
-      {
-         label: 'Альбом',
-         value: 'Paramore',
-      },
-      {
-         label: 'Страна',
-         value: 'Holland',
-      },
-      {
-         label: 'Лейбл',
-         value: 'Fueled By Ramen',
-      },
-      {
-         label: 'Год выпуска/год издания',
-         value: '2013/2024',
-      },
-      {
-         label: 'Стиль',
-         value: 'Indie / Alternative',
-      },
-      {
-         label: 'Тип',
-         value: 'Переиздание',
-      },
-      {
-         label: 'Состояние пластинки/конверта',
-         value: 'SS/SS',
-      },
-      {
-         label: 'Размер диска',
-         value: '12"',
-      },
-      {
-         label: 'Штрихкод',
-         value: '0075678612251',
-      },
-   ],
-   markers: 'TANGERINE VINYL, LIMITED EDITION',
-   description:
-      'Paramore — американская рок-группа, образовавшаяся во Франклине, штат Теннесси, в 2004 году. В её состав входят Хейли Уильямс, Тейлор Йорк и Зак Фарро. Группа выпустила свой дебютный альбом All We Know Is Falling в 2005 году. Второй альбом Riot! вышел в 2007 году и впоследствии стал платиновым в США и Великобритании, а в Ирландии — золотым. Третий альбом Brand New Eyes вышел 29 сентября 2009 года, возглавил хит-парады многих стран мира, включая Австралию и Великобританию.',
-   tracklist: [
-      {
-         side: 'A1',
-         name: 'Fast In My Car',
-         duration: '3:42',
-         url: '',
-      },
-      {
-         side: 'A2',
-         name: 'Now',
-         duration: '4:07',
-         url: '',
-      },
-      {
-         side: 'A3',
-         name: 'Grow Up',
-         duration: '3:50',
-         url: '',
-      },
-      {
-         side: 'A4',
-         name: 'Daydreaming',
-         duration: '4:31',
-         url: '',
-      },
-      {
-         side: 'B1',
-         name: 'Interlude: Moving On',
-         duration: '1:30',
-         url: '',
-      },
-      {
-         side: 'B2',
-         name: "Ain't It Fun",
-         duration: '4:56',
-         url: '',
-      },
-      {
-         side: 'B3',
-         name: 'Part II',
-         duration: '4:41',
-         url: '',
-      },
-      {
-         side: 'B4',
-         name: 'Last Hope',
-         duration: '5:09',
-         url: '',
-      },
-      {
-         side: 'C1',
-         name: 'Still Into You',
-         duration: '3:36',
-         url: '',
-      },
-      {
-         side: 'C2',
-         name: 'Anklebiters',
-         duration: '2:17',
-         url: '',
-      },
-      {
-         side: 'C3',
-         name: 'Interlude: Holiday',
-         duration: '1:09',
-         url: '',
-      },
-      {
-         side: 'C4',
-         name: 'Proof',
-         duration: '3:15',
-         url: '',
-      },
-      {
-         side: 'C5',
-         name: 'Hate To See Your Heart Break',
-         duration: '5:09',
-         url: '',
-      },
-      {
-         side: 'D1',
-         name: '(One Of Those) Crazy Girls',
-         duration: '3:32',
-         url: '',
-      },
-      {
-         side: 'D2',
-         name: "Interlude: I'm Not Angry Anymore",
-         duration: '0:52',
-         url: '',
-      },
-      {
-         side: 'D3',
-         name: 'Be Alone',
-         duration: '3:40',
-         url: '',
-      },
-      {
-         side: 'D4',
-         name: 'Future',
-         duration: '7:52',
-         url: '',
-      },
-   ],
-};
-
 export default async function ProductDetail({ params }) {
    const PRODUCT_FETCHED = await useGetQuery(`http://localhost:1337/api/product/${params.slug}`);
    if (!PRODUCT_FETCHED) return notFound();
@@ -236,7 +76,7 @@ export default async function ProductDetail({ params }) {
                   )}
                </div>
                <ul className={`flex flex-col ${styles.propList}`}>
-                  {PRODUCT_DATA.attributes?.props?.map((item, index) => (
+                  {/*PRODUCT_DATA.attributes?.props?.map((item, index) => (
                      <li className={`flex`} key={index}>
                         <p className="text-20">{item.label}:</p>
                         {item.url ? (
@@ -247,8 +87,84 @@ export default async function ProductDetail({ params }) {
                            <p className="text-24 text-bold">{item.value}</p>
                         )}
                      </li>
-                  ))}
-                  <li>{PRODUCT_DATA.attributes.specialText && <h3 className="caption-32 text-red">{PRODUCT_DATA.attributes.specialText}</h3>}</li>
+                  ))*/}
+                  {/* знаю, выглядит ужасно */}
+                  {PRODUCT_DATA.attributes.album && (
+                     <li className={`flex`}>
+                        <p className="text-20">Альбом:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.album}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.country && (
+                     <li className={`flex`}>
+                        <p className="text-20">Страна:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.country}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.label && (
+                     <li className={`flex`}>
+                        <p className="text-20">Лейбл:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.label}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.yearIssue && PRODUCT_DATA.attributes.yearPublication && (
+                     <li className={`flex`}>
+                        <p className="text-20">Год выпуска/год издания:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.yearIssue + '/' + PRODUCT_DATA.attributes.yearPublication}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.style && (
+                     <li className={`flex`}>
+                        <p className="text-20">Стиль:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.style}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.vinylType && (
+                     <li className={`flex`}>
+                        <p className="text-20">Тип:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.vinylType}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.conditionVinyl && PRODUCT_DATA.attributes.conditionEnvelope && (
+                     <li className={`flex`}>
+                        <p className="text-20">Состояние пластинки/конверта:</p>
+                        <p className="text-24 text-bold">
+                           {PRODUCT_DATA.attributes.conditionVinyl + '/' + PRODUCT_DATA.attributes.conditionEnvelope}
+                        </p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.vinylSize && (
+                     <li className={`flex`}>
+                        <p className="text-20">Размер диска:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.vinylSize}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.barcode && (
+                     <li className={`flex`}>
+                        <p className="text-20">Штрихкод:</p>
+                        <p className="text-24 text-bold">{PRODUCT_DATA.attributes.barcode}</p>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.new && (
+                     <li>
+                        <h3 className="caption-32 text-red">Новинка</h3>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.bestseller && (
+                     <li>
+                        <h3 className="caption-32 text-red">Бестселлер</h3>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.rare && (
+                     <li>
+                        <h3 className="caption-32 text-red">Редкость</h3>
+                     </li>
+                  )}
+                  {PRODUCT_DATA.attributes.specialText && (
+                     <li>
+                        <h3 className="caption-32 text-red">{PRODUCT_DATA.attributes.specialText}</h3>
+                     </li>
+                  )}
                </ul>
                <div className={`flex flex-col ${styles.priceWrapper}`}>
                   <p className={`text-32`}>{Number(PRODUCT_DATA.attributes.price).toLocaleString('ru-RU')} ₽</p>

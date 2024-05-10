@@ -8,7 +8,7 @@ import { ProductCard } from '../../ui/ProductCard/ProductCard';
 import styles from './styles.module.scss';
 
 export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
-   if (!data) return;
+   if (!data || data?.length === 0) return;
 
    return (
       <section className={`flex flex-col ${styles.content}`}>
@@ -28,7 +28,7 @@ export const ProductSlider = ({ sliderCaption, highlightCaption, data }) => {
                   </SwiperSlide>
                ))}
                <SwiperSlide className={styles.slide}>
-                  <Link className={`hover-translation ${styles.linkAll}`} href="/">
+                  <Link className={`hover-translation ${styles.linkAll}`} href="/catalog/">
                      <svg
                         stroke="var(--red)"
                         fill="var(--red)"

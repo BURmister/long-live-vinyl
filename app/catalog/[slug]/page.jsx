@@ -1,5 +1,7 @@
-import { SectionProducts } from '../SectionProducts';
+import { notFound } from 'next/navigation';
 import { CountDown } from '@/app/_components/ui/CountDown/CountDown';
+import { useGetQuery } from '@/app/_hooks/useAxios';
+import { SectionProducts } from '../SectionProducts';
 import styles from './styles.module.scss';
 
 export const metadata = {
@@ -131,18 +133,21 @@ const PRODUCT_LIST = [
    },
 ];
 
-export default function CatalogSection({ params }) {
+export default async function CatalogSection({ params }) {
+   const SECTION_DATA = await useGetQuery('http://localhost:1337/api/category/' + params.slug);
+   if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
          {params.slug === 'sale' ? (
             <div className={`content-wrapper flex ${styles.captionWrapper}`}>
-               <h1 className="caption-32 title">{params.slug}</h1>
+               <h1 className="caption-32 title">{SECTION_DATA.data.attributes.name}</h1>
                <CountDown />
             </div>
          ) : (
-            <h1 className="content-wrapper caption-32 title">{params.slug}</h1>
+            <h1 className="content-wrapper caption-32 title">{SECTION_DATA.data.attributes.name}</h1>
          )}
-         <SectionProducts data={PRODUCT_LIST} />
+         <SectionProducts sectionSlug={params.slug} />
       </div>
    );
 }
