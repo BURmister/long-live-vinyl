@@ -106,7 +106,7 @@ const ARTICLE = {
 };
 
 export async function generateMetadata({ params }) {
-   const ARTICLE_FETCHED = await useGetQuery(`http://localhost:1337/api/magazine-article/${params.slug}`);
+   const ARTICLE_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/magazine-article/${params.slug}`);
    if (ARTICLE_FETCHED?.data) {
       return {
          title: `${ARTICLE_FETCHED.data.attributes.name}`,
@@ -119,13 +119,13 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ArticleDetail({ params }) {
-   const ARTICLE_FETCHED = await useGetQuery(`http://localhost:1337/api/magazine-article/${params.slug}`);
+   const ARTICLE_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/magazine-article/${params.slug}`);
    if (!ARTICLE_FETCHED) return notFound();
    const ARTICLE_DATA = ARTICLE_FETCHED.data;
 
    let afterHeading = false;
 
-   let image = 'http://localhost:1337';
+   let image = 'http://87.242.117.166:1337';
    if (ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url) image += ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url;
    else image += ARTICLE_DATA.attributes?.previewImage?.data?.attributes?.url;
 

@@ -35,10 +35,10 @@ const TREND_AUTHORS = [
 ];
 
 export default async function Authors() {
-   const BEST_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   const BEST_AUTHORS = await useGetQuery('http://87.242.117.166:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
    if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
 
-   const TREND_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=listenings:desc&pagination[pageSize]=3');
+   const TREND_AUTHORS = await useGetQuery('http://87.242.117.166:1337/api/authors/?sort=listenings:desc&pagination[pageSize]=3');
    if (!TREND_AUTHORS || !TREND_AUTHORS.results) return;
 
    return (

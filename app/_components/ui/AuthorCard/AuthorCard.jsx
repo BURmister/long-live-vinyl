@@ -24,7 +24,7 @@ export const AuthorCardSpecial = ({ author, showListenings = false, largeCard = 
 
    return (
       <Link className={`flex background-black ${styles.author} ${styles.card} ${largeCard && styles.largeCard}`} href={'/authors/' + author.slug}>
-         <Image src={'http://localhost:1337' + author.image.url} className={styles.img} width={512} height={512} alt={author.name} />
+         <Image src={'http://87.242.117.166:1337' + author.image.url} className={styles.img} width={512} height={512} alt={author.name} />
          <span className={styles.overlay}></span>
          <span className={`flex flex-col ${styles.authorDesc}`}>
             <p className={`caption-32`}>{author.name}</p>

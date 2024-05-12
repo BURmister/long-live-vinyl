@@ -192,8 +192,8 @@ const PRODUCT_LIST = [
 ];
 
 export default async function Catalog() {
-   const SECTION_LIST = await useGetQuery('http://localhost:1337/api/categories/');
-   const PRODUCT_RESULT = await useGetQuery('http://localhost:1337/api/products/?pagination[pageSize]=5');
+   const SECTION_LIST = await useGetQuery('http://87.242.117.166:1337/api/categories/');
+   const PRODUCT_RESULT = await useGetQuery('http://87.242.117.166:1337/api/products/?pagination[pageSize]=5');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>

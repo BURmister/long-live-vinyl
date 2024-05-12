@@ -133,7 +133,7 @@ const ARTICLE_LIST = [
 ];
 
 export default async function MagazineSection({ params }) {
-   const SECTION_DATA = await useGetQuery('http://localhost:1337/api/magazine-section/' + params.slug);
+   const SECTION_DATA = await useGetQuery('http://87.242.117.166:1337/api/magazine-section/' + params.slug);
    if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
 
    return (

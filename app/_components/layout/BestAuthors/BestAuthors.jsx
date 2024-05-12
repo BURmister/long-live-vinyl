@@ -22,7 +22,7 @@ const BEST_AUTHORS = [
 ];
 
 export const BestAuthors = async () => {
-   const BEST_AUTHORS = await useGetQuery('http://localhost:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   const BEST_AUTHORS = await useGetQuery('http://87.242.117.166:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
    if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
 
    return (

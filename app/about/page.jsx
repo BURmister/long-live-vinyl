@@ -185,7 +185,9 @@ const HISTORY = [
 ];
 
 export default async function About() {
-   const data = await useGetQuery('http://localhost:1337/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264');
+   const data = await useGetQuery(
+      'http://87.242.117.166:1337/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264',
+   );
    const HISTORY_DATA = data.data;
 
    return (

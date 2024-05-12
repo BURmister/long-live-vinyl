@@ -24,7 +24,7 @@ const AUTHOR = {
 };
 
 export default async function AuthorDetail({ params }) {
-   const AUTHOR_FETCHED = await useGetQuery(`http://localhost:1337/api/author/${params.slug}`);
+   const AUTHOR_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/author/${params.slug}`);
    if (!AUTHOR_FETCHED) return notFound();
 
    const AUTHOR = AUTHOR_FETCHED.data;
@@ -69,7 +69,7 @@ export default async function AuthorDetail({ params }) {
          </StickyLine>
          <section className={`content-wrapper section-banner ${styles.preview}`}>
             <Image
-               src={'http://localhost:1337' + AUTHOR.attributes.image.data.attributes.url}
+               src={'http://87.242.117.166:1337' + AUTHOR.attributes.image.data.attributes.url}
                width="1500"
                height="1500"
                alt=""

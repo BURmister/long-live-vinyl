@@ -82,9 +82,9 @@ const WEEK_LIST = [
 ];
 
 export default async function Home() {
-   const NEW_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[new]=true&pagination[pageCount]=8');
-   const MONTH_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
-   const RARE_VINYL = await useGetQuery('http://localhost:1337/api/products/?filters[rare]=true&pagination[pageCount]=8');
+   const NEW_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[new]=true&pagination[pageCount]=8');
+   const MONTH_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
+   const RARE_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[rare]=true&pagination[pageCount]=8');
 
    return (
       <div className={`${styles.home_page}`}>

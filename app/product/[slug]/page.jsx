@@ -12,7 +12,7 @@ import { useGetQuery } from '@/app/_hooks/useAxios';
 import styles from './styles.module.scss';
 
 export async function generateMetadata({ params }) {
-   const PRODUCT_FETCHED = await useGetQuery(`http://localhost:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
    if (PRODUCT_FETCHED?.data) {
       return {
          title: `Виниловая пластинка альбома "${PRODUCT_FETCHED.data.attributes.name}"`,
@@ -25,12 +25,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProductDetail({ params }) {
-   const PRODUCT_FETCHED = await useGetQuery(`http://localhost:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
    if (!PRODUCT_FETCHED) return notFound();
 
    const PRODUCT_DATA = PRODUCT_FETCHED.data;
 
-   let image = 'http://localhost:1337';
+   let image = 'http://87.242.117.166:1337';
    if (PRODUCT_DATA.attributes?.detailImage?.data?.attributes?.url) image += PRODUCT_DATA.attributes?.detailImage?.data?.attributes?.url;
    else image += PRODUCT_DATA.attributes?.previewImage?.data?.attributes?.url;
 

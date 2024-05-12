@@ -11,7 +11,7 @@ export const ProductCard = ({ product }) => {
       <div className={styles.card}>
          <Link href={`/product/${product.slug}`}>
             <Image
-               src={product.previewImage && product.previewImage.url ? 'http://localhost:1337' + product.previewImage.url : product.img}
+               src={product.previewImage && product.previewImage.url ? 'http://87.242.117.166:1337' + product.previewImage.url : product.img}
                className={styles.img}
                width={512}
                height={512}
