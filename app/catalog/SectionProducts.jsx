@@ -35,7 +35,7 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
          sortOrder,
       });
 
-      console.log(sort);
+      // console.log(sort);
    };
    // Filter state
    const [filter, setFilter] = useState([]);
@@ -128,7 +128,7 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
                }
                placeholder={'Друг, винил возьмешь?'}
             />
-            <Window
+            {/* <Window
                rightStyle={true}
                title="Фильтр & Сортировка"
                buttonIcon={
@@ -160,64 +160,6 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
                   onHandleFilter={(name, value, state) => onHandleFilter(name, value, state)}
                   onHandleSort={(name, order) => onHandleSort(name, order)}
                />
-            </Window>
-            {/* <Window
-               title="Сортировка"
-               buttonIcon={
-                  <svg stroke="var(--black)" fill="var(--black)" strokeWidth="0" viewBox="0 0 256 256" height="48px" width="48px">
-                     <path d="M209.15,60.17l-80-24A4,4,0,0,0,124,40V158.75A44,44,0,1,0,132,184V93.38l74.85,22.45A4,4,0,0,0,212,112V64A4,4,0,0,0,209.15,60.17ZM88,220a36,36,0,1,1,36-36A36,36,0,0,1,88,220ZM204,106.62,132,85V45.38L204,67Z"></path>
-                  </svg>
-               }>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
             </Window> */}
          </StickyLine>
          {!productList ? (
