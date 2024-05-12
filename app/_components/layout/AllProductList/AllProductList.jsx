@@ -3,8 +3,8 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
+// import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+// import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
 import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import { ProductCard } from '../../ui/ProductCard/ProductCard';
