@@ -5,9 +5,8 @@ import { SectionProducts } from '../SectionProducts';
 import styles from './styles.module.scss';
 
 export const metadata = {
-   title: 'Каталог виниловых пластинок в наличии интернет-магазина Long Live Vinyl | Long Live Vinyl',
-   description:
-      'Всегда более лучшие LP в наличии. Ежедневные поступления. Строгая оценка качества. Удобный поиск по исполнителям и стилю. Доставка по Санкт-Петербургу и всей России.',
+   title: 'Каталог виниловых пластинок Long Live Vinyl ',
+   description: 'Всегда лучшие LP в наличии. Ежедневные поступления. Строгая оценка качества. Удобный поиск по исполнителям и стилю.',
 };
 
 const PRODUCT_LIST = [

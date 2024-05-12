@@ -103,11 +103,11 @@ export default async function Home() {
                </p>
             </div>
          </section>
-         <Sale />
-         <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_VINYL.results} />
-         <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={MONTH_VINYL.results} />
+         {/* <Sale /> */}
+         <ProductSlider highlightCaption="Новые" sliderCaption="открытия" data={NEW_VINYL?.results} />
+         <ProductSlider highlightCaption="Винил" sliderCaption="месяца" data={MONTH_VINYL?.results} />
          <BestAuthors />
-         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={RARE_VINYL.results} />
+         <ProductSlider highlightCaption="Редкий" sliderCaption="винил" data={RARE_VINYL?.results} />
          {/* <p className="caption-32 text-center">Новости</p> */}
          <SeoBlock
             text={[

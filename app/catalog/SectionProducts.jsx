@@ -1,9 +1,9 @@
 'use client';
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
+// import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+// import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
 import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import { ProductList } from '@/app/_components/layout/ProductList/ProductList';
@@ -13,8 +13,9 @@ import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
 import { Window } from '@/app/_components/ui/Window/Window';
 import { WordLoading } from '@/app/_components/ui/Loaders/WordLoading';
+import { FilterBlock } from '../_components/layout/FilterBlock/FilterBlock';
 
-const ITEMS_ON_PAGE = 2;
+const ITEMS_ON_PAGE = 5;
 const PRODUCTS_API_PATH = 'products/';
 
 export const SectionProducts = ({ sectionSlug, _q }) => {
@@ -25,8 +26,35 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
    const [productList, setProductList] = useState([]);
    // Sort state
    const [sort, setSort] = useState();
+   const onHandleSort = (sortName, sortOrder) => {
+      if (!sortName && !sortOrder) return;
+      if (sortName === 'default' || sortOrder === 'default') return setSort(null);
+
+      setSort({
+         sortName,
+         sortOrder,
+      });
+
+      console.log(sort);
+   };
    // Filter state
-   const [filter, setFilter] = useState();
+   const [filter, setFilter] = useState([]);
+   const [allFilterFields, setAllFilterFields] = useState([]);
+   const onHandleFilter = (filterName, filterValue, filterChecked) => {
+      // console.log({
+      //    filterName,
+      //    filterValue,
+      //    filterChecked,
+      // });
+
+      if (filterChecked) {
+         setFilter((prev) => [...prev, { filterName, filterValue }]);
+      } else {
+         setFilter((prev) => prev.filter((item) => item.filterName !== filterName && item.filterValue !== filterValue));
+      }
+
+      // setTimeout(console.log(filter), 250);
+   };
    // Pagination state
    const [pagination, setPagination] = useState(null);
    const currentPage = useRef(0);
@@ -56,6 +84,7 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
       if (!data || !data.results || !data.pagination || data.results?.length === 0) return setProductList(null);
       setProductList((prev) => [...prev, ...data.results]);
       setPagination(data.pagination);
+      if (data.filterFields) setAllFilterFields(data.filterFields);
       currentPage.current += 1;
 
       loading.current = false;
@@ -126,61 +155,11 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
                      </g>
                   </svg>
                }>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>сортировка | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
-               <div>фильтр | контент</div>
+               <FilterBlock
+                  filterFields={allFilterFields}
+                  onHandleFilter={(name, value, state) => onHandleFilter(name, value, state)}
+                  onHandleSort={(name, order) => onHandleSort(name, order)}
+               />
             </Window>
             {/* <Window
                title="Сортировка"

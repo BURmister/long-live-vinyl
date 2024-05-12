@@ -1,0 +1,15 @@
+.wrapper {
+   gap: 48px;
+}
+
+.block {
+   gap: 16px;
+
+   .blockItem {
+      gap: 8px;
+
+      .valueList {
+         gap: 8px;
+      }
+   }
+}

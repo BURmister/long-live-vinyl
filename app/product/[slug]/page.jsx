@@ -11,6 +11,19 @@ import { useGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
+export async function generateMetadata({ params }) {
+   const PRODUCT_FETCHED = await useGetQuery(`http://localhost:1337/api/product/${params.slug}`);
+   if (PRODUCT_FETCHED?.data) {
+      return {
+         title: `Виниловая пластинка альбома "${PRODUCT_FETCHED.data.attributes.name}"`,
+         description: `Каталог винила не просто журнала Long Live Vinyl`,
+         openGraph: {
+            images: [PRODUCT_FETCHED.data.attributes?.previewImage?.data?.attributes?.url],
+         },
+      };
+   }
+}
+
 export default async function ProductDetail({ params }) {
    const PRODUCT_FETCHED = await useGetQuery(`http://localhost:1337/api/product/${params.slug}`);
    if (!PRODUCT_FETCHED) return notFound();

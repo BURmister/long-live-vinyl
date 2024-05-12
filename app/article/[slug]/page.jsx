@@ -1,5 +1,9 @@
 import Image from 'next/image';
 import parse from 'html-react-parser';
+import { useGetQuery } from '@/app/_hooks/useAxios';
+import { Fragment } from 'react';
+
+import { notFound } from 'next/navigation';
 
 import { BackButton } from '@/app/_components/ui/BackButton/BackButton';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
@@ -101,7 +105,30 @@ const ARTICLE = {
    ],
 };
 
-export default function ArticleDetail({ params }) {
+export async function generateMetadata({ params }) {
+   const ARTICLE_FETCHED = await useGetQuery(`http://localhost:1337/api/magazine-article/${params.slug}`);
+   if (ARTICLE_FETCHED?.data) {
+      return {
+         title: `${ARTICLE_FETCHED.data.attributes.name}`,
+         description: `Журнал о таинственном мире музыки Long Live Vinyl`,
+         openGraph: {
+            images: [ARTICLE_FETCHED.data.attributes?.previewImage?.data?.attributes?.url],
+         },
+      };
+   }
+}
+
+export default async function ArticleDetail({ params }) {
+   const ARTICLE_FETCHED = await useGetQuery(`http://localhost:1337/api/magazine-article/${params.slug}`);
+   if (!ARTICLE_FETCHED) return notFound();
+   const ARTICLE_DATA = ARTICLE_FETCHED.data;
+
+   let afterHeading = false;
+
+   let image = 'http://localhost:1337';
+   if (ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url) image += ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url;
+   else image += ARTICLE_DATA.attributes?.previewImage?.data?.attributes?.url;
+
    return (
       <>
          <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
@@ -134,33 +161,62 @@ export default function ArticleDetail({ params }) {
                />
             </StickyLine>
             <section className={`content-wrapper section-banner ${styles.preview}`}>
-               <Image src={ARTICLE.image} width="1500" height="1500" alt="" className={styles.authorImage} />
+               <Image src={image} width="1500" height="1500" alt="" className={styles.authorImage} />
             </section>
             <section className={`article-wrapper flex flex-col article-section`}>
-               <h1 className={`caption-48 article-caption`}>{ARTICLE.title}</h1>
-               {ARTICLE.article?.map((block, index) => {
-                  let captionStyle = 'caption-32 article-caption';
+               <h1 className={`caption-48 article-caption article-caption-main`}>{ARTICLE_DATA.attributes.name}</h1>
+               {ARTICLE_DATA.attributes.article &&
+                  ARTICLE_DATA.attributes.article?.map((item, index) => {
+                     if (item.type === 'heading' && item.level === 1) {
+                        afterHeading = true;
+                        return (
+                           <h2 key={index} className={`caption-32 article-caption`}>
+                              {item.children.map((child, childIndex) => (
+                                 <Fragment key={`${index}-${childIndex}`}>{child.text && parse(child.text)}</Fragment>
+                              ))}
+                           </h2>
+                        );
+                     }
 
-                  if (block.type === 'article-end') captionStyle = 'caption-24 text-center';
+                     if (item.type === 'paragraph') {
+                        let block = (
+                           <p key={index} className={`text-24 article-text ${afterHeading && 'article-text-afterheading'}`}>
+                              {item.children.map((child, childIndex) => (
+                                 <Fragment key={`${index}-${childIndex}`}>{child.text && parse(child.text)}</Fragment>
+                              ))}
+                           </p>
+                        );
 
-                  return (
-                     <div key={index} className={`flex flex-col article-block`}>
-                        {block.caption && <h2 className={captionStyle}>{parse(block.caption)}</h2>}
-                        {block.postCaption && <h2 className={`text-24 article-text`}>{parse(block.postCaption)}</h2>}
-                        {block.content?.map((content, index) => {
-                           if (content.type === 'text')
-                              return (
-                                 <p key={index} className={`text-24 article-text`}>
-                                    {parse(content.value)}
-                                 </p>
-                              );
+                        afterHeading = false;
+                        return block;
+                     }
 
-                           if (content.type === 'image')
-                              return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
-                        })}
-                     </div>
-                  );
-               })}
+                     if (item.type === 'image') {
+                        let block = (
+                           <Image
+                              key={index}
+                              className={`article-image ${afterHeading && 'article-image-afterheading'}`}
+                              src={item?.image?.url}
+                              width="1500"
+                              height="1500"
+                              alt=""
+                           />
+                        );
+
+                        afterHeading = false;
+                        return block;
+                     }
+
+                     if (item.type === 'heading' && item.level === 6) {
+                        return (
+                           <h2 key={index} className={`caption-24 text-center article-caption-end`}>
+                              {item.children.map((child, childIndex) => (
+                                 <Fragment key={`${index}-${childIndex}`}>{child.text && parse(child.text)}</Fragment>
+                              ))}
+                           </h2>
+                        );
+                     }
+                  })}
             </section>
          </div>
       </>

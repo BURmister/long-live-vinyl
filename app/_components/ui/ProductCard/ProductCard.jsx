@@ -7,13 +7,11 @@ import styles from './styles.module.scss';
 
 export const ProductCard = ({ product }) => {
    if (!product) return;
-
-   console.log(product?.author);
    return (
       <div className={styles.card}>
          <Link href={`/product/${product.slug}`}>
             <Image
-               src={(product.previewImage && product.previewImage.url) ? 'http://localhost:1337' + product.previewImage.url : product.img}
+               src={product.previewImage && product.previewImage.url ? 'http://localhost:1337' + product.previewImage.url : product.img}
                className={styles.img}
                width={512}
                height={512}
