@@ -1,7 +1,7 @@
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const fetchData = createAsyncThunk('history/fetchData', async (url) => useGetQuery(url));
+export const fetchData = createAsyncThunk('history/fetchData', async (url) => fetchGetQuery(url));
 
 const initialState = {
    data: [],

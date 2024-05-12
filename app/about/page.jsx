@@ -2,7 +2,7 @@ import Image from 'next/image';
 import parse from 'html-react-parser';
 
 import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
-import { useGetQuery } from '../_hooks/useAxios';
+import { fetchGetQuery } from '../_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -185,7 +185,7 @@ const HISTORY = [
 ];
 
 export default async function About() {
-   const data = await useGetQuery(
+   const data = await fetchGetQuery(
       'http://87.242.117.166:1337/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264',
    );
    const HISTORY_DATA = data.data;

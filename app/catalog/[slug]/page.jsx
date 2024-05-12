@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { CountDown } from '@/app/_components/ui/CountDown/CountDown';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 import { SectionProducts } from '../SectionProducts';
 import styles from './styles.module.scss';
 
@@ -133,7 +133,7 @@ const PRODUCT_LIST = [
 ];
 
 export default async function CatalogSection({ params }) {
-   const SECTION_DATA = await useGetQuery('http://87.242.117.166:1337/api/category/' + params.slug);
+   const SECTION_DATA = await fetchGetQuery('http://87.242.117.166:1337/api/category/' + params.slug);
    if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
 
    return (
@@ -146,7 +146,8 @@ export default async function CatalogSection({ params }) {
          ) : (
             <h1 className="content-wrapper caption-32 title">{SECTION_DATA.data.attributes.name}</h1>
          )}
-         <SectionProducts sectionSlug={params.slug} />
+
+         {params.slug && <SectionProducts sectionSlug={params.slug} />}
       </div>
    );
 }

@@ -5,7 +5,7 @@ import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -38,7 +38,7 @@ const SECTION_LIST = [
 ];
 
 export default async function Magazine() {
-   const SECTION_LIST = await useGetQuery('http://87.242.117.166:1337/api/magazine-sections/');
+   const SECTION_LIST = await fetchGetQuery('http://87.242.117.166:1337/api/magazine-sections/');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>

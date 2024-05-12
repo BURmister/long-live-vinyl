@@ -2,9 +2,9 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+// import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+// import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
@@ -18,7 +18,7 @@ const ARTICLES_API_PATH = 'magazine-articles/';
 
 export const SectionArticles = ({ sectionSlug, _q }) => {
    if (sectionSlug) _q = null;
-   if (!sectionSlug && !_q) return console.warn('u need implement one of those props: "sectionSlug" || "_q"');
+   // if (!sectionSlug && !_q) return console.warn('u need implement one of those props: "sectionSlug" || "_q"');
 
    // Render data
    const [articleList, setArticleList] = useState([]);
@@ -44,7 +44,7 @@ export const SectionArticles = ({ sectionSlug, _q }) => {
       if (loading.current) return;
 
       loading.current = true;
-      const data = await useGetQuery(
+      const data = await fetchGetQuery(
          'http://87.242.117.166:1337/api/' +
             ARTICLES_API_PATH +
             `?${sectionSlug ? 'filters[magazineSections][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${

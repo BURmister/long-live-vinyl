@@ -5,7 +5,7 @@ import { ProductSlider } from '@/app/_components/layout/ProductSlider/ProductSli
 import { BestAuthors } from '@/app/_components/layout/BestAuthors/BestAuthors';
 import { SeoBlock } from '@/app/_components/layout/SeoBlock/SeoBlock';
 
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -82,9 +82,9 @@ const WEEK_LIST = [
 ];
 
 export default async function Home() {
-   const NEW_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[new]=true&pagination[pageCount]=8');
-   const MONTH_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
-   const RARE_VINYL = await useGetQuery('http://87.242.117.166:1337/api/products/?filters[rare]=true&pagination[pageCount]=8');
+   const NEW_VINYL = await fetchGetQuery('http://87.242.117.166:1337/api/products/?filters[new]=true&pagination[pageCount]=8');
+   const MONTH_VINYL = await fetchGetQuery('http://87.242.117.166:1337/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
+   const RARE_VINYL = await fetchGetQuery('http://87.242.117.166:1337/api/products/?filters[rare]=true&pagination[pageCount]=8');
 
    return (
       <div className={`${styles.home_page}`}>

@@ -7,12 +7,12 @@ import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
 import { ShareButton } from '@/app/_components/ui/ShareButton/ShareButton';
 
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
 export async function generateMetadata({ params }) {
-   const PRODUCT_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await fetchGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
    if (PRODUCT_FETCHED?.data) {
       return {
          title: `Виниловая пластинка альбома "${PRODUCT_FETCHED.data.attributes.name}"`,
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProductDetail({ params }) {
-   const PRODUCT_FETCHED = await useGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await fetchGetQuery(`http://87.242.117.166:1337/api/product/${params.slug}`);
    if (!PRODUCT_FETCHED) return notFound();
 
    const PRODUCT_DATA = PRODUCT_FETCHED.data;

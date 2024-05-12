@@ -4,7 +4,7 @@ import { SectionList } from '@/app/_components/layout/SectionList/SectionList';
 import { AllProductList } from '@/app/_components/layout/AllProductList/AllProductList';
 import { StickyLine } from '@/app/_components/ui/StickyLine/StickyLine';
 import { SearchBar } from '@/app/_components/ui/SearchBar/SearchBar';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import styles from './styles.module.scss';
 
@@ -192,8 +192,8 @@ const PRODUCT_LIST = [
 ];
 
 export default async function Catalog() {
-   const SECTION_LIST = await useGetQuery('http://87.242.117.166:1337/api/categories/');
-   const PRODUCT_RESULT = await useGetQuery('http://87.242.117.166:1337/api/products/?pagination[pageSize]=5');
+   const SECTION_LIST = await fetchGetQuery('http://87.242.117.166:1337/api/categories/');
+   const PRODUCT_RESULT = await fetchGetQuery('http://87.242.117.166:1337/api/products/?pagination[pageSize]=5');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
@@ -227,7 +227,7 @@ export default async function Catalog() {
             />
          </StickyLine>
          <SectionList data={SECTION_LIST} />
-         <AllProductList data={PRODUCT_RESULT?.results} pagination={PRODUCT_RESULT?.pagination} fetchUrl={'products/'} />
+         {PRODUCT_RESULT?.results && <AllProductList data={PRODUCT_RESULT?.results} pagination={PRODUCT_RESULT?.pagination} fetchUrl={'products/'} />}
       </div>
    );
 }

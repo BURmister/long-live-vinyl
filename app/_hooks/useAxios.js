@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const useGetQuery = async (url) => {
+export const fetchGetQuery = async (url) => {
    if (!url) return;
 
    try {

@@ -5,14 +5,14 @@ import { useInView } from 'react-intersection-observer';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import { ProductCard } from '../../ui/ProductCard/ProductCard';
 
 import styles from './styles.module.scss';
 
 export const AllProductList = ({ data, pagination, fetchUrl }) => {
-   if (!data) return;
+   // if (!data) return;
 
    // Render data
    const [productList, setProductList] = useState(data);
@@ -29,7 +29,7 @@ export const AllProductList = ({ data, pagination, fetchUrl }) => {
 
    // fetch data
    const fetchData = async () => {
-      const data = await useGetQuery(
+      const data = await fetchGetQuery(
          `http://87.242.117.166:1337/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${pagination?.pageSize}`,
       );
 

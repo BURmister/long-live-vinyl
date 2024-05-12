@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 // import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 // import { useUpdateQueryParam } from '@/app/_hooks/useQueryParams';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 
 import { ProductList } from '@/app/_components/layout/ProductList/ProductList';
 import { EmptySection, EmptySearch } from '@/app/_components/layout/EmptySection/EmptySection';
@@ -20,7 +20,7 @@ const PRODUCTS_API_PATH = 'products/';
 
 export const SectionProducts = ({ sectionSlug, _q }) => {
    if (sectionSlug) _q = null;
-   if (!sectionSlug && !_q) return console.warn('u need implement one of those props: "sectionSlug" || "_q"');
+   // if (!sectionSlug && !_q) return console.warn('u need implement one of those props: "sectionSlug" || "_q"');
 
    // Render data
    const [productList, setProductList] = useState([]);
@@ -73,7 +73,7 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
       if (loading.current) return;
 
       loading.current = true;
-      const data = await useGetQuery(
+      const data = await fetchGetQuery(
          'http://87.242.117.166:1337/api/' +
             PRODUCTS_API_PATH +
             `?${sectionSlug ? 'filters[categories][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${

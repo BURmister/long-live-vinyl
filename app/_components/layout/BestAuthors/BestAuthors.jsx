@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { AuthorCardSpecial } from '../../ui/AuthorCard/AuthorCard';
-import { useGetQuery } from '@/app/_hooks/useAxios';
+import { fetchGetQuery } from '@/app/_hooks/useAxios';
 import styles from './styles.module.scss';
 
 const BEST_AUTHORS = [
@@ -22,7 +22,7 @@ const BEST_AUTHORS = [
 ];
 
 export const BestAuthors = async () => {
-   const BEST_AUTHORS = await useGetQuery('http://87.242.117.166:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   const BEST_AUTHORS = await fetchGetQuery('http://87.242.117.166:1337/api/authors/?sort=place:asc&pagination[pageSize]=3');
    if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
 
    return (
