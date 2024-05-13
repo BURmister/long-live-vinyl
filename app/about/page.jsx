@@ -207,31 +207,31 @@ export default async function About() {
                className={styles.bannerImage}
             />
          </div>
-         <section className={`article-wrapper flex flex-col article-section`}>
+         <section className={`article-wrapper flex flex-col article-section-nn`}>
             {ABOUT?.map((item, index) => (
-               <div key={index} className={`flex flex-col article-block`}>
-                  <span className={`flex article-caption ${styles.captionContent}`}>
+               <div key={index} className={`flex flex-col article-block-nn`}>
+                  <span className={`flex article-caption margin-unset ${styles.captionContent}`}>
                      <h2 className={`caption-32 text-red`}>{item.name}</h2>
                   </span>
                   {item.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
-                           <p key={index} className={`text-24 article-text`}>
+                           <p key={index} className={`text-24`}>
                               {parse(content.value)}
                            </p>
                         );
 
                      if (content.type === 'image')
-                        return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
+                        return <Image key={index} className={`article-image margin-unset`} src={content.value} width="1500" height="1500" alt="" />;
                   })}
                </div>
             ))}
          </section>
-         <section className={`article-wrapper flex flex-col article-section`}>
+         <section className={`article-wrapper flex flex-col article-section-nn`}>
             <h2 className={`caption-32 text-red`}>История</h2>
             {HISTORY_DATA?.map((item, index) => (
-               <div key={index} className={`flex flex-col article-block`}>
-                  <span className={`flex items-center ${styles.captionContent}`}>
+               <div key={index} className={`flex flex-col article-block-nn`}>
+                  <span className={`flex items-center article-caption margin-unset ${styles.captionContent}`}>
                      <h3 className={`caption-24`}>{item.attributes.title}</h3>
                      {item.attributes.specialStep && (
                         <p className={`flex items-center text-24 text-red ${styles.marker}`}>
@@ -255,20 +255,20 @@ export default async function About() {
                      )}
                   </span>
                   {item.attributes.description && (
-                     <p key={index} className={`text-24 article-text`}>
+                     <p key={index} className={`text-24 article-text margin-unset`}>
                         {item.attributes.description}
                      </p>
                   )}
                   {item.attributes.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
-                           <p key={index} className={`text-24 article-text`}>
+                           <p key={index} className={`text-24 article-text margin-unset`}>
                               {content.value}
                            </p>
                         );
 
                      if (content.type === 'image')
-                        return <Image key={index} className={`article-image`} src={content.value} width="1500" height="1500" alt="" />;
+                        return <Image key={index} className={`article-image margin-unset`} src={content.value} width="1500" height="1500" alt="" />;
                   })}
                </div>
             ))}

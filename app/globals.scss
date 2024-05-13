@@ -380,7 +380,7 @@ footer {
    }
 
    &-88 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 88px;
       font-weight: bold;
       line-height: 120%;
@@ -393,6 +393,7 @@ footer {
    }
 
    &-48 {
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 48px;
       font-weight: bold;
       line-height: 120%;
@@ -421,7 +422,7 @@ footer {
    }
 
    &-32 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 32px;
       font-weight: 500;
       line-height: 120%;
@@ -441,7 +442,7 @@ footer {
    }
 
    &-28 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 28px;
       font-weight: 500;
       line-height: 120%;
@@ -461,7 +462,7 @@ footer {
    }
 
    &-24 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 24px;
       font-weight: 400;
       line-height: 120%;
@@ -481,7 +482,7 @@ footer {
    }
 
    &-20 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 20px;
       font-weight: 400;
       line-height: 120%;
@@ -497,7 +498,7 @@ footer {
    }
 
    &-16 {
-      font-family: "Source Sans 3";
+      font-family: "Source Sans 3", "Montserrat", sans-serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 120%;
@@ -804,6 +805,7 @@ footer {
       display: block;
       caret-color: var(--red);
       border: var(--black-line);
+      border-radius: 0;
       background-color: transparent;
 
       @media (max-width: 719px) {
@@ -1004,6 +1006,14 @@ footer {
       // gap: var(--inside-article-gap);
    }
 
+   &-section-nn {
+      gap: var(--article-gap);
+   }
+
+   &-block-nn {
+      gap: var(--inside-article-gap);
+   }
+
    &-image {
       margin-top: var(--inside-article-gap);
       height: 424px;
@@ -1086,4 +1096,8 @@ footer {
          font-weight: 700;
       }
    }
+}
+
+.margin-unset {
+   margin: 0 !important;
 }
