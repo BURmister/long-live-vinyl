@@ -216,7 +216,7 @@ export default async function About() {
                   {item.content?.map((content, index) => {
                      if (content.type === 'text')
                         return (
-                           <p key={index} className={`text-24`}>
+                           <p key={index} className={`text-24 text-pretty`}>
                               {parse(content.value)}
                            </p>
                         );

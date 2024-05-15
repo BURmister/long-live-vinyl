@@ -97,7 +97,7 @@ export default async function Home() {
                <Link className={`button-red caption-24 text-white`} href="/catalog">
                   Коллекции
                </Link>
-               <p className={`text-20`}>
+               <p className={`text-20 text-pretty`}>
                   VMP существует для того, чтобы углубить связь с музыкой для всех. Мы - рассказчики, кураторы и сообщество, понимающие влияние,
                   которое может оказать великий альбом на человека. Мы твердо верим, что винил - лучший носитель для создания этих впечатлений.
                </p>
