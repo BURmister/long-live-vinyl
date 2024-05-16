@@ -26,6 +26,10 @@
          height: 0.8px;
 
          background-color: var(--black);
+
+         @media (min-width: 1920px) {
+            bottom: 0.4px;
+         }
       }
    }
 
