@@ -380,7 +380,7 @@ footer {
    }
 
    &-pretty {
-      text-wrap: pretty;
+      text-wrap: pretty !important;
    }
 
    &-88 {
@@ -1110,4 +1110,16 @@ footer {
 
 .margin-unset {
    margin: 0 !important;
+}
+
+.not-found_layout {
+   gap: 32px;
+
+   @media (max-width: 1280px) {
+      gap: 24px;
+   }
+
+   @media (max-width: 720px) {
+      gap: 16px;
+   }
 }
