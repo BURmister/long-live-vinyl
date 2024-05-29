@@ -22,7 +22,7 @@ export const Footer = () => {
             <p className="text-white text-16">© 2024 Long Live Vinyl, Inc. Graduation Project. All Rights Reserved.</p>
             <div className={`flex align-center ${styles.madeby}`}>
                <p className="block text-white text-16">Проект разработан: </p>
-               <Link className="block text-white text-16 hover-underline" href="github.com/BURmister">
+               <Link className="block text-white text-16 hover-underline" href="https://github.com/BURmister">
                   BURmister
                </Link>
             </div>

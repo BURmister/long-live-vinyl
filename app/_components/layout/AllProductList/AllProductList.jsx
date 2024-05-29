@@ -14,6 +14,7 @@ import styles from './styles.module.scss';
 export const AllProductList = ({ data, pagination, fetchUrl }) => {
    // if (!data) return;
 
+   console.log(pagination);
    // Render data
    const [productList, setProductList] = useState(data);
    // Pagination state
@@ -29,6 +30,7 @@ export const AllProductList = ({ data, pagination, fetchUrl }) => {
 
    // fetch data
    const fetchData = async () => {
+      console.log(currentPage.current, 'before');
       const data = await fetchGetQuery(
          `http://87.242.117.166:1337/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${pagination?.pageSize}`,
       );
@@ -36,6 +38,7 @@ export const AllProductList = ({ data, pagination, fetchUrl }) => {
       if (!data?.results || !data?.pagination) return;
       setProductList((prev) => [...prev, ...data.results]);
       currentPage.current += 1;
+      console.log(currentPage.current, 'after');
    };
 
    // Watch scroll to bottom element

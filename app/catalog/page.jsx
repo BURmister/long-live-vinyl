@@ -196,6 +196,8 @@ export default async function Catalog() {
    const SECTION_LIST = await fetchGetQuery('http://87.242.117.166:1337/api/categories/');
    const PRODUCT_RESULT = await fetchGetQuery('http://87.242.117.166:1337/api/products/?pagination[pageSize]=5');
 
+   console.log(PRODUCT_RESULT?.pagination);
+
    return (
       <div className={`page-wrapper flex flex-col ${styles.wrapper}`}>
          <div className="content-wrapper section-banner">
