@@ -1,3 +1,5 @@
+import '@/public/fonts.css';
+
 import { Header } from './_components/layout/header/Header';
 import { Footer } from './_components/layout/footer/Footer';
 import { Providers } from './_providers/reduxProvider';
