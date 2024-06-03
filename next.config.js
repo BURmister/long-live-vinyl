@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+   optimizeFonts: false,
    images: {
       // domains: [
       //    // 'i0.wp.com',
