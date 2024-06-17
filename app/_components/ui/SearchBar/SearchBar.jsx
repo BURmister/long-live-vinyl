@@ -17,12 +17,19 @@ export const SearchBar = ({ icon, placeholder, action = '/catalog/search' }) => 
    };
 
    const onSubmit = (event) => {
-      if (String(search).trim() === '') return event.preventDefault(); 
+      if (String(search).trim() === '') return event.preventDefault();
    };
 
    return (
       <form className={`search-bar flex items-center`} action={action} onSubmit={(event) => onSubmit(event)}>
-         <input className="text-24 input-normal" type="text" value={search} onChange={(event) => onInput(event)} placeholder={placeholder} name="q" />
+         <input
+            className="text-24 input-normal input-search"
+            type="text"
+            value={search}
+            onChange={(event) => onInput(event)}
+            placeholder={placeholder}
+            name="q"
+         />
          <button className="input-submit" type="submit">
             {icon}
          </button>

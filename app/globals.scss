@@ -13,6 +13,7 @@
    --grey: #333;
    --red: #e34539;
    --grey-light: rgba(223, 223, 223, 1);
+   --grey-light-darker: rgba(132, 132, 132, 1);
    --red-light: rgba(227, 69, 57, 0.8);
    --red-opacity: rgba(227, 69, 57, 0.4);
    --black-opacity: rgba(0, 0, 0, 0.4);
@@ -819,12 +820,19 @@ footer {
          color: var(--black);
       }
 
+      &.input-search {
+         &::placeholder {
+            color: var(--grey-light-darker);
+         }
+      }
+
       &:focus,
       &:focus-visible,
       &:focus-within {
          border-radius: 0;
       }
    }
+
 
    &-submit {
       width: var(--square-button-size);
