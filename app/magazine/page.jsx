@@ -39,7 +39,7 @@ const SECTION_LIST = [
 ];
 
 export default async function Magazine() {
-   const SECTION_LIST = await fetchGetQuery('http://87.242.117.166:1337/api/magazine-sections/');
+   const SECTION_LIST = await fetchGetQuery('http://95.174.93.98:1337/api/magazine-sections/');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>

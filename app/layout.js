@@ -3,6 +3,7 @@ import '@/public/fonts.css';
 import { Header } from './_components/layout/header/Header';
 import { Footer } from './_components/layout/footer/Footer';
 import { Providers } from './_providers/reduxProvider';
+import { ViewTransitions } from 'next-view-transitions';
 
 import './globals.scss';
 
@@ -14,13 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
    return (
       <Providers>
-         <html lang="en">
-            <body>
-               <Header />
-               <main className="flex flex-col">{children}</main>
-               <Footer />
-            </body>
-         </html>
+         <ViewTransitions>
+            <html lang="en">
+               <body>
+                  <Header />
+                  <main className="flex flex-col">{children}</main>
+                  <Footer />
+               </body>
+            </html>
+         </ViewTransitions>
       </Providers>
    );
 }

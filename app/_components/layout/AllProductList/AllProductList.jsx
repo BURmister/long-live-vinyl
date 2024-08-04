@@ -32,7 +32,7 @@ export const AllProductList = ({ data, pagination, fetchUrl }) => {
    const fetchData = async () => {
       console.log(currentPage.current, 'before');
       const data = await fetchGetQuery(
-         `http://87.242.117.166:1337/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${pagination?.pageSize}`,
+         `http://95.174.93.98:1337/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${pagination?.pageSize}`,
       );
 
       if (!data?.results || !data?.pagination) return;

@@ -20,12 +20,12 @@ export const Footer = () => {
          <div className={`background-white ${styles.line}`}></div>
          <div className={`content-wrapper ${styles.copy}`}>
             <p className="text-white text-16">© 2024 Long Live Vinyl, Inc. Graduation Project. All Rights Reserved.</p>
-            <div className={`flex align-center ${styles.madeby}`}>
+            {/* <div className={`flex align-center ${styles.madeby}`}>
                <p className="block text-white text-16">Проект разработан: </p>
                <Link className="block text-white text-16 hover-underline" href="https://github.com/BURmister">
                   BURmister
                </Link>
-            </div>
+            </div> */}
          </div>
       </footer>
    );

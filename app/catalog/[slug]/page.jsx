@@ -133,7 +133,7 @@ const PRODUCT_LIST = [
 ];
 
 export default async function CatalogSection({ params }) {
-   const SECTION_DATA = await fetchGetQuery('http://87.242.117.166:1337/api/category/' + params.slug);
+   const SECTION_DATA = await fetchGetQuery('http://95.174.93.98:1337/api/category/' + params.slug);
    if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
 
    return (

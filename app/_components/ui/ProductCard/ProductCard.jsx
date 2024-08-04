@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
+// import Link from 'next/link';
 import Image from 'next/image';
+import { Link } from 'next-view-transitions';
 
 import styles from './styles.module.scss';
 
@@ -11,11 +12,12 @@ export const ProductCard = ({ product }) => {
       <div className={styles.card}>
          <Link href={`/product/${product.slug}`}>
             <Image
-               src={product.previewImage && product.previewImage.url ? 'http://87.242.117.166:1337' + product.previewImage.url : product.img}
+               src={product.previewImage && product.previewImage.url ? 'http://95.174.93.98:1337' + product.previewImage.url : product.img}
                className={styles.img}
                width={512}
                height={512}
                alt={product.name}
+               // style={{ viewTransitionName: `view-transition-${product.id}` }}
             />
          </Link>
          <div className={styles.content}>

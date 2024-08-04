@@ -45,7 +45,7 @@ export const SectionArticles = ({ sectionSlug, _q }) => {
 
       loading.current = true;
       const data = await fetchGetQuery(
-         'http://87.242.117.166:1337/api/' +
+         'http://95.174.93.98:1337/api/' +
             ARTICLES_API_PATH +
             `?${sectionSlug ? 'filters[magazineSections][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${
                currentPage.current + 1
