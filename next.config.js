@@ -32,6 +32,11 @@ module.exports = {
             pathname: '**',
          },
          {
+            protocol: 'https',
+            hostname: 'api.longlivevinyl.ru*',
+            pathname: '**',
+         },
+         {
             protocol: 'http',
             hostname: 'localhost*',
             pathname: '**',
