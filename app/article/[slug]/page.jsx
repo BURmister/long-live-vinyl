@@ -106,7 +106,7 @@ const ARTICLE = {
 };
 
 export async function generateMetadata({ params }) {
-   const ARTICLE_FETCHED = await fetchGetQuery(`http://95.174.93.98:1337/api/magazine-article/${params.slug}`);
+   const ARTICLE_FETCHED = await fetchGetQuery(`http://https://api.longlivevinyl.ru/api/magazine-article/${params.slug}`);
    if (ARTICLE_FETCHED?.data) {
       return {
          title: `${ARTICLE_FETCHED.data.attributes.name}`,
@@ -119,13 +119,13 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ArticleDetail({ params }) {
-   const ARTICLE_FETCHED = await fetchGetQuery(`http://95.174.93.98:1337/api/magazine-article/${params.slug}`);
+   const ARTICLE_FETCHED = await fetchGetQuery(`http://https://api.longlivevinyl.ru/api/magazine-article/${params.slug}`);
    if (!ARTICLE_FETCHED) return notFound();
    const ARTICLE_DATA = ARTICLE_FETCHED.data;
 
    let afterHeading = false;
 
-   let image = 'http://95.174.93.98:1337';
+   let image = 'http://https://api.longlivevinyl.ru';
    if (ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url) image += ARTICLE_DATA.attributes?.detailImage?.data?.attributes?.url;
    else image += ARTICLE_DATA.attributes?.previewImage?.data?.attributes?.url;
 

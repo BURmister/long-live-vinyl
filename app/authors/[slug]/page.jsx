@@ -24,7 +24,7 @@ const AUTHOR = {
 };
 
 export default async function AuthorDetail({ params }) {
-   const AUTHOR_FETCHED = await fetchGetQuery(`http://95.174.93.98:1337/api/author/${params.slug}`);
+   const AUTHOR_FETCHED = await fetchGetQuery(`http://https://api.longlivevinyl.ru/api/author/${params.slug}`);
    if (!AUTHOR_FETCHED) return notFound();
 
    const AUTHOR = AUTHOR_FETCHED.data;
@@ -69,7 +69,7 @@ export default async function AuthorDetail({ params }) {
          </StickyLine>
          <section className={`content-wrapper section-banner ${styles.preview}`}>
             <Image
-               src={'http://95.174.93.98:1337' + AUTHOR.attributes.image.data.attributes.url}
+               src={'http://https://api.longlivevinyl.ru' + AUTHOR.attributes.image.data.attributes.url}
                width="1500"
                height="1500"
                alt=""

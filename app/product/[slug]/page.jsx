@@ -12,7 +12,7 @@ import { fetchGetQuery } from '@/app/_hooks/useAxios';
 import styles from './styles.module.scss';
 
 export async function generateMetadata({ params }) {
-   const PRODUCT_FETCHED = await fetchGetQuery(`http://95.174.93.98:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await fetchGetQuery(`http://https://api.longlivevinyl.ru/api/product/${params.slug}`);
    if (PRODUCT_FETCHED?.data) {
       return {
          title: `Виниловая пластинка альбома "${PRODUCT_FETCHED.data.attributes.name}"`,
@@ -25,12 +25,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProductDetail({ params }) {
-   const PRODUCT_FETCHED = await fetchGetQuery(`http://95.174.93.98:1337/api/product/${params.slug}`);
+   const PRODUCT_FETCHED = await fetchGetQuery(`http://https://api.longlivevinyl.ru/api/product/${params.slug}`);
    if (!PRODUCT_FETCHED) return notFound();
 
    const PRODUCT_DATA = PRODUCT_FETCHED.data;
 
-   let image = 'http://95.174.93.98:1337';
+   let image = 'http://https://api.longlivevinyl.ru';
    if (PRODUCT_DATA.attributes?.detailImage?.data?.attributes?.url) image += PRODUCT_DATA.attributes?.detailImage?.data?.attributes?.url;
    else image += PRODUCT_DATA.attributes?.previewImage?.data?.attributes?.url;
 

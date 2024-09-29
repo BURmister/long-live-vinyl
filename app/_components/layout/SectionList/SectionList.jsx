@@ -13,7 +13,7 @@ export const SectionList = ({ data, slugPrefix = '/catalog/' }) => {
                <li key={index} className={item.largeCard && styles.sectionLarge}>
                   <Link href={item.slug ? slugPrefix + item.slug : item.path} className={`${styles.section}`}>
                      <Image
-                        src={item.image.url ? 'http://95.174.93.98:1337' + item.image.url : item.image}
+                        src={item.image.url ? 'http://https://api.longlivevinyl.ru' + item.image.url : item.image}
                         alt={item.name}
                         width="512"
                         height="512"

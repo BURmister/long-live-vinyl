@@ -32,7 +32,9 @@ export const AllProductList = ({ data, pagination, fetchUrl }) => {
    const fetchData = async () => {
       console.log(currentPage.current, 'before');
       const data = await fetchGetQuery(
-         `http://95.174.93.98:1337/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${pagination?.pageSize}`,
+         `http://https://api.longlivevinyl.ru/api/${fetchUrl}?pagination[page]=${currentPage.current + 1}&pagination[pageSize]=${
+            pagination?.pageSize
+         }`,
       );
 
       if (!data?.results || !data?.pagination) return;
