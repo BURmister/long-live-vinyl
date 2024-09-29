@@ -12,7 +12,7 @@ export const ProductCard = ({ product }) => {
       <div className={styles.card}>
          <Link href={`/product/${product.slug}`}>
             <Image
-               src={product.previewImage && product.previewImage.url ? 'http://https://api.longlivevinyl.ru' + product.previewImage.url : product.img}
+               src={product.previewImage && product.previewImage.url ? 'https://api.longlivevinyl.ru' + product.previewImage.url : product.img}
                className={styles.img}
                width={512}
                height={512}

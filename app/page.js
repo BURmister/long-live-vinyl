@@ -82,9 +82,9 @@ const WEEK_LIST = [
 ];
 
 export default async function Home() {
-   const NEW_VINYL = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/products/?filters[new]=true&pagination[pageCount]=8');
-   const MONTH_VINYL = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
-   const RARE_VINYL = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/products/?filters[rare]=true&pagination[pageCount]=8');
+   const NEW_VINYL = await fetchGetQuery('https://api.longlivevinyl.ru/api/products/?filters[new]=true&pagination[pageCount]=8');
+   const MONTH_VINYL = await fetchGetQuery('https://api.longlivevinyl.ru/api/products/?filters[bestseller]=true&pagination[pageCount]=8');
+   const RARE_VINYL = await fetchGetQuery('https://api.longlivevinyl.ru/api/products/?filters[rare]=true&pagination[pageCount]=8');
 
    return (
       <div className={`${styles.home_page}`}>

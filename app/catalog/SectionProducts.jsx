@@ -74,7 +74,7 @@ export const SectionProducts = ({ sectionSlug, _q }) => {
 
       loading.current = true;
       const data = await fetchGetQuery(
-         'http://https://api.longlivevinyl.ru/api/' +
+         'https://api.longlivevinyl.ru/api/' +
             PRODUCTS_API_PATH +
             `?${sectionSlug ? 'filters[categories][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${
                currentPage.current + 1

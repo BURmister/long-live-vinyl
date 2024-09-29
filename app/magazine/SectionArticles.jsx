@@ -45,7 +45,7 @@ export const SectionArticles = ({ sectionSlug, _q }) => {
 
       loading.current = true;
       const data = await fetchGetQuery(
-         'http://https://api.longlivevinyl.ru/api/' +
+         'https://api.longlivevinyl.ru/api/' +
             ARTICLES_API_PATH +
             `?${sectionSlug ? 'filters[magazineSections][slug]=' + sectionSlug : ''}${_q ? '_q=' + _q : ''}&pagination[page]=${
                currentPage.current + 1

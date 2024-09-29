@@ -39,7 +39,7 @@ const SECTION_LIST = [
 ];
 
 export default async function Magazine() {
-   const SECTION_LIST = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/magazine-sections/');
+   const SECTION_LIST = await fetchGetQuery('https://api.longlivevinyl.ru/api/magazine-sections/');
 
    return (
       <div className={`page-wrapper flex flex-col ${styles.magazine}`}>

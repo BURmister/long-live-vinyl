@@ -133,7 +133,7 @@ const PRODUCT_LIST = [
 ];
 
 export default async function CatalogSection({ params }) {
-   const SECTION_DATA = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/category/' + params.slug);
+   const SECTION_DATA = await fetchGetQuery('https://api.longlivevinyl.ru/api/category/' + params.slug);
    if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
 
    return (

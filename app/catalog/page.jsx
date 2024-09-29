@@ -193,8 +193,8 @@ const PRODUCT_LIST = [
 ];
 
 export default async function Catalog() {
-   const SECTION_LIST = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/categories/');
-   const PRODUCT_RESULT = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/products/?pagination[pageSize]=5');
+   const SECTION_LIST = await fetchGetQuery('https://api.longlivevinyl.ru/api/categories/');
+   const PRODUCT_RESULT = await fetchGetQuery('https://api.longlivevinyl.ru/api/products/?pagination[pageSize]=5');
 
    // console.log(PRODUCT_RESULT?.pagination);
 

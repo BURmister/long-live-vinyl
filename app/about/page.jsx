@@ -177,7 +177,7 @@ const HISTORY = [
 
 export default async function About() {
    const data = await fetchGetQuery(
-      'http://https://api.longlivevinyl.ru/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264',
+      'https://api.longlivevinyl.ru/api/company-histories/?sort=createdAt:DESC&pagination[page]=1&pagination[pageSize]=264',
    );
    const HISTORY_DATA = data.data;
 

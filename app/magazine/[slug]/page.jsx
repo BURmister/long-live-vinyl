@@ -133,7 +133,7 @@ const ARTICLE_LIST = [
 ];
 
 export default async function MagazineSection({ params }) {
-   const SECTION_DATA = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/magazine-section/' + params.slug);
+   const SECTION_DATA = await fetchGetQuery('https://api.longlivevinyl.ru/api/magazine-section/' + params.slug);
    if (!SECTION_DATA || !SECTION_DATA.data) return notFound();
 
    return (

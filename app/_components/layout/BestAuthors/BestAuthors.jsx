@@ -22,7 +22,7 @@ const BEST_AUTHORS = [
 ];
 
 export const BestAuthors = async () => {
-   const BEST_AUTHORS = await fetchGetQuery('http://https://api.longlivevinyl.ru/api/authors/?sort=place:asc&pagination[pageSize]=3');
+   const BEST_AUTHORS = await fetchGetQuery('https://api.longlivevinyl.ru/api/authors/?sort=place:asc&pagination[pageSize]=3');
    if (!BEST_AUTHORS || !BEST_AUTHORS.results) return;
 
    return (
